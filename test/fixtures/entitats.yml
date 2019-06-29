@@ -1,0 +1,53 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  ambit: MyString
+  pare: 1
+  tipus_via: MyString
+  nom_via: MyString
+  numero_via: MyString
+  bloc: MyString
+  codi_postal: 1
+  poblacio: MyString
+  provincia: MyString
+  any_construccio: 1
+  superficie_util: 9.99
+  nom_propietari: MyString
+  cognoms_propietari: MyString
+  tipus_document_identitat_propietari: MyString
+  numero_document_identitat_propietari: MyString
+  email_propietari: MyString
+  telefon_propietari: MyString
+  adreca_propietari: MyString
+  codi_postal_propietari: MyString
+  municipi_propietari: MyString
+  descripcio: MyText
+  destinacio: MyString
+  quota: 9.99
+
+two:
+  user_id: 1
+  ambit: MyString
+  pare: 1
+  tipus_via: MyString
+  nom_via: MyString
+  numero_via: MyString
+  bloc: MyString
+  codi_postal: 1
+  poblacio: MyString
+  provincia: MyString
+  any_construccio: 1
+  superficie_util: 9.99
+  nom_propietari: MyString
+  cognoms_propietari: MyString
+  tipus_document_identitat_propietari: MyString
+  numero_document_identitat_propietari: MyString
+  email_propietari: MyString
+  telefon_propietari: MyString
+  adreca_propietari: MyString
+  codi_postal_propietari: MyString
+  municipi_propietari: MyString
+  descripcio: MyText
+  destinacio: MyString
+  quota: 9.99

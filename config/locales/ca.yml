@@ -1,0 +1,53 @@
+ca:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: "No coincideix amb la confirmació"
+            current_password:
+              blank: "No pot estar en blanc"
+              invalid: "La contrasenya no és vàlida"
+            password:
+              too_short: "La contrasenya ha de tenir com a mínim 8 caràcters"
+              blank: "No pot estar en blanc"
+            email:
+              taken: "Aquest correu electrònic ja està registrat"
+              invalid: "Aquesta adreça de correu electrònic no és vàlida"
+              blank: "Cal escriure el correu electrònic"
+            first_name:
+              blank: "Cal escriure el nom"
+            last_name:
+              blank: "Cal escriure els cognoms"
+  simple_form:
+    labels:
+      user:
+        first_name: 'Nom'
+        last_name: 'Cognoms'
+        nif: 'NIF'
+        email: 'Correu electrònic'
+        password: 'Contrasenya'
+        password_confirmation: 'Confirmació de contrasenya'
+        current_password: 'Contrasenya actual'
+        remember_me: "Recorda'm"
+  layouts:
+    application:
+      titol_pagina: "Test energètic"
+    navigation:
+      titol: "Test energètic"
+      register: "Registrar-se"
+      sign_in: "Iniciar sessió"
+      account_configuration: "Configuració del compte"
+      sign_out: "Tancar sessió"
+      tutorials: "Tutorials"
+      projectes: "Projectes"
+    subnavigation:
+      identificacio: "Identificació"
+      aixecament: "Aixecament de dades"
+      propostes: "Propostes de millora"
+      documents: "Documents"
+  home:
+    index:
+      titol_test_energetic: "Test energètic"
+      subtitol_test_energetic: "Eina de suport per a l'elaboració de propostes d'estalvi energètic en habitatges existents."

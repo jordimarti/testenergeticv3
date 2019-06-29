@@ -1,0 +1,2 @@
+class Entitat < ApplicationRecord
+end

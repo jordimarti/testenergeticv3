@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_28_161226) do
+ActiveRecord::Schema.define(version: 2019_06_29_140534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,35 @@ ActiveRecord::Schema.define(version: 2019_06_28_161226) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "entitats", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "ambit"
+    t.integer "pare"
+    t.string "tipus_via"
+    t.string "nom_via"
+    t.string "numero_via"
+    t.string "bloc"
+    t.integer "codi_postal"
+    t.string "poblacio"
+    t.string "provincia"
+    t.integer "any_construccio"
+    t.decimal "superficie_util"
+    t.string "nom_propietari"
+    t.string "cognoms_propietari"
+    t.string "tipus_document_identitat_propietari"
+    t.string "numero_document_identitat_propietari"
+    t.string "email_propietari"
+    t.string "telefon_propietari"
+    t.string "adreca_propietari"
+    t.string "codi_postal_propietari"
+    t.string "municipi_propietari"
+    t.text "descripcio"
+    t.string "destinacio"
+    t.decimal "quota"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
