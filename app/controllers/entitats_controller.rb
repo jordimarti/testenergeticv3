@@ -47,7 +47,7 @@ class EntitatsController < ApplicationController
       if @entitat.ambit == 'subentitat'
         redirect_to entitat_ambits_path(@entitat.pare)
       else
-        redirect_to entitat_ambits_path(@entitat)
+        redirect_to edit_entitat_path(@entitat)
       end
     else 
       render :edit
