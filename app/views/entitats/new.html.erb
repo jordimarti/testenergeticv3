@@ -1,5 +1,140 @@
-<h1>New Entitat</h1>
+<% if params[:ambit] == 'subentitat' %>
 
-<%= render 'form', entitat: @entitat %>
+	<div class="dark-background-container">
+	  <div class="grid-container">
+	    <div class="grid-x grid-margin-x">
+	    	<div class="medium-12 cell">
+		      <div class="heavy-container">
+		        <div class="heavy-title-container">
+		          <h2 class="heavy-title"><%= t('.titol_entitat') %></h2>
+		        </div>
+		        <div class="heavy-container-form">
+							<%= simple_form_for(@entitat) do |f| %>
+							  <%= f.error_notification %>
+							  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= link_to 'Back', entitats_path %>
+							  <div class="form-inputs">
+							    <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+							    <%= f.input :ambit, as: :hidden, input_html: { value: 'subentitat' } %>
+							    <%= f.input :pare, as: :hidden, input_html: { value: params[:entitat_pare]} %>
+							    <div class="grid-x grid-margin-x">
+							      <div class="medium-6 cell">
+							        <%= f.input :nom %>
+							      </div>
+							      <div class="medium-6 cell">
+							        <%= f.input :descripcio %>
+							      </div>
+							    </div>
+							    <div class="grid-x grid-margin-x">
+							      <div class="medium-3 cell">
+							        <%= f.input :superficie_util %>
+							      </div>
+							      <div class="medium-3 cell">
+							        <%= f.input :quota %>
+							      </div>
+							      <div class="medium-6 cell">
+							        <%= f.input :destinacio, collection: [[t('.habitatge'), 'Habitatge'], [t('.local'), 'Local'], [t('.traster'), 'Traster'], [t('.magatzem'), 'Magatzem']] %>
+							      </div>
+							    </div>
+							    <div class="grid-x grid-margin-x">
+							      <div class="medium-12 cell">
+							        <div class="divider"></div>
+							        <h4 class="titol-apartat"><%= t('.dades_propietat') %></h4>
+							      </div>
+							    </div>
+							    <div class="grid-x grid-margin-x">
+							      <div class="medium-6 cell">
+							        <%= f.input :nom_propietari %>
+							      </div>
+							      <div class="medium-6 cell">
+							        <%= f.input :cognoms_propietari %>
+							      </div>
+							    </div>
+							    <div class="grid-x grid-margin-x">
+							      <div class="medium-6 cell">
+							        <%= f.input :email_propietari %>
+							      </div>
+							      <div class="medium-6 cell">
+							        <%= f.input :telefon_propietari %>
+							      </div>
+							    </div>
+							    <div class="grid-x grid-margin-x">
+							      <div class="medium-6 cell">
+							        <%= f.input :adreca_propietari %>
+							      </div>
+							      <div class="medium-3 cell">
+							        <%= f.input :codi_postal_propietari %>
+							      </div>
+							      <div class="medium-3 cell">
+							        <%= f.input :poblacio_propietari %>
+							      </div>
+							    </div>
+							  </div>
+
+							  <div class="spacer"></div>
+							  <div class="form-actions">
+							    <div class="button-right-container">
+							      <%= f.button :submit, t('.guardar'), :class => 'button button-right' %>
+							    </div>
+							  </div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="grid-container">
+	    <div class="grid-x grid-margin-x">
+				<div class="medium-12 cell">
+					<div class="alternatives-container-under">
+						<%= link_to t('.tornar_entitats'), entitat_ambits_path(params[:entitat_pare]) %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<% else %>
+
+	<div class="dark-background-container">
+	  <div class="grid-container">
+	    <div class="grid-x grid-margin-x">
+	    	<div class="medium-6 medium-offset-3 cell">
+		      <div class="heavy-container">
+		        <div class="heavy-title-container">
+		          <h2 class="heavy-title"><%= t('.titol') %></h2>
+		        </div>
+		        <div class="heavy-container-form">
+							<%= simple_form_for(@entitat) do |f| %>
+							  <%= f.error_notification %>
+							  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+							  <div class="form-inputs">
+							    <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+							    <%= f.input :ambit , as: :hidden, input_html: { value: 'edifici' } %>
+							    <%= f.input :nom %>
+							  </div>
+
+							  <div class="form-actions">
+							  	<div class="button-right-container">
+							    	<%= f.button :submit, t('.guardar'), :class => 'button button-right' %>
+							    </div>
+							  </div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="grid-container">
+	    <div class="grid-x grid-margin-x">
+				<div class="medium-6 medium-offset-3 cell">
+					<div class="alternatives-container-under">
+						<%= link_to t('.tornar_projectes'), entitats_path %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<% end %>

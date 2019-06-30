@@ -51,3 +51,43 @@ es:
     index:
       titol_test_energetic: "Test energético"
       subtitol_test_energetic: "Herramienta para la elaboración de propuestas de ahorro energético en viviendas existentes."
+  entitats:
+    index:
+      titol: "Proyectos"
+      nou_edifici: "Crear un nuevo edificio"
+      no_projectes: "Aún no has creado ningún proyecto."
+    new:
+      titol: "Crear un nuevo proyecto"
+      tornar_projectes: "Volver al listado de proyectos"
+      guardar: "Guardar"
+      titol_entitat: "Crear una nueva entidad"
+      tornar_entitats: "Volver a la selección de ámbito"
+    form:
+      guardar: "Guardar"
+    ambits:
+      titol: "Selección de ámbito"
+      edifici_sencer: "Edificio entero"
+      descripcio_edifici_sencer: "Selecciona esta opción para introducir los datos generales y hacer el Test energético del edificio."
+      dades_edifici: "Edificio"
+      entitats: "Entidades del edificio"
+      descripcio_entitats: "Selecciona esta opción para introducir datos de las entidades del edificio y para hacer el Test energético de una sola entidad."
+      nova_entitat: "Nueva entidad"
+      nom: "Nombre"
+      destinacio: "Destinación"
+      superficie: "Superficie"
+      quota: "Cuota"
+      propietat: "Propiedad"
+    create:
+      projecte_creat: "El edificio se ha creado correctamente"
+    update:
+      edifici_actualitzat: "El edificio se ha actualizado correctamente"
+    edit:
+      titol_identificacio: "Identificación"
+      edifici: "Edificio"
+      propietat: "Propiedad"
+      tecnic_redactor: "Técnico redactor"
+      dades_edifici: "DATOS DEL EDIFICIO"
+      dades_propietari: "DATOS DE LA PROPIEDAD"
+      guardar: "Guardar"
+    delete:
+      edifici_eliminat: "El edificio se ha eliminado correctamente"

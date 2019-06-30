@@ -8,5 +8,5 @@ class User < ApplicationRecord
     [first_name, last_name].compact.join(' ')
   end
   
-  has_many :edificis
+  has_many :entitats
 end

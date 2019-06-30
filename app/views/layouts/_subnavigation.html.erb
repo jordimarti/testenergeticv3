@@ -1,36 +1,33 @@
 
 <% if @subnavigation == true %>
 	<% 
-	if @entitat != nil && @entitat.nom != nil
+	if @subentitat == true
 		nom_edifici = @edifici.nom + ', ' + @entitat.nom
-		ambit_entitat = true
 	else
-		nom_edifici = @edifici.nom
-	end %>
+		nom_edifici = @entitat.nom
+	end
+	%>
 
 	<div class="sub-top-bar">
 		<div class="header-submenu">
 	  	<ul class="header-submenu-list">
-	      <li class="header-submenu-item header-nom-edifici"><%= link_to nom_edifici, edifici_entitats_path(edifici_id: @edifici.id) %></li>
+	      <li class="header-submenu-item header-nom-edifici">
+	      	<% if @subentitat == true %>
+	      		<%= link_to nom_edifici, entitat_ambits_path(@edifici) %>
+	      	<% else %>
+	      		<%= link_to nom_edifici, entitat_ambits_path(@entitat) %>
+	      	<% end %>
+	      </li>
 	  		<% if @submenu_actiu == 'ambits' %>
 	  			
 	  		<% else %>
-	  			<% if params[:entitat_id] != nil %>
-	  				<li class="header-submenu-item <% if @submenu_actiu == 'identificacio' %>
-			            header-submenu-actiu
-			            <% end %>"><%= link_to(t('.identificacio'), edit_edifici_entitat_path(id: @entitat.id, entitat_id: @entitat.id), :class => 'header-submenu-link') %></li>
-			      <li class="header-submenu-item <% if @submenu_actiu == 'aixecament' %>
-			            header-submenu-actiu
-			            <% end %>"><%= link_to(t('.aixecament'), entitat_aixecament_path(edifici_id: @edifici.id, id: @entitat.id, entitat_id: @entitat.id), :class => 'header-submenu-link') %></li>
-
-	  			<% else %>
-			  		<li class="header-submenu-item <% if @submenu_actiu == 'identificacio' %>
-			            header-submenu-actiu
-			            <% end %>"><%= link_to(t('.identificacio'), edit_identificacio_path(@edifici.identificacio.id), :class => 'header-submenu-link') %></li>
-			      <li class="header-submenu-item <% if @submenu_actiu == 'aixecament' %>
-			            header-submenu-actiu
-			            <% end %>"><%= link_to(t('.aixecament'), aixecament_path(@edifici.id), :class => 'header-submenu-link') %></li>
-		      <% end %>
+	  			<li class="header-submenu-item <% if @submenu_actiu == 'identificacio' %>
+            header-submenu-actiu
+            <% end %>"><%= link_to(t('.identificacio'), edit_entitat_path(@entitat), :class => 'header-submenu-link') %></li>
+			    <li class="header-submenu-item <% if @submenu_actiu == 'aixecament' %>
+            header-submenu-actiu
+            <% end %>"><%= link_to(t('.aixecament'), entitat_aixecament_path(@entitat), :class => 'header-submenu-link') %></li>
+		      
 		    <% end %>
 	  	</ul>
     </div>

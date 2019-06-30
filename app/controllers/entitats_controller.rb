@@ -1,58 +1,59 @@
 class EntitatsController < ApplicationController
-  before_action :set_entitat, only: [:show, :edit, :update, :destroy]
+  before_action :set_entitat, only: [:show, :edit, :update, :destroy, :ambits]
 
-  # GET /entitats
-  # GET /entitats.json
   def index
-    @entitats = Entitat.all
+    @entitats = Entitat.where(user_id: current_user.id, ambit: "edifici").order(created_at: :desc)
   end
 
-  # GET /entitats/1
-  # GET /entitats/1.json
-  def show
+  def ambits
+    @subnavigation = true
+    @subentitat = false
+    @submenu_actiu = 'ambits'
+    @subentitats = Entitat.where(pare: @entitat.id).order(:nom)
   end
 
-  # GET /entitats/new
   def new
     @entitat = Entitat.new
   end
 
-  # GET /entitats/1/edit
   def edit
+    @subnavigation = true
+    @submenu_actiu = 'identificacio'
+    if @entitat.ambit == 'subentitat'
+      @subentitat = true
+      @edifici = Entitat.find(@entitat.pare)
+    else
+      @subentitat = false
+      @edifici = @entitat
+    end
   end
 
-  # POST /entitats
-  # POST /entitats.json
   def create
     @entitat = Entitat.new(entitat_params)
 
-    respond_to do |format|
-      if @entitat.save
-        format.html { redirect_to @entitat, notice: 'Entitat was successfully created.' }
-        format.json { render :show, status: :created, location: @entitat }
+    if @entitat.save
+      if @entitat.ambit == 'subentitat'
+        redirect_to entitat_ambits_path(@entitat.pare)
       else
-        format.html { render :new }
-        format.json { render json: @entitat.errors, status: :unprocessable_entity }
+        redirect_to entitats_path
       end
+    else 
+      render :new
     end
   end
 
-  # PATCH/PUT /entitats/1
-  # PATCH/PUT /entitats/1.json
   def update
-    respond_to do |format|
-      if @entitat.update(entitat_params)
-        format.html { redirect_to @entitat, notice: 'Entitat was successfully updated.' }
-        format.json { render :show, status: :ok, location: @entitat }
+    if @entitat.update(entitat_params)
+      if @entitat.ambit == 'subentitat'
+        redirect_to entitat_ambits_path(@entitat.pare)
       else
-        format.html { render :edit }
-        format.json { render json: @entitat.errors, status: :unprocessable_entity }
+        redirect_to entitat_ambits_path(@entitat)
       end
+    else 
+      render :edit
     end
   end
 
-  # DELETE /entitats/1
-  # DELETE /entitats/1.json
   def destroy
     @entitat.destroy
     respond_to do |format|
@@ -61,14 +62,17 @@ class EntitatsController < ApplicationController
     end
   end
 
+  def aixecament
+
+  end
+
   private
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_entitat
       @entitat = Entitat.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def entitat_params
-      params.require(:entitat).permit(:user_id, :ambit, :pare, :tipus_via, :nom_via, :numero_via, :bloc, :codi_postal, :poblacio, :provincia, :any_construccio, :superficie_util, :nom_propietari, :cognoms_propietari, :tipus_document_identitat_propietari, :numero_document_identitat_propietari, :email_propietari, :telefon_propietari, :adreca_propietari, :codi_postal_propietari, :municipi_propietari, :descripcio, :destinacio, :quota)
+      params.require(:entitat).permit(:user_id, :ambit, :pare, :tipus_via, :nom_via, :numero_via, :bloc, :codi_postal, :poblacio, :provincia, :any_construccio, :superficie_util, :nom_propietari, :cognoms_propietari, :tipus_identificacio_propietari, :identificacio_propietari, :email_propietari, :telefon_propietari, :adreca_propietari, :codi_postal_propietari, :poblacio_propietari, :provincia_propietari, :descripcio, :destinacio, :quota, :nom, :altitud_municipi, :regim_juridic, :nom_representant, :cognoms_representant, :tipus_identificacio_representant, :identificacio_representant, :adreca_representant, :codi_postal_representant, :poblacio_representant, :provincia_representant, :telefon_representant, :email_representant, :nom_tecnic, :cognoms_tecnic, :tipus_identificacio_tecnic, :identificacio_tecnic, :titulacio_tecnic, :colegi_tecnic, :num_colegiat_tecnic, :adreca_tecnic, :codi_postal_tecnic, :poblacio_tecnic, :provincia_tecnic, :telefon_tecnic, :email_tecnic, :imatge_entitat)
     end
 end
