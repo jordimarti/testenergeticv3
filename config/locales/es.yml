@@ -133,3 +133,12 @@ es:
       guardar: "Guardar"
     delete:
       edifici_eliminat: "El edificio se ha eliminado correctamente"
+    aixecament:
+      titol: "Levantamiento de datos"
+      envolupant: "Envolvente térmica"
+      iluminacio: "Iluminación"
+      acs_clima: "ACS y climatización"
+      altres: "Otros aparatos"
+      factures: "Facturas y consumos"
+    envolupant:
+      titol: "Envolvente térmica"

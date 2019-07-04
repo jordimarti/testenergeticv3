@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_29_140534) do
+ActiveRecord::Schema.define(version: 2019_07_03_143052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,39 @@ ActiveRecord::Schema.define(version: 2019_06_29_140534) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "coberta", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "ambit"
+    t.string "nom"
+    t.text "descripcio"
+    t.decimal "superficie"
+    t.decimal "percentatge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cobertes", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "ambit"
+    t.string "nom"
+    t.text "descripcio"
+    t.decimal "superficie"
+    t.decimal "percentatge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "component_murs", force: :cascade do |t|
+    t.integer "mur_id"
+    t.string "nom"
+    t.decimal "conductivitat"
+    t.decimal "gruix"
+    t.decimal "resistencia_termica"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "posicio"
   end
 
   create_table "entitats", force: :cascade do |t|
@@ -88,6 +121,47 @@ ActiveRecord::Schema.define(version: 2019_06_29_140534) do
     t.string "provincia_tecnic"
     t.string "telefon_tecnic"
     t.string "email_tecnic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "forats", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "ambit"
+    t.string "nom"
+    t.text "descripcio"
+    t.decimal "superficie"
+    t.integer "part_opaca"
+    t.integer "part_transparent"
+    t.decimal "percentatge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "transmitancia_part_opaca"
+    t.decimal "transmitancia_part_transparent"
+    t.string "nom_part_opaca"
+    t.string "nom_part_transparent"
+    t.integer "numero"
+  end
+
+  create_table "lampades", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "ambit"
+    t.string "tipologia"
+    t.string "descripcio"
+    t.integer "numero"
+    t.integer "potencia"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "murs", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "ambit"
+    t.string "nom"
+    t.text "descripcio"
+    t.decimal "superficie"
+    t.string "tipus_mur"
+    t.decimal "percentatge"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

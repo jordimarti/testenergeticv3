@@ -1,0 +1,122 @@
+<div class="light-background-container">
+  
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="medium-12 cell">
+        <div class="titol-seccio">
+          <%= t('.titol') %>
+        </div>
+      </div>
+    </div>
+        
+    <div class="grid-x grid-margin-x">
+      <div class="medium-6 cell">
+        <div class="light-container envolupant-items-container">
+          <h4 class="titol-seccio"><%= t('.murs') %></h4>
+          <% if @murs.count == 0 %>
+          	<div class="notice-envolupant">
+          		<span class="text-notice-envolupant"><%= t('.no_murs') %></span>
+          	</div>
+          <% else %>
+          	<table class="unstriped">
+              <tbody>
+                <% @murs.each do |mur| %>
+                  <tr>
+                    <td><%= link_to mur.nom, edit_mur_path(mur) %></td>
+                    <td class="columna-eliminar">
+                      <%= link_to mur_path(mur), method: :delete, data: { confirm: t('.eliminar') } do %>
+                        <i class="fa fa-trash" aria-hidden="true"></i>                 
+                      <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table> 
+	        <% end %>
+          <div class="afegir-element">
+      			<%= link_to t('.afegir_element'), new_mur_path(entitat_id: @entitat.id), class: 'link-afegir' %>
+      		</div>
+        </div>
+      </div>
+      <div class="medium-6 cell">
+        <div class="light-container envolupant-items-container">
+          <h4 class="titol-seccio"><%= t('.forats') %></h4>
+          <% if @forats.count == 0 %>
+          	<div class="notice-envolupant">
+          		<span class="text-notice-envolupant"><%= t('.no_forats') %></span>
+          	</div>
+          <% else %>
+            <table class="unstriped">
+              <tbody>
+    	          <% @forats.each do |forat| %>
+                  <tr>
+                    <td><%= link_to forat.nom, edit_forat_path(forat) %></td>
+                    <td class="columna-eliminar">
+                      <%= link_to forat_path(forat), method: :delete, data: { confirm: t('.eliminar') } do %>
+                        <i class="fa fa-trash" aria-hidden="true"></i>                 
+                      <% end %>
+                  </tr>
+    	          <% end %>
+              </tbody>
+            </table> 
+	        <% end %>
+          <div class="afegir-element">
+      			<%= link_to t('.afegir_element'), new_forat_path(entitat_id: @entitat.id), class: 'link-afegir' %>
+      		</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x">
+      <div class="medium-6 cell">
+        <div class="light-container envolupant-items-container">
+          <h4 class="titol-seccio"><%= t('.cobertes') %></h4>
+          <% if @cobertes.count == 0 %>
+          	<div class="notice-envolupant">
+          		<span class="text-notice-envolupant"><%= t('.no_cobertes') %></span>
+          	</div>
+          <% else %>
+	          <% @cobertes.each do |coberta| %>
+	          	<div class="item-aixecament-dades">
+	          		<%= link_to coberta.nom, edit_coberta_path(coberta) %>
+	          	</div>
+	          <% end %>
+	        <% end %>
+          <div class="afegir-element">
+      			<%= link_to t('.afegir_element'), new_coberta_path(entitat_id: @entitat.id), class: 'link-afegir' %>
+      		</div>
+        </div>
+      </div>
+      <div class="medium-6 cell">
+        <div class="light-container envolupant-items-container">
+          <h4 class="titol-seccio"><%= t('.terres') %></h4>
+          <% if @cobertes.count == 0 %>
+            <div class="notice-envolupant">
+              <span class="text-notice-envolupant"><%= t('.no_terres') %></span>
+            </div>
+          <% else %>
+            <% @cobertes.each do |coberta| %>
+              <div class="item-aixecament-dades">
+                <%= link_to coberta.nom, edit_coberta_path(coberta) %>
+              </div>
+            <% end %>
+          <% end %>
+          <div class="afegir-element">
+            <%= link_to t('.afegir_element'), new_coberta_path(entitat_id: @entitat.id), class: 'link-afegir' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x">
+      <div class="medium-12 cell">
+        <div class="light-container envolupant-items-container">
+          <h4 class="titol-seccio"><%= t('.calcul_transmitancia') %></h4>
+          <div class="notice-envolupant">
+            <span class="text-notice-envolupant"><%= t('.falta_info') %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

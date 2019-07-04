@@ -1,0 +1,2 @@
+class Forat < ApplicationRecord
+end

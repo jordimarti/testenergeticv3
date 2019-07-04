@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Entitat:</strong>
+  <%= @forat.entitat_id %>
+</p>
+
+<p>
+  <strong>Ambit:</strong>
+  <%= @forat.ambit %>
+</p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @forat.nom %>
+</p>
+
+<p>
+  <strong>Descripcio:</strong>
+  <%= @forat.descripcio %>
+</p>
+
+<p>
+  <strong>Superficie:</strong>
+  <%= @forat.superficie %>
+</p>
+
+<p>
+  <strong>Part opaca:</strong>
+  <%= @forat.part_opaca %>
+</p>
+
+<p>
+  <strong>Part transparent:</strong>
+  <%= @forat.part_transparent %>
+</p>
+
+<p>
+  <strong>Percentatge:</strong>
+  <%= @forat.percentatge %>
+</p>
+
+<%= link_to 'Edit', edit_forat_path(@forat) %> |
+<%= link_to 'Back', forats_path %>

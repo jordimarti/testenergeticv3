@@ -1,0 +1,2 @@
+module ForatsHelper
+end

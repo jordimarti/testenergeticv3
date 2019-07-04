@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Forats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Entitat</th>
+      <th>Ambit</th>
+      <th>Nom</th>
+      <th>Descripcio</th>
+      <th>Superficie</th>
+      <th>Part opaca</th>
+      <th>Part transparent</th>
+      <th>Percentatge</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @forats.each do |forat| %>
+      <tr>
+        <td><%= forat.entitat_id %></td>
+        <td><%= forat.ambit %></td>
+        <td><%= forat.nom %></td>
+        <td><%= forat.descripcio %></td>
+        <td><%= forat.superficie %></td>
+        <td><%= forat.part_opaca %></td>
+        <td><%= forat.part_transparent %></td>
+        <td><%= forat.percentatge %></td>
+        <td><%= link_to 'Show', forat %></td>
+        <td><%= link_to 'Edit', edit_forat_path(forat) %></td>
+        <td><%= link_to 'Destroy', forat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Forat', new_forat_path %>

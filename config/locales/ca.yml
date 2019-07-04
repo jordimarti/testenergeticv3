@@ -71,6 +71,29 @@ ca:
         descripcio: "Descripció"
         quota: "Quota"
         destinacio: "Destinació"
+      mur:
+        nom: "Nom"
+        descripcio: "Descripció"
+        superficie: "Superfície"
+        percentatge: "Percentatge"
+        tipus_mur: "Número de fulles"
+      component_mur:
+        nom: "Nom"
+        conductivitat: "Conductivitat"
+        gruix: "Gruix"
+        resistencia_termica: "Resistència tèrmica"
+      forat:
+        nom: "Nom"
+        descripcio: "Descripció"
+        superficie: "Superfície"
+        percentatge: "% respecte total forats"
+        numero: "Número de forats d'aquest tipus"
+        nom_part_opaca: "Tipus de marc"
+        part_opaca: "% respecte total forat"
+        transmitancia_part_opaca: "Transmitància tèrmica"
+        nom_part_transparent: "Tipus de vidre"
+        part_transparent: "% respecte total forat"
+        transmitancia_part_transparent: "Transmitància tèrmica"
   layouts:
     application:
       titol_pagina: "Test energètic"
@@ -133,3 +156,53 @@ ca:
       guardar: "Guardar"
     delete:
       edifici_eliminat: "El projecte s'ha eliminat correctament"
+    aixecament:
+      titol: "Aixecament de dades"
+      envolupant: "Envolupant tèrmica"
+      iluminacio: "Il·luminació"
+      acs_clima: "ACS i climatització"
+      altres: "Altres aparells"
+      factures: "Factures i consums"
+    envolupant:
+      titol: "Envolupant tèrmica"
+      murs: "Murs"
+      forats: "Forats"
+      cobertes: "Cobertes"
+      terres: "Terres"
+      calcul_transmitancia: "Transmitància tèrmica global"
+      afegir_element: "+ Afegir element"
+      no_murs: "Defineix els murs de façana, mitjera, etc."
+      no_forats: "Defineix les obertures com portes i finestres."
+      no_cobertes: "Defineix les cobertes"
+      no_terres: "Definex els terres"
+      falta_info: "Falta informació per poder calcular la transmitància tèrmica global"
+      eliminar: "Segur que vols eliminar?"
+    iluminacio:
+      titol: "Il·luminació"
+  murs:
+    edit:
+      titol: "Envolupant tèrmica: edició de mur"
+    form:
+      composicio: "Composició"
+      una_fulla: "Una fulla"
+      dues_fulles: "Dues fulles"
+      nou_component: "Afegir component"
+      guardar: "Guardar"
+      component: "Component"
+      alerta-supera-limit: "Alerta! El mur supera el valor límit del CTE"
+    calcul_transmitancia:
+      coeficient_transmissio_termica: "Coeficient de transmissió tèrmica"
+      valor_segons_cte: "Valor segons el CTE"
+      zona_climatica: "Zona climàtica"
+  component_murs:
+    llistat_components:
+      eliminar: "Segur que vols eliminar?"
+    form:
+      guardar: "Guardar"
+  forats:
+    edit:
+      titol: "Envolupant tèrmica: edició de forat"
+    form:
+      part_opaca: "Part opaca"
+      part_transparent: "Part transparent"
+      guardar: "Guardar"

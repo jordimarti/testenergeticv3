@@ -1,0 +1,38 @@
+
+<%= simple_form_for(@forat) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <div class="grid-x grid-margin-x">
+      <div class="medium-4 cell">
+        <%= f.input :nom %>
+      </div>
+      <div class="medium-8 cell">
+        <%= f.input :descripcio %>
+      </div>
+    </div>
+    <div class="grid-x grid-margin-x">
+      <div class="medium-4 cell">
+        <%= f.input :superficie %>
+        <%= f.input :numero %>
+      </div>
+      <div class="medium-4 cell">
+        <h4><%= t('.part_opaca') %></h4>
+        <%= f.input :nom_part_opaca %>
+        <%= f.input :part_opaca %>
+        <%= f.input :transmitancia_part_opaca %>
+      </div>
+      <div class="medium-4 cell">
+        <h4><%= t('.part_transparent') %></h4>
+        <%= f.input :nom_part_transparent %>
+        <%= f.input :part_transparent %>
+        <%= f.input :transmitancia_part_transparent %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t('.guardar'), :class => 'button' %>
+  </div>
+<% end %>

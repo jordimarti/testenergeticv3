@@ -44,3 +44,74 @@
 	padding-bottom: 10px;
 	border-bottom: 1px solid #cccccc;
 }
+
+
+/* AIXECAMENT DE DADES */
+
+.item-aixecament {
+	background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.envolupant-container {
+	background-image: url("https://d116p86eni6yt2.cloudfront.net/imatges/envolupant.jpg");
+}
+
+.iluminacio-container {
+	background-image: url("https://d116p86eni6yt2.cloudfront.net/imatges/iluminacio.jpg");
+}
+
+.clima-container {
+	background-image: url("https://d116p86eni6yt2.cloudfront.net/imatges/clima.jpg");
+}
+
+.factures-container {
+	background-image: url("https://d116p86eni6yt2.cloudfront.net/imatges/factures.jpg");
+}
+
+.altres-container {
+	background-image: url("https://d116p86eni6yt2.cloudfront.net/imatges/altres.jpg");
+}
+
+.text-item-aixecament {
+	background-color: #427853;
+	padding: 4px 12px;
+	color: white;
+	font-weight: bold;
+	width: fit-content;
+}
+
+.imatge-llistat-envolupant {
+	width: 100px;
+}
+
+.envolupant-items-container {
+	margin-bottom: 20px;
+}
+
+.notice-envolupant {
+	border: 1px solid rgba(10, 10, 10, 0.25);
+	background-color: #d7ecfa;
+	padding: 10px 15px;
+	margin-bottom: 20px;
+}
+
+.item-aixecament-dades {
+	border: 1px solid rgba(10, 10, 10, 0.25);
+	background-color: #eaeaea;
+	padding: 10px 15px;
+	margin-bottom: 10px;
+}
+
+.columna-eliminar {
+	width: 50px;
+}
+
+
+
+
+
+
+
+

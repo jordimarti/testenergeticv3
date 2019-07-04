@@ -12,7 +12,45 @@
     <div class="grid-x grid-margin-x">
       <div class="medium-12 cell">
         <div class="light-container">
-          Aquí continguts
+          <div class="grid-x grid-margin-x">
+            <div class="medium-4 cell">
+              <%= link_to entitat_envolupant_path(@entitat) do %>
+                <div class="item-aixecament envolupant-container">
+                  <div class="text-item-aixecament"><%= t('.envolupant') %></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="medium-4 cell">
+              <%= link_to entitat_iluminacio_path(@entitat) do %>
+                <div class="item-aixecament iluminacio-container">
+                  <div class="text-item-aixecament"><%= t('.iluminacio') %></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="medium-4 cell">
+              <%= link_to entitat_envolupant_path(@entitat) do %>
+                <div class="item-aixecament clima-container">
+                  <div class="text-item-aixecament"><%= t('.acs_clima') %></div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="grid-x grid-margin-x">
+            <div class="medium-4 cell">
+              <%= link_to entitat_envolupant_path(@entitat) do %>
+                <div class="item-aixecament altres-container">
+                  <div class="text-item-aixecament"><%= t('.altres') %></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="medium-4 cell">
+              <%= link_to entitat_envolupant_path(@entitat) do %>
+                <div class="item-aixecament factures-container">
+                  <div class="text-item-aixecament"><%= t('.factures') %></div>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

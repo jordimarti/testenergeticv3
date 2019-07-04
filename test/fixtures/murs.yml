@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entitat_id: 1
+  ambit: MyString
+  nom: MyString
+  descripcio: MyText
+  superficie: 9.99
+  tipus_mur: MyString
+  percentatge: 9.99
+
+two:
+  entitat_id: 1
+  ambit: MyString
+  nom: MyString
+  descripcio: MyText
+  superficie: 9.99
+  tipus_mur: MyString
+  percentatge: 9.99

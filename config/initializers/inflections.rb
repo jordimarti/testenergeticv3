@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular 'proposta', 'propostes'
+  inflect.irregular 'predefinida', 'predefinides'
+  inflect.irregular 'coberta', 'cobertes'
+  inflect.irregular 'lampada', 'lampades'
+end

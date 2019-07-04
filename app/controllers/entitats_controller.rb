@@ -1,5 +1,5 @@
 class EntitatsController < ApplicationController
-  before_action :set_entitat, only: [:show, :edit, :update, :destroy, :ambits]
+  before_action :set_entitat, only: [:show, :edit, :update, :destroy, :ambits, :aixecament, :envolupant, :iluminacio, :propostes, :documents]
 
   def index
     @entitats = Entitat.where(user_id: current_user.id, ambit: "edifici").order(created_at: :desc)
@@ -63,7 +63,31 @@ class EntitatsController < ApplicationController
   end
 
   def aixecament
+    @subnavigation = true
+    @submenu_actiu = 'aixecament'
+  end
 
+  def envolupant
+    @subnavigation = true
+    @submenu_actiu = 'aixecament'
+    @murs = Mur.where(entitat_id: @entitat.id)
+    @forats = Forat.where(entitat_id: @entitat.id)
+    @cobertes = Coberta.where(entitat_id: @entitat.id)
+  end
+
+  def iluminacio
+    @subnavigation = true
+    @submenu_actiu = 'aixecament'
+  end
+
+  def propostes
+    @subnavigation = true
+    @submenu_actiu = 'propostes'
+  end
+
+  def documents
+    @subnavigation = true
+    @submenu_actiu = 'documents'
   end
 
   private

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Entitat:</strong>
+  <%= @lampada.entitat_id %>
+</p>
+
+<p>
+  <strong>Ambit:</strong>
+  <%= @lampada.ambit %>
+</p>
+
+<p>
+  <strong>Tipologia:</strong>
+  <%= @lampada.tipologia %>
+</p>
+
+<p>
+  <strong>Descripcio:</strong>
+  <%= @lampada.descripcio %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @lampada.numero %>
+</p>
+
+<p>
+  <strong>Potencia:</strong>
+  <%= @lampada.potencia %>
+</p>
+
+<%= link_to 'Edit', edit_lampada_path(@lampada) %> |
+<%= link_to 'Back', lampades_path %>

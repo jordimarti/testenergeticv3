@@ -1,0 +1,2 @@
+class Lampada < ApplicationRecord
+end

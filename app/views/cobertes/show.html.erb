@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Entitat:</strong>
+  <%= @coberta.entitat_id %>
+</p>
+
+<p>
+  <strong>Ambit:</strong>
+  <%= @coberta.ambit %>
+</p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @coberta.nom %>
+</p>
+
+<p>
+  <strong>Descripcio:</strong>
+  <%= @coberta.descripcio %>
+</p>
+
+<p>
+  <strong>Superficie:</strong>
+  <%= @coberta.superficie %>
+</p>
+
+<p>
+  <strong>Percentatge:</strong>
+  <%= @coberta.percentatge %>
+</p>
+
+<%= link_to 'Edit', edit_coberta_path(@coberta) %> |
+<%= link_to 'Back', cobertes_path %>

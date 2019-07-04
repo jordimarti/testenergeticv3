@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entitat_id: 1
+  ambit: MyString
+  tipologia: MyString
+  descripcio: MyString
+  numero: 1
+  potencia: 1
+
+two:
+  entitat_id: 1
+  ambit: MyString
+  tipologia: MyString
+  descripcio: MyString
+  numero: 1
+  potencia: 1
