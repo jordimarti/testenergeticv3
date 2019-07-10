@@ -104,7 +104,7 @@ ca:
       account_configuration: "Configuració del compte"
       sign_out: "Tancar sessió"
       tutorials: "Tutorials"
-      projectes: "Projectes"
+      projectes: "Tests"
     subnavigation:
       identificacio: "Identificació"
       aixecament: "Aixecament de dades"
@@ -116,12 +116,12 @@ ca:
       subtitol_test_energetic: "Eina de suport per a l'elaboració de propostes d'estalvi energètic en habitatges existents."
   entitats:
     index:
-      titol: "Projectes"
-      nou_edifici: "Crear un nou projecte"
-      no_projectes: "Encara no has creat cap projecte."
+      titol: "Tests"
+      nou_edifici: "Crear un nou test"
+      no_projectes: "Encara no has creat cap test."
     new:
-      titol: "Crear un nou projecte"
-      tornar_projectes: "Tornar al llistat de projectes"
+      titol: "Crear un nou test"
+      tornar_projectes: "Tornar al llistat de tests"
       guardar: "Guardar"
       titol_entitat: "Crear una nova entitat"
       tornar_entitats: "Tornar a la selecció d'àmbit"
