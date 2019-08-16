@@ -1,0 +1,2 @@
+class Climatitzacio < ApplicationRecord
+end

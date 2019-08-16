@@ -8,6 +8,30 @@
         </div>
       </div>
     </div>
+
+    <% if @entitat.tipologia == 'Plurifamiliar' %>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-12 cell">
+          <div class="light-container">
+            <p>La il·luminació cal definir-la a nivell d'entitats de l'edifici i no a nivell global. O sigui que es defineix a cada pis, local comercial, etc. En aquest apartat només es defineix la il·luminació de les zones comunes de l'edifici.</p>
+            <p>A l'apartat de "Selecció d'àmbit" pots seleccionar l'entitat on definir la il·luminació.</p>
+            <p><%= link_to t('.seleccio_ambit'), entitat_ambits_path(@entitat.id), class:'button' %></p>
+          </div>
+        </div>
+      </div>
+
+      <br/>
+
+      <div class="grid-x grid-margin-x">
+        <div class="medium-12 cell">
+          <div class="titol-seccio">
+            <%= t('.iluminacio_zones_comunes') %>
+          </div>
+        </div>
+      </div>
+      
+    <% end %>
+
         
     <div class="grid-x grid-margin-x">
       <div class="medium-6 cell">
@@ -110,8 +134,7 @@
           </div>
         </div>
       </div>
-
     </div>
+    
   </div>
-
 </div>

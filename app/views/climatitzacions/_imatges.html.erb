@@ -1,0 +1,9 @@
+<%
+case imatge
+when 'caldera_mixta_gas' %>
+	<%= image_tag "https://d116p86eni6yt2.cloudfront.net/imatges/clima/caldera_mixta.jpg" %>
+<% when 'caldera_mixta_gasoil' %>
+	<%= image_tag "https://d116p86eni6yt2.cloudfront.net/imatges/clima/caldera_mixta.jpg" %>
+<% else %>
+	<%= image_tag "https://d116p86eni6yt2.cloudfront.net/imatges/clima/no.jpg" %>
+<% end %>

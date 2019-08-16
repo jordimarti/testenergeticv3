@@ -1,0 +1,40 @@
+
+<%= simple_form_for(@climatitzacio, remote: true) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    
+
+    <% if params[:sistema] == 'calefaccio_1' %>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-12 cell">
+          <%= f.input :tipologia_calefaccio_1, collection: [[t('.caldera_mixta_gas'), 'caldera_mixta_gas'], [t('.caldera_mixta_gasoil'), 'caldera_mixta_gasoil']] %>
+        </div>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-6 cell">
+          <%= f.input :antiguitat_calefaccio_1 %>
+        </div>
+      </div>
+    <% end %>
+    
+    <% if params[:sistema] == 'calefaccio_2' %>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-12 cell">
+          <%= f.input :tipologia_calefaccio_2, collection: [[t('.caldera_mixta_gas'), 'caldera_mixta_gas'], [t('.caldera_mixta_gasoil'), 'caldera_mixta_gasoil']] %>
+        </div>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-6 cell">
+          <%= f.input :antiguitat_calefaccio_2 %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t('.guardar'), :class => 'button' %>
+  </div>
+<% end %>

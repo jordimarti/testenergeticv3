@@ -126,6 +126,12 @@ ca:
       titol_entitat: "Crear una nova entitat"
       tornar_entitats: "Tornar a la selecció d'àmbit"
       dades_propietat: "DADES DE LA PROPIETAT"
+      identificar_test: "Identificar el Test"
+      text_identificar_test: "El nom del Test energètic no apareix en el document final, serveix per a la vostra organització dels diferents Tests."
+      dades_edifici: "Dades de l'edifici"
+      dades_propietat: "Dades de la propietat"
+      dades_propietari: "PROPIETAT O PRESIDENT/A DE LA COMUNITAT"
+      dades_tecnic: "Dades del tècnic redactor"
     form:
       guardar: "Guardar"
     ambits:
@@ -179,6 +185,11 @@ ca:
       eliminar: "Segur que vols eliminar?"
     iluminacio:
       titol: "Il·luminació"
+      seleccio_ambit: "Selecció d'àmbit"
+      iluminacio_zones_comunes: "Il·luminació de les zones comunes de l'edifici"
+    clima:
+      titol: "ACS i climatització"
+      sistema_principal_calefaccio: "Sistema principal de calefacció"
   murs:
     edit:
       titol: "Envolupant tèrmica: edició de mur"
@@ -205,4 +216,7 @@ ca:
     form:
       part_opaca: "Part opaca"
       part_transparent: "Part transparent"
+      guardar: "Guardar"
+  climatitzacions:
+    form:
       guardar: "Guardar"

@@ -20,4 +20,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'predefinida', 'predefinides'
   inflect.irregular 'coberta', 'cobertes'
   inflect.irregular 'lampada', 'lampades'
+  inflect.irregular 'climatitzacio', 'climatitzacions'
 end

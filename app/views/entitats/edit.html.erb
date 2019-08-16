@@ -172,8 +172,9 @@
 
 										  </div>
 										  <div class="tabs-panel" id="panel2">
+					              <% if @entitat.tipologia != 'Unifamiliar' %>
 					              <div class="grid-x grid-margin-x">
-					              	<div class="medium-6 cell">
+					              	<div class="medium-6 cell" id="seleccio-regim-juridic">
 						              	<fieldset>
 											        <%= f.input :regim_juridic, 
 											          :collection => [[t('.propietat_horitzontal'), 'Propietat horitzontal'], [t('.propietat_vertical'), 'Propietat vertical']], 
@@ -186,6 +187,7 @@
 					              <div class="identificacio-title">
 										      <span class="title"><%= t('.dades_propietari') %></span>
 										    </div>
+										    <% end %>
 
 										    <div class="grid-x grid-margin-x">
 										      <div class="medium-4 cell">

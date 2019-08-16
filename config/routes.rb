@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :climatitzacions
   resources :lampades
   resources :component_murs
   get 'component_murs/canviar_posicio'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   get 'entitats/:id/aixecament', to: 'entitats#aixecament', as: 'entitat_aixecament'
   get 'entitats/:id/envolupant', to: 'entitats#envolupant', as: 'entitat_envolupant'
   get 'entitats/:id/iluminacio', to: 'entitats#iluminacio', as: 'entitat_iluminacio'
+  get 'entitats/:id/clima', to: 'entitats#clima', as: 'entitat_clima'
   get 'entitats/:id/propostes', to: 'entitats#propostes', as: 'entitat_propostes'
   get 'entitats/:id/documents', to: 'entitats#documents', as: 'entitat_documents'
   devise_for :users

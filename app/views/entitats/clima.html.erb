@@ -1,3 +1,13 @@
+<div class="reveal" id="modal-calefaccio-1" data-reveal>
+  <h3 id="modalTitle"><%= t('.editar_sistema') %></h3>
+  <div id="formulari-calefaccio-1" class="formulari-clima">
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
 <div class="light-background-container">
   
   <div class="grid-container">
@@ -8,14 +18,58 @@
         </div>
       </div>
     </div>
-        
-    <div class="grid-x grid-margin-x">
-      <div class="medium-6 cell">
-        <div class="light-container container-separator">
 
+    <% if @entitat.tipologia == 'Plurifamiliar' %>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-12 cell">
+          <div class="light-container">
+            <p>La climatització i aigua calenta sanitària cal definir-les a nivell d'entitats de l'edifici i no a nivell global. O sigui que es defineix a cada pis, local comercial, etc.</p>
+            <p>A l'apartat de "Selecció d'àmbit" pots seleccionar l'entitat on definir la climatització i l'aigua calenta sanitària.</p>
+            <p><%= link_to t('.seleccio_ambit'), entitat_ambits_path(@entitat.id), class:'button' %></p>
+          </div>
         </div>
       </div>
-    </div>
+
+    <% else %>
+        
+      <div class="grid-x grid-margin-x">
+        <div class="medium-6 cell">
+          <div class="light-container container-separator" id="calefaccio-1">
+            <%= render partial: '/climatitzacions/calefaccio_1' %>
+          </div>
+        </div>
+        <div class="medium-6 cell">
+          <div class="light-container container-separator" id="calefaccio-2">
+            <%= render partial: '/climatitzacions/calefaccio_2' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-x grid-margin-x">
+        <div class="medium-6 cell">
+          <div class="light-container container-separator">
+            <h4 class="titol-clima">Sistema de refrigeració</h4>
+            <p>Selecció</p>
+          </div>
+        </div>
+        <div class="medium-6 cell">
+          <div class="light-container container-separator">
+            <h4 class="titol-clima">Sistema d'aigua calenta sanitària</h4>
+            <p>Selecció</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-x grid-margin-x">
+        <div class="medium-6 cell">
+          <div class="light-container container-separator">
+            <h4 class="titol-clima">Sistema de generació</h4>
+            <p>Selecció</p>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
 
   </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_143052) do
+ActiveRecord::Schema.define(version: 2019_08_15_173905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,24 @@ ActiveRecord::Schema.define(version: 2019_07_03_143052) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "climatitzacions", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "ambit"
+    t.string "tipologia_acs"
+    t.string "tipologia_calefaccio_1"
+    t.string "tipologia_calefaccio_2"
+    t.string "tipologia_refrigeracio"
+    t.string "generacio"
+    t.integer "percentatge_captadors_termics"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "antiguitat_acs"
+    t.integer "antiguitat_calefaccio_1"
+    t.integer "antiguitat_calefaccio_2"
+    t.integer "antiguitat_refrigeracio"
+    t.integer "antiguitat_generacio"
   end
 
   create_table "coberta", force: :cascade do |t|
@@ -123,6 +141,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_143052) do
     t.string "email_tecnic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "tipologia"
   end
 
   create_table "forats", force: :cascade do |t|

@@ -317,10 +317,6 @@ div.error > input {
   margin-top: 20px;
 }
 
-.spacer {
-  margin-bottom: 30px;
-}
-
 div.radio {
   float: left;
   margin-right: 40px;
@@ -328,6 +324,11 @@ div.radio {
 
 
 /******* MISC ********/
+
+.spacer {
+  margin-bottom: 30px;
+}
+
 .item-aixecament {
   height: 200px;
   background-color: #eaeaea;
@@ -351,4 +352,29 @@ div.radio {
 .info-subtil {
   font-size: 0.8em;
   color: #666;
+}
+
+.titol-numerat-formulari {
+  clear: both;
+}
+
+.numero-titol-numerat-formulari {
+  background-color: #427853;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 3px 8px;
+  color: #fff;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+  float: left;
+}
+
+.text-titol-numerat-formulari {
+  margin-left: 55px;
+  font-size: 1.5em;
+  color: #427853;
+  font-weight: bold;
+  margin-bottom: 20px;
 }

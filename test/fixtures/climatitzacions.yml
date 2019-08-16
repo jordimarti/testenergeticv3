@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entitat_id: 1
+  ambit: MyString
+  tipologia_acs: MyString
+  tipologia_calefaccio_1: MyString
+  tipologia_calefaccio_2: MyString
+  tipologia_refrigeracio: MyString
+  generacio: MyString
+  percentatge_captadors_termics: 1
+
+two:
+  entitat_id: 1
+  ambit: MyString
+  tipologia_acs: MyString
+  tipologia_calefaccio_1: MyString
+  tipologia_calefaccio_2: MyString
+  tipologia_refrigeracio: MyString
+  generacio: MyString
+  percentatge_captadors_termics: 1

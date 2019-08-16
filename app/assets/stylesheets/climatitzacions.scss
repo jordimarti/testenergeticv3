@@ -1,0 +1,25 @@
+// Place all the styles related to the Climatitzacions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.titol-clima {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.imatge-clima {
+	width: 200px;
+	float: left;
+}
+
+.text-clima {
+	margin-left: 215px;
+}
+
+.canvi-sistema-clima {
+	border-top: 1px solid #eaeaea;
+	text-align: right;
+	padding-top: 15px;
+	min-height: 60px;
+}
