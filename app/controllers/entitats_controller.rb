@@ -8,7 +8,6 @@ class EntitatsController < ApplicationController
 
   def ambits
     @subnavigation = true
-    @subentitat = false
     @submenu_actiu = 'ambits'
     @subentitats = Entitat.where(pare: @entitat.id).order(:nom)
   end
@@ -21,10 +20,8 @@ class EntitatsController < ApplicationController
     @subnavigation = true
     @submenu_actiu = 'identificacio'
     if @entitat.ambit == 'subentitat'
-      @subentitat = true
       @edifici = Entitat.find(@entitat.pare)
     else
-      @subentitat = false
       @edifici = @entitat
     end
   end

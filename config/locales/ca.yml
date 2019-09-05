@@ -94,6 +94,18 @@ ca:
         nom_part_transparent: "Tipus de vidre"
         part_transparent: "% respecte total forat"
         transmitancia_part_transparent: "Transmitància tèrmica"
+      climatitzacio:
+        tipologia_calefaccio_1: "Sistema principal de calefacció"
+        antiguitat_calefaccio_1: "Antiguitat del sistema (anys)"
+        tipologia_calefaccio_2: "Sistema secundari de calefacció"
+        antiguitat_calefaccio_2: "Antiguitat del sistema (anys)"
+        tipologia_refrigeracio: "Sistema de refrigeració"
+        antiguitat_refrigeracio: "Antiguitat del sistema (anys)"
+        tipologia_acs: "Sistema d'aigua calenta sanitària"
+        antiguitat_acs: "Antiguitat del sistema (anys)"
+        generacio: "Sistema de generació"
+        antiguitat_generacio: "Antiguitat del sistema (anys)"
+        percentatge_captadors_termics: "Demanda coberta (%)"
   layouts:
     application:
       titol_pagina: "Test energètic"
@@ -132,6 +144,10 @@ ca:
       dades_propietat: "Dades de la propietat"
       dades_propietari: "PROPIETAT O PRESIDENT/A DE LA COMUNITAT"
       dades_tecnic: "Dades del tècnic redactor"
+      dni: "DNI"
+      nie: "NIE"
+      passaport: "Passaport"
+      nif: "NIF"
     form:
       guardar: "Guardar"
     ambits:
@@ -190,6 +206,7 @@ ca:
     clima:
       titol: "ACS i climatització"
       sistema_principal_calefaccio: "Sistema principal de calefacció"
+      editar_sistema: "Editar sistema"
   murs:
     edit:
       titol: "Envolupant tèrmica: edició de mur"
@@ -220,3 +237,43 @@ ca:
   climatitzacions:
     form:
       guardar: "Guardar"
+      caldera_mixta_gas: "Caldera mixta de gas"
+      caldera_gas: "Caldera de gas"
+      caldera_gasoil: "Caldera de gasoil"
+      caldera_biomassa: "Caldera de biomassa"
+      radiadors_electrics: "Radiadors elèctrics"
+      estufes_electriques: "Estufes elèctriques"
+      bomba_calor: "Bomba calor"
+      llar_de_foc: "Llar de foc"
+      escalfador_gas: "Escalfador de gas"
+      termoacumulador_electric: "Termoacumulador elèctric"
+      captadors_solars_termics: "Captadors solars tèrmics"
+      cap_sistema: "Cap sistema"
+    calefaccio_1:
+      sistema_principal_calefaccio: "Sistema principal de calefacció"
+      editar_sistema: "Editar sistema"
+    calefaccio_2:
+      sistema_secundari_calefaccio: "Sistema secundari de calefacció"
+      editar_sistema: "Editar sistema"
+    refrigeracio:
+      refrigeracio: "Refrigeració"
+      editar_sistema: "Editar sistema"
+    acs:
+      sistema_acs: "Aigua calenta sanitària"
+      editar_sistema: "Editar sistema"
+    generacio:
+      sistema_generacio: "Sistema de generació"
+      editar_sistema: "Editar sistema"
+  caldera_mixta_gas: "Caldera mixta de gas"
+  caldera_gas: "Caldera de gas"
+  caldera_gasoil: "Caldera de gasoil"
+  caldera_biomassa: "Caldera de biomassa"
+  radiadors_electrics: "Radiadors elèctrics"
+  estufes_electriques: "Estufes elèctriques"
+  bomba_calor: "Bomba calor"
+  llar_de_foc: "Llar de foc"
+  aire_condicionat: "Aire condicionat"
+  escalfador_gas: "Escalfador de gas"
+  termoacumulador_electric: "Termoacumulador elèctric"
+  captadors_solars_termics: "Captadors solars tèrmics"
+  cap_sistema: "Cap sistema"

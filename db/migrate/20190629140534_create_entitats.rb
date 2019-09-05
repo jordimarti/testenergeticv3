@@ -8,7 +8,7 @@ class CreateEntitats < ActiveRecord::Migration[5.2]
       t.string :nom_via
       t.string :numero_via
       t.string :bloc
-      t.integer :codi_postal
+      t.string :codi_postal
       t.string :poblacio
       t.string :provincia
       t.integer :any_construccio

@@ -9,7 +9,7 @@
     <% if params[:sistema] == 'calefaccio_1' %>
       <div class="grid-x grid-margin-x">
         <div class="medium-12 cell">
-          <%= f.input :tipologia_calefaccio_1, collection: [[t('.caldera_mixta_gas'), 'caldera_mixta_gas'], [t('.caldera_mixta_gasoil'), 'caldera_mixta_gasoil']] %>
+          <%= f.input :tipologia_calefaccio_1, collection: [[t('.caldera_mixta_gas'), 'caldera_mixta_gas'], [t('.caldera_gas'), 'caldera_gas'], [t('.caldera_gasoil'), 'caldera_gasoil'], [t('.caldera_biomassa'), 'caldera_biomassa'], [t('.radiadors_electrics'), 'radiadors_electrics'], [t('.estufes_electriques'), 'estufes_electriques'], [t('.bomba_calor'), 'bomba_calor'], [t('.llar_de_foc'), 'llar_de_foc'], [t('.cap_sistema'), 'cap_sistema']] %>
         </div>
       </div>
       <div class="grid-x grid-margin-x">
@@ -22,7 +22,7 @@
     <% if params[:sistema] == 'calefaccio_2' %>
       <div class="grid-x grid-margin-x">
         <div class="medium-12 cell">
-          <%= f.input :tipologia_calefaccio_2, collection: [[t('.caldera_mixta_gas'), 'caldera_mixta_gas'], [t('.caldera_mixta_gasoil'), 'caldera_mixta_gasoil']] %>
+          <%= f.input :tipologia_calefaccio_2, collection: [[t('.caldera_mixta_gas'), 'caldera_mixta_gas'], [t('.caldera_gas'), 'caldera_gas'], [t('.caldera_gasoil'), 'caldera_gasoil'], [t('.caldera_biomassa'), 'caldera_biomassa'], [t('.radiadors_electrics'), 'radiadors_electrics'], [t('.estufes_electriques'), 'estufes_electriques'], [t('.bomba_calor'), 'bomba_calor'], [t('.llar_de_foc'), 'llar_de_foc'], [t('.cap_sistema'), 'cap_sistema']] %>
         </div>
       </div>
       <div class="grid-x grid-margin-x">
@@ -31,6 +31,49 @@
         </div>
       </div>
     <% end %>
+
+    <% if params[:sistema] == 'refrigeracio' %>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-12 cell">
+          <%= f.input :tipologia_refrigeracio, collection: [[t('.aire_condicionat'), 'aire_condicionat'], [t('.cap_sistema'), 'cap_sistema']] %>
+        </div>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-6 cell">
+          <%= f.input :antiguitat_refrigeracio %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if params[:sistema] == 'acs' %>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-12 cell">
+          <%= f.input :tipologia_acs, collection: [[t('.caldera_mixta_gas'), 'caldera_mixta_gas'], [t('.escalfador_gas'), 'escalfador_gas'], [t('.termoacumulador_electric'), 'termoacumulador_electric'], [t('.cap_sistema'), 'cap_sistema']] %>
+        </div>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-6 cell">
+          <%= f.input :antiguitat_acs %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if params[:sistema] == 'generacio' %>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-12 cell">
+          <%= f.input :generacio, collection: [[t('.captadors_solars_termics'), 'captadors_solars_termics'], [t('.cap_sistema'), 'cap_sistema']] %>
+        </div>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-6 cell">
+          <%= f.input :antiguitat_generacio %>
+        </div>
+        <div class="medium-6 cell">
+          <%= f.input :percentatge_captadors_termics %>
+        </div>
+      </div>
+    <% end %>
+
 
   </div>
 

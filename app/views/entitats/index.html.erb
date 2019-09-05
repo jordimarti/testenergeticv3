@@ -45,7 +45,11 @@
                             <% end %> 
                           </div>
                           <div class="text-item-llistat-edificis">
-                            <%= link_to(entitat.nom, entitat_ambits_path(entitat.id), :class => 'link-item-edifici') %>
+                            <% if entitat.tipologia == 'Unifamiliar' %>
+                              <%= link_to(entitat.nom, edit_entitat_path(entitat.id), :class => 'link-item-edifici') %>
+                            <% else %>
+                              <%= link_to(entitat.nom, entitat_ambits_path(entitat.id), :class => 'link-item-edifici') %>
+                            <% end %>
                             <br>
                             <span class="data-llistat-edificis">(<%= entitat.created_at.day.to_s %>-<%= entitat.created_at.month.to_s %>-<%= entitat.created_at.year.to_s %>)</span>
                             <div class="boto-item-llistat-edificis button-right">

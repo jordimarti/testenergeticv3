@@ -3,11 +3,11 @@
   <%= render partial: '/climatitzacions/imatges', locals: {imatge: @clima.tipologia_calefaccio_2} %>
 </div>
 <div class="text-clima">
-  <h5><%= @clima.tipologia_calefaccio_2 %></h5>
-  <p>Antiguitat: <span class="anys-clima"><%= @clima.antiguitat_calefaccio_2 %> anys</span>
+  <h5><%= t(@clima.tipologia_calefaccio_2) %></h5>
+  <p>Antiguitat: <span class="anys-clima"><%= @clima.antiguitat_calefaccio_2 %> anys</span></p>
   <div class="canvi-sistema-clima">
     <%= link_to edit_climatitzacio_path(@clima.id, sistema: 'calefaccio_2'), remote: true do %>
-      Editar sistema secundari de calefacció
+      <%= t('.editar_sistema') %>
     <% end %>
   </div>
 </div>

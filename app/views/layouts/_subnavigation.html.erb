@@ -1,8 +1,13 @@
 
 <% if @subnavigation == true %>
 	<% 
-	if @subentitat == true
-		nom_edifici = @edifici.nom + ', ' + @entitat.nom
+	if @entitat.ambit == 'subentitat'
+		subentitat = true
+		edifici = Entitat.find(@entitat.pare)
+	end
+
+	if subentitat == true
+		nom_edifici = edifici.nom + ', ' + @entitat.nom
 	else
 		nom_edifici = @entitat.nom
 	end
@@ -12,8 +17,8 @@
 		<div class="header-submenu">
 	  	<ul class="header-submenu-list">
 	      <li class="header-submenu-item header-nom-edifici">
-	      	<% if @subentitat == true %>
-	      		<%= link_to nom_edifici, entitat_ambits_path(@edifici) %>
+	      	<% if subentitat == true %>
+	      		<%= link_to nom_edifici, entitat_ambits_path(edifici) %>
 	      	<% else %>
 	      		<%= link_to nom_edifici, entitat_ambits_path(@entitat) %>
 	      	<% end %>

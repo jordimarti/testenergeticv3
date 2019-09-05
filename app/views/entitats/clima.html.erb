@@ -1,4 +1,4 @@
-<div class="reveal" id="modal-calefaccio-1" data-reveal>
+<div class="reveal" id="modal-clima" data-reveal>
   <h3 id="modalTitle"><%= t('.editar_sistema') %></h3>
   <div id="formulari-calefaccio-1" class="formulari-clima">
   </div>
@@ -47,24 +47,21 @@
 
       <div class="grid-x grid-margin-x">
         <div class="medium-6 cell">
-          <div class="light-container container-separator">
-            <h4 class="titol-clima">Sistema de refrigeració</h4>
-            <p>Selecció</p>
+          <div class="light-container container-separator" id="refrigeracio">
+            <%= render partial: '/climatitzacions/refrigeracio' %>
           </div>
         </div>
         <div class="medium-6 cell">
-          <div class="light-container container-separator">
-            <h4 class="titol-clima">Sistema d'aigua calenta sanitària</h4>
-            <p>Selecció</p>
+          <div class="light-container container-separator" id="acs">
+            <%= render partial: '/climatitzacions/acs' %>
           </div>
         </div>
       </div>
 
       <div class="grid-x grid-margin-x">
         <div class="medium-6 cell">
-          <div class="light-container container-separator">
-            <h4 class="titol-clima">Sistema de generació</h4>
-            <p>Selecció</p>
+          <div class="light-container container-separator" id="generacio">
+            <%= render partial: '/climatitzacions/generacio' %>
           </div>
         </div>
       </div>

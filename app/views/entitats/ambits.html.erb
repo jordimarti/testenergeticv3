@@ -11,45 +11,64 @@
         
     <div class="grid-x grid-margin-x">
       <div class="medium-12 cell">
+
         <div class="light-container">
-          <h4 class="titol-seccio"><%= t('.edifici_sencer') %></h4>
-          <p><%= t('.descripcio_edifici_sencer') %></p>
-          <%= link_to t('.dades_edifici'), edit_entitat_path(@entitat), :class => 'link-item-edifici', class:'button' %>
+          <div class="ambit-edifici-sencer">
+            <div class="grid-x grid-margin-x">
+              <div class="medium-2 cell">
+                <%= image_tag "https://d116p86eni6yt2.cloudfront.net/imatges/edifici_v2.jpg" %>
+              </div>
+              <div class="medium-10 cell">
+                <h4 class="titol-seccio"><%= t('.edifici_sencer') %></h4>
+                <p><%= t('.descripcio_edifici_sencer') %></p>
+                <%= link_to t('.dades_edifici'), edit_entitat_path(@entitat), :class => 'link-item-edifici', class:'button' %>
+              </div>
+            </div>
+          </div>
           <div class="divider"></div>
           <div class="spacer"></div>
-          <h4 class="titol-seccio"><%= t('.entitats') %></h4>
-          <p><%= t('.descripcio_entitats') %></p>
-          <% if @subentitats.count > 0 %>
-            <table>
-              <thead>
-                <tr>
-                  <th><%= t('.nom') %></th>
-                  <th><%= t('.destinacio') %></th>
-                  <th><%= t('.superficie') %></th>
-                  <th><%= t('.quota') %></th>
-                  <th><%= t('.propietat') %></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @subentitats.each do |entitat| %>
-                  <tr>
-                    <td><%= link_to entitat.nom, edit_entitat_path(entitat) %></td>
-                    <td><%= entitat.destinacio %></td>
-                    <td><%= entitat.superficie_util %></td>
-                    <td><%= entitat.quota %></td>
-                    <td><%= entitat.nom_propietari %> <%= entitat.cognoms_propietari %></td>
-                    <td>
-                      <%= link_to entitat_path(id: entitat.id), method: :delete, data: { confirm: t('.eliminar') } do %>
-                        <i class="fa fa-trash" aria-hidden="true"></i>                 
+          <div class="ambit-edifici-entitat">
+            <div class="grid-x grid-margin-x">
+              <div class="medium-2 cell">
+                <%= image_tag "https://d116p86eni6yt2.cloudfront.net/imatges/edifici_entitat_v2.jpg" %>
+              </div>
+              <div class="medium-10 cell">
+                <h4 class="titol-seccio"><%= t('.entitats') %></h4>
+                <p><%= t('.descripcio_entitats') %></p>
+                <% if @subentitats.count > 0 %>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th><%= t('.nom') %></th>
+                        <th><%= t('.destinacio') %></th>
+                        <th><%= t('.superficie') %></th>
+                        <th><%= t('.quota') %></th>
+                        <th><%= t('.propietat') %></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @subentitats.each do |entitat| %>
+                        <tr>
+                          <td><%= link_to entitat.nom, edit_entitat_path(entitat) %></td>
+                          <td><%= entitat.destinacio %></td>
+                          <td><%= entitat.superficie_util %></td>
+                          <td><%= entitat.quota %></td>
+                          <td><%= entitat.nom_propietari %> <%= entitat.cognoms_propietari %></td>
+                          <td>
+                            <%= link_to entitat_path(id: entitat.id), method: :delete, data: { confirm: t('.eliminar') } do %>
+                              <i class="fa fa-trash" aria-hidden="true"></i>                 
+                            <% end %>
+                          </td>
+                        </tr>
                       <% end %>
-                  </tr>
+                    </tbody>
+                  </table>
                 <% end %>
-              </tbody>
-            </table>
-          <% end %>
-          <%= link_to t('.nova_entitat'), new_entitat_path(ambit: 'subentitat', entitat_pare: @entitat.id), class:'button' %>
-          
+                <%= link_to t('.nova_entitat'), new_entitat_path(ambit: 'subentitat', entitat_pare: @entitat.id), class:'button' %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
