@@ -1,0 +1,143 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Proposta Predefinides</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Codi</th>
+      <th>Mesura</th>
+      <th>A-b3</th>
+      <th>A-c2</th>
+      <th>A-d1</th>
+      <th>A-d2</th>
+      <th>A-d3</th>
+      <th>A-e1</th>
+      <th>B-b3</th>
+      <th>B-c2</th>
+      <th>B-d1</th>
+      <th>B-d2</th>
+      <th>B-d3</th>
+      <th>B-e1</th>
+      <th>C-b3</th>
+      <th>C-c2</th>
+      <th>C-d1</th>
+      <th>C-d2</th>
+      <th>C-d3</th>
+      <th>C-e1</th>
+      <th>D-b3</th>
+      <th>D-c2</th>
+      <th>D-d1</th>
+      <th>D-d2</th>
+      <th>D-d3</th>
+      <th>D-e1</th>
+      <th>E-b3</th>
+      <th>E-c2</th>
+      <th>E-d1</th>
+      <th>E-d2</th>
+      <th>E-d3</th>
+      <th>E-e1</th>
+      <th>F-b3</th>
+      <th>F-c2</th>
+      <th>F-d1</th>
+      <th>F-d2</th>
+      <th>F-d3</th>
+      <th>F-e1</th>
+      <th>G-b3</th>
+      <th>G-c2</th>
+      <th>G-d1</th>
+      <th>G-d2</th>
+      <th>G-d3</th>
+      <th>G-e1</th>
+      <th>H-b3</th>
+      <th>H-c2</th>
+      <th>H-d1</th>
+      <th>H-d2</th>
+      <th>H-d3</th>
+      <th>H-e1</th>
+      <th>I-b3</th>
+      <th>I-c2</th>
+      <th>I-d1</th>
+      <th>I-d2</th>
+      <th>I-d3</th>
+      <th>I-e1</th>
+      <th>Preu</th>
+      <th>Tipus proposta</th>
+      <th>Descripcio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proposta_predefinides.each do |proposta_predefinida| %>
+      <tr>
+        <td><%= proposta_predefinida.codi %></td>
+        <td><%= proposta_predefinida.mesura %></td>
+        <td><%= proposta_predefinida.a-b3 %></td>
+        <td><%= proposta_predefinida.a-c2 %></td>
+        <td><%= proposta_predefinida.a-d1 %></td>
+        <td><%= proposta_predefinida.a-d2 %></td>
+        <td><%= proposta_predefinida.a-d3 %></td>
+        <td><%= proposta_predefinida.a-e1 %></td>
+        <td><%= proposta_predefinida.b-b3 %></td>
+        <td><%= proposta_predefinida.b-c2 %></td>
+        <td><%= proposta_predefinida.b-d1 %></td>
+        <td><%= proposta_predefinida.b-d2 %></td>
+        <td><%= proposta_predefinida.b-d3 %></td>
+        <td><%= proposta_predefinida.b-e1 %></td>
+        <td><%= proposta_predefinida.c-b3 %></td>
+        <td><%= proposta_predefinida.c-c2 %></td>
+        <td><%= proposta_predefinida.c-d1 %></td>
+        <td><%= proposta_predefinida.c-d2 %></td>
+        <td><%= proposta_predefinida.c-d3 %></td>
+        <td><%= proposta_predefinida.c-e1 %></td>
+        <td><%= proposta_predefinida.d-b3 %></td>
+        <td><%= proposta_predefinida.d-c2 %></td>
+        <td><%= proposta_predefinida.d-d1 %></td>
+        <td><%= proposta_predefinida.d-d2 %></td>
+        <td><%= proposta_predefinida.d-d3 %></td>
+        <td><%= proposta_predefinida.d-e1 %></td>
+        <td><%= proposta_predefinida.e-b3 %></td>
+        <td><%= proposta_predefinida.e-c2 %></td>
+        <td><%= proposta_predefinida.e-d1 %></td>
+        <td><%= proposta_predefinida.e-d2 %></td>
+        <td><%= proposta_predefinida.e-d3 %></td>
+        <td><%= proposta_predefinida.e-e1 %></td>
+        <td><%= proposta_predefinida.f-b3 %></td>
+        <td><%= proposta_predefinida.f-c2 %></td>
+        <td><%= proposta_predefinida.f-d1 %></td>
+        <td><%= proposta_predefinida.f-d2 %></td>
+        <td><%= proposta_predefinida.f-d3 %></td>
+        <td><%= proposta_predefinida.f-e1 %></td>
+        <td><%= proposta_predefinida.g-b3 %></td>
+        <td><%= proposta_predefinida.g-c2 %></td>
+        <td><%= proposta_predefinida.g-d1 %></td>
+        <td><%= proposta_predefinida.g-d2 %></td>
+        <td><%= proposta_predefinida.g-d3 %></td>
+        <td><%= proposta_predefinida.g-e1 %></td>
+        <td><%= proposta_predefinida.h-b3 %></td>
+        <td><%= proposta_predefinida.h-c2 %></td>
+        <td><%= proposta_predefinida.h-d1 %></td>
+        <td><%= proposta_predefinida.h-d2 %></td>
+        <td><%= proposta_predefinida.h-d3 %></td>
+        <td><%= proposta_predefinida.h-e1 %></td>
+        <td><%= proposta_predefinida.i-b3 %></td>
+        <td><%= proposta_predefinida.i-c2 %></td>
+        <td><%= proposta_predefinida.i-d1 %></td>
+        <td><%= proposta_predefinida.i-d2 %></td>
+        <td><%= proposta_predefinida.i-d3 %></td>
+        <td><%= proposta_predefinida.i-e1 %></td>
+        <td><%= proposta_predefinida.preu %></td>
+        <td><%= proposta_predefinida.tipus_proposta %></td>
+        <td><%= proposta_predefinida.descripcio %></td>
+        <td><%= link_to 'Show', proposta_predefinida %></td>
+        <td><%= link_to 'Edit', edit_proposta_predefinida_path(proposta_predefinida) %></td>
+        <td><%= link_to 'Destroy', proposta_predefinida, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Proposta Predefinida', new_proposta_predefinida_path %>

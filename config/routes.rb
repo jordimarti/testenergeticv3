@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :proposta_predefinides
   resources :climatitzacions
   resources :lampades
   resources :component_murs

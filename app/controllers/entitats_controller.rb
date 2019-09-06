@@ -74,7 +74,8 @@ class EntitatsController < ApplicationController
     clima.tipologia_calefaccio_1 = 'caldera_mixta_gas'
     clima.antiguitat_calefaccio_1 = 8
     clima.tipologia_calefaccio_2 = 'no'
-    clima.tipologia_refrigeracio = 'no'
+    clima.tipologia_refrigeracio = 'aire_condicionat'
+    clima.antiguitat_refrigeracio = 5
     clima.generacio = 'no'
     clima.save
   end

@@ -1,0 +1,2 @@
+class PropostaPredefinida < ApplicationRecord
+end

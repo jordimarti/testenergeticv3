@@ -1,0 +1,71 @@
+
+<%= simple_form_for(@proposta_predefinida) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :codi %>
+    <%= f.input :mesura %>
+    <%= f.input :a-b3 %>
+    <%= f.input :a-c2 %>
+    <%= f.input :a-d1 %>
+    <%= f.input :a-d2 %>
+    <%= f.input :a-d3 %>
+    <%= f.input :a-e1 %>
+    <%= f.input :b-b3 %>
+    <%= f.input :b-c2 %>
+    <%= f.input :b-d1 %>
+    <%= f.input :b-d2 %>
+    <%= f.input :b-d3 %>
+    <%= f.input :b-e1 %>
+    <%= f.input :c-b3 %>
+    <%= f.input :c-c2 %>
+    <%= f.input :c-d1 %>
+    <%= f.input :c-d2 %>
+    <%= f.input :c-d3 %>
+    <%= f.input :c-e1 %>
+    <%= f.input :d-b3 %>
+    <%= f.input :d-c2 %>
+    <%= f.input :d-d1 %>
+    <%= f.input :d-d2 %>
+    <%= f.input :d-d3 %>
+    <%= f.input :d-e1 %>
+    <%= f.input :e-b3 %>
+    <%= f.input :e-c2 %>
+    <%= f.input :e-d1 %>
+    <%= f.input :e-d2 %>
+    <%= f.input :e-d3 %>
+    <%= f.input :e-e1 %>
+    <%= f.input :f-b3 %>
+    <%= f.input :f-c2 %>
+    <%= f.input :f-d1 %>
+    <%= f.input :f-d2 %>
+    <%= f.input :f-d3 %>
+    <%= f.input :f-e1 %>
+    <%= f.input :g-b3 %>
+    <%= f.input :g-c2 %>
+    <%= f.input :g-d1 %>
+    <%= f.input :g-d2 %>
+    <%= f.input :g-d3 %>
+    <%= f.input :g-e1 %>
+    <%= f.input :h-b3 %>
+    <%= f.input :h-c2 %>
+    <%= f.input :h-d1 %>
+    <%= f.input :h-d2 %>
+    <%= f.input :h-d3 %>
+    <%= f.input :h-e1 %>
+    <%= f.input :i-b3 %>
+    <%= f.input :i-c2 %>
+    <%= f.input :i-d1 %>
+    <%= f.input :i-d2 %>
+    <%= f.input :i-d3 %>
+    <%= f.input :i-e1 %>
+    <%= f.input :preu %>
+    <%= f.input :tipus_proposta %>
+    <%= f.input :descripcio %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
