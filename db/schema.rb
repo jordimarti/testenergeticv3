@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_07_195418) do
+ActiveRecord::Schema.define(version: 2019_09_08_151725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,19 @@ ActiveRecord::Schema.define(version: 2019_09_07_195418) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "posicio"
+  end
+
+  create_table "consum_globals", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "ambit"
+    t.integer "consum_anual_electricitat"
+    t.integer "consum_anual_gas"
+    t.integer "consum_anual_gasoil"
+    t.decimal "despesa_anual_electricitat"
+    t.decimal "despesa_anual_gas"
+    t.decimal "despesa_anual_gasoil"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "entitats", force: :cascade do |t|
@@ -266,6 +279,8 @@ ActiveRecord::Schema.define(version: 2019_09_07_195418) do
     t.text "descripcio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "data_any"
+    t.integer "data_mes"
   end
 
   create_table "users", force: :cascade do |t|

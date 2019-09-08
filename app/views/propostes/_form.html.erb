@@ -5,21 +5,39 @@
 
   <div class="form-inputs">
     <%= f.input :entitat_id, as: :hidden %>
-    <%= f.input :ambit %>
-    <%= f.input :cost_optimista %>
-    <%= f.input :cost_pessimista %>
-    <%= f.input :estalvi_optimista %>
-    <%= f.input :estalvi_pessimista %>
-    <%= f.input :roi_optimista %>
-    <%= f.input :roi_pessimista %>
-    <%= f.input :emissions_optimista %>
-    <%= f.input :emissions_pessimista %>
-    
-    <%= f.input :mesura %>
-    <%= f.input :descripcio %>
+    <div class="grid-x grid-margin-x">
+      <div class="medium-12 cell">
+        <%= f.input :mesura %>
+        <%= f.input :descripcio %>
+      </div>
+    </div>
+    <div class="grid-x grid-margin-x">
+      <div class="medium-6 cell">
+        <%= f.input :cost_optimista %>
+      </div>
+      <div class="medium-6 cell">
+        <%= f.input :cost_pessimista %>
+      </div>
+    </div>
+    <div class="grid-x grid-margin-x">
+      <div class="medium-6 cell">
+        <%= f.input :estalvi_optimista %>
+      </div>
+      <div class="medium-6 cell">
+        <%= f.input :estalvi_pessimista %>
+      </div>
+    </div>
+    <div class="grid-x grid-margin-x">
+      <div class="medium-4 cell">
+        <%= f.input :data_mes, collection: [[t('.gener'), 1], [t('.febrer'), 2], [t('.marc'), 3], [t('.abril'), 4], [t('.maig'), 5], [t('.juny'), 6], [t('.juliol'), 7], [t('.agost'), 8], [t('.setembre'), 9], [t('.octubre'), 10], [t('.novembre'), 11], [t('.desembre'), 12]] %>
+      </div>
+      <div class="medium-4 cell">
+        <%= f.input :data_any, collection: [Date.today.year, Date.today.year+1, Date.today.year+2, Date.today.year+3, Date.today.year+4, Date.today.year+5, Date.today.year+6, Date.today.year+7, Date.today.year+8, Date.today.year+9] %>
+      </div>
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, t('.guardar'), class: 'button' %>
   </div>
 <% end %>

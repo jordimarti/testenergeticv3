@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entitat_id: 
+  ambit: 
+  consum_anual_electricitat: 
+  consum_anual_gas: 
+  consum_anual_gasoil: 
+  despesa_anual_electricitat: 
+  despesa_anual_gas: 
+  despesa_anual_gasoil: 9.99
+
+two:
+  entitat_id: 
+  ambit: 
+  consum_anual_electricitat: 
+  consum_anual_gas: 
+  consum_anual_gasoil: 
+  despesa_anual_electricitat: 
+  despesa_anual_gas: 
+  despesa_anual_gasoil: 9.99

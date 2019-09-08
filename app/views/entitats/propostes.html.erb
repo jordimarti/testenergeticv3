@@ -22,7 +22,9 @@
     <div class="grid-x grid-margin-x">
       <div class="medium-12 cell">
         <div class="light-container container-separator">
-          <a class="button">Generar propostes</a>
+          <%= link_to t('.generar_propostes'), propostes_generar_propostes_path(entitat_id: params[:id]), class: 'button' %>
+          <div id="missatge">
+          </div>
           <div id="propostes">
             <%= render partial: '/propostes/llistat_propostes' %>
           </div>
@@ -38,7 +40,7 @@
     <div class="grid-x grid-margin-x">
       <div class="medium-12 cell">
         <div class="titol-seccio">
-          Evolució del consum i costos de l'energia
+          Cost econòmic de l'energia consumida en 15 anys
         </div>
       </div>
     </div>
@@ -46,9 +48,41 @@
     <div class="grid-x grid-margin-x">
       <div class="medium-12 cell">
         <div class="light-container container-separator">
-          Error: no hi ha suficient informació per generar el gràfic
+          <%= link_to t('.actualitzar_grafic'), entitat_propostes_path(id: params[:id]), class: 'button' %>
+          <div id="curve_chart" style="width: 100%; height: 500px"></div>
+          <div class="text-despesa-economica">
+            <% estalvi = @despesa_actual[14] - @despesa_estalvi_optimista[14] %>
+            <p>Despesa econòmica en 15 anys: <span class="valors_despesa_energetica"><%= number_to_currency(@despesa_actual[14]) %>.</span></p>
+            <p>Despesa econòmica aplicant millores: <span class="valors_despesa_energetica"><%= number_to_currency(@despesa_estalvi_optimista[14]) %></span></p> 
+            <p>Estalvi econòmic en 15 anys: <span class="valors_despesa_energetica"><%= number_to_currency(estalvi) %></span></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Any', 'Despesa actual', 'Despesa optimista', 'Despesa pessimista'],
+      <% for i in 0..14 do %> 
+        ['<%= Date.today.year + (i+1) %>', <%= @despesa_actual[i] %>, <%= @despesa_estalvi_optimista[i] %>, <%= @despesa_estalvi_pessimista[i] %>],
+      <% end %>
+    ]);
+
+    var options = {
+      title: 'Acumulació de despesa econòmica',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+    chart.draw(data, options);
+  }
+</script>

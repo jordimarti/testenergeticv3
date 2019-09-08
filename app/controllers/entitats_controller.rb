@@ -1,6 +1,7 @@
 class EntitatsController < ApplicationController
-  before_action :set_entitat, only: [:show, :edit, :update, :destroy, :ambits, :aixecament, :envolupant, :iluminacio, :clima, :propostes, :documents]
+  before_action :set_entitat, only: [:show, :edit, :update, :destroy, :ambits, :aixecament, :envolupant, :iluminacio, :clima, :propostes, :documents, :generar_propostes]
   before_action :authenticate_user!
+  respond_to :html, :js
 
   def index
     @entitats = Entitat.where(user_id: current_user.id, ambit: "edifici").order(created_at: :desc)
@@ -108,7 +109,38 @@ class EntitatsController < ApplicationController
     @subnavigation = true
     @submenu_actiu = 'propostes'
     @propostes = Proposta.where(entitat_id: @entitat.id)
+    @consums_globals = ConsumGlobal.find_by(entitat_id: @entitat.id)
+    @despesa_actual = Array.new
+    @despesa_estalvi_optimista = Array.new
+    @despesa_estalvi_pessimista = Array.new
+    # Els 15 anys de rang que hem definit
+    for i in 0..14 do
+      estalvi_total_optimista = 0
+      estalvi_total_pessimista = 0
+      data = Date.today.year + i 
+      @propostes.each do |proposta|
+        if proposta.data_any < data
+          estalvi_total_optimista += proposta.estalvi_optimista
+          puts 'Estalvi total optimista:'
+          puts estalvi_total_optimista
+          estalvi_total_pessimista += proposta.estalvi_pessimista
+          puts 'Estalvi total pessimista:'
+          puts estalvi_total_pessimista
+        end
+      end
+
+      @despesa_actual[i] = @consums_globals.despesa_anual_electricitat * (i+1) * (1.025**(i+1)) + @consums_globals.despesa_anual_gas * (i+1) * (1.02**(i+1))
+      @despesa_estalvi_optimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_optimista/100))
+      @despesa_estalvi_pessimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_pessimista/100))
+      
+    end
   end
+
+  def provisional
+    
+  end
+
+  
 
   def documents
     @subnavigation = true

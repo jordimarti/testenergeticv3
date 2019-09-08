@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Entitat:</strong>
+  <%= @consum_global.entitat_id %>
+</p>
+
+<p>
+  <strong>Ambit:</strong>
+  <%= @consum_global.ambit %>
+</p>
+
+<p>
+  <strong>Consum anual electricitat:</strong>
+  <%= @consum_global.consum_anual_electricitat %>
+</p>
+
+<p>
+  <strong>Consum anual gas:</strong>
+  <%= @consum_global.consum_anual_gas %>
+</p>
+
+<p>
+  <strong>Consum anual gasoil:</strong>
+  <%= @consum_global.consum_anual_gasoil %>
+</p>
+
+<p>
+  <strong>Despesa anual electricitat:</strong>
+  <%= @consum_global.despesa_anual_electricitat %>
+</p>
+
+<p>
+  <strong>Despesa anual gas:</strong>
+  <%= @consum_global.despesa_anual_gas %>
+</p>
+
+<p>
+  <strong>Despesa anual gasoil:</strong>
+  <%= @consum_global.despesa_anual_gasoil %>
+</p>
+
+<%= link_to 'Edit', edit_consum_global_path(@consum_global) %> |
+<%= link_to 'Back', consum_globals_path %>

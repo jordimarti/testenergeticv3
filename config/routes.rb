@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  resources :consum_globals
+  get 'propostes/generar_propostes'
   resources :propostes
+  
   resources :proposta_predefinides
   resources :climatitzacions
   resources :lampades
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
   get 'entitats/:id/clima', to: 'entitats#clima', as: 'entitat_clima'
   get 'entitats/:id/propostes', to: 'entitats#propostes', as: 'entitat_propostes'
   get 'entitats/:id/documents', to: 'entitats#documents', as: 'entitat_documents'
+  #get 'entitats/:id/generar_propostes', to: 'entitats#generar_propostes', as: 'generar_propostes'
   devise_for :users
   get 'home/index'
   get 'home/contacta'

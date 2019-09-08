@@ -42,6 +42,9 @@ gem 'devise-i18n', '~> 1.6', '>= 1.6.5'
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
 gem 'sendgrid-ruby', '~> 5.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'wkhtmltopdf-binary'
+gem 'pdfkit', '~> 0.8.2'
+gem 'render_anywhere', '~> 0.0.12'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

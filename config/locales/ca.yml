@@ -114,6 +114,13 @@ ca:
         generacio: "Sistema de generació"
         antiguitat_generacio: "Antiguitat del sistema (anys)"
         percentatge_captadors_termics: "Demanda coberta (%)"
+      proposta:
+        mesura: "Nom de la proposta"
+        descripcio: "Descripció"
+        cost_optimista: "Cost optimista"
+        cost_pessimista: "Cost pessimista"
+        estalvi_optimista: "Estalvi optimista"
+        estalvi_pessimista: "Estalvi pessimista"
   layouts:
     application:
       titol_pagina: "Test energètic"
@@ -217,6 +224,7 @@ ca:
       editar_sistema: "Editar sistema"
     propostes:
       afegir_proposta: "Afegir una proposta"
+      generar_propostes: "Generar propostes"
   murs:
     edit:
       titol: "Envolupant tèrmica: edició de mur"
@@ -287,3 +295,18 @@ ca:
   termoacumulador_electric: "Termoacumulador elèctric"
   captadors_solars_termics: "Captadors solars tèrmics"
   cap_sistema: "Cap sistema"
+  propostes:
+    form:
+      guardar: "Guardar"
+      gener: "Gener"
+      febrer: "Febrer"
+      marc: "Març"
+      abril: "Abril"
+      maig: "Maig"
+      juny: "Juny"
+      juliol: "Juliol"
+      agost: "Agost"
+      setembre: "Setembre"
+      octubre: "Octubre"
+      novembre: "Novembre"
+      desembre: "Desembre"

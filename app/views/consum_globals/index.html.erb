@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Consum Globals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Entitat</th>
+      <th>Ambit</th>
+      <th>Consum anual electricitat</th>
+      <th>Consum anual gas</th>
+      <th>Consum anual gasoil</th>
+      <th>Despesa anual electricitat</th>
+      <th>Despesa anual gas</th>
+      <th>Despesa anual gasoil</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consum_globals.each do |consum_global| %>
+      <tr>
+        <td><%= consum_global.entitat_id %></td>
+        <td><%= consum_global.ambit %></td>
+        <td><%= consum_global.consum_anual_electricitat %></td>
+        <td><%= consum_global.consum_anual_gas %></td>
+        <td><%= consum_global.consum_anual_gasoil %></td>
+        <td><%= consum_global.despesa_anual_electricitat %></td>
+        <td><%= consum_global.despesa_anual_gas %></td>
+        <td><%= consum_global.despesa_anual_gasoil %></td>
+        <td><%= link_to 'Show', consum_global %></td>
+        <td><%= link_to 'Edit', edit_consum_global_path(consum_global) %></td>
+        <td><%= link_to 'Destroy', consum_global, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Consum Global', new_consum_global_path %>
