@@ -107,6 +107,7 @@ class EntitatsController < ApplicationController
   def propostes
     @subnavigation = true
     @submenu_actiu = 'propostes'
+    @propostes = Proposta.where(entitat_id: @entitat.id)
   end
 
   def documents

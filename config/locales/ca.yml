@@ -20,6 +20,14 @@ ca:
               blank: "Cal escriure el nom"
             last_name:
               blank: "Cal escriure els cognoms"
+  number:
+    currency:
+      format:
+        unit: '€'
+        delimiter: '.'
+        separator: ','
+        precision: 2
+        format: '%n %u'
   simple_form:
     labels:
       user:
@@ -207,6 +215,8 @@ ca:
       titol: "ACS i climatització"
       sistema_principal_calefaccio: "Sistema principal de calefacció"
       editar_sistema: "Editar sistema"
+    propostes:
+      afegir_proposta: "Afegir una proposta"
   murs:
     edit:
       titol: "Envolupant tèrmica: edició de mur"

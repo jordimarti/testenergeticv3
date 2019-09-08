@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_095345) do
+ActiveRecord::Schema.define(version: 2019_09_07_195418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -245,6 +245,24 @@ ActiveRecord::Schema.define(version: 2019_09_06_095345) do
     t.decimal "i_e1"
     t.decimal "preu"
     t.string "tipus_proposta"
+    t.text "descripcio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "propostes", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "ambit"
+    t.decimal "cost_optimista"
+    t.decimal "cost_pessimista"
+    t.decimal "estalvi_optimista"
+    t.decimal "estalvi_pessimista"
+    t.decimal "roi_optimista"
+    t.decimal "roi_pessimista"
+    t.decimal "emissions_optimista"
+    t.decimal "emissions_pessimista"
+    t.date "data"
+    t.string "mesura"
     t.text "descripcio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

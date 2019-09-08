@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entitat_id: 1
+  ambit: MyString
+  cost_optimista: 9.99
+  cost_pessimista: 9.99
+  estalvi_optimista: 9.99
+  estalvi_pessimista: 9.99
+  roi_optimista: 9.99
+  roi_pessimista: 9.99
+  emissions_optimista: 9.99
+  emissions_pessimista: 9.99
+  data: 2019-09-07
+  mesura: MyString
+  descripcio: MyText
+
+two:
+  entitat_id: 1
+  ambit: MyString
+  cost_optimista: 9.99
+  cost_pessimista: 9.99
+  estalvi_optimista: 9.99
+  estalvi_pessimista: 9.99
+  roi_optimista: 9.99
+  roi_pessimista: 9.99
+  emissions_optimista: 9.99
+  emissions_pessimista: 9.99
+  data: 2019-09-07
+  mesura: MyString
+  descripcio: MyText

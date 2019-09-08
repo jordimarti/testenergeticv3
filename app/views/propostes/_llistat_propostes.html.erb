@@ -1,0 +1,44 @@
+<table>
+  <thead>
+    <tr>
+      <th>Mesura</th>
+      <th>Cost optimista</th>
+      <th>Cost pessimista</th>
+      <th>Estalvi optimista</th>
+      <th>Estalvi pessimista</th>
+      <th width="30"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @propostes.each do |proposta| %>
+      <tr>
+        <td>
+          <%= link_to edit_proposta_path(proposta), remote: true do %>
+            <div class="proposta-editar">
+              <%= proposta.mesura %>
+            </div>
+          <% end %>
+        </td>
+        <td>
+          <%= number_to_currency(proposta.cost_optimista, locale: :ca) %>
+        </td>
+        <td>
+          <%= number_to_currency(proposta.cost_pessimista, locale: :ca) %>
+        </td>
+        <td>
+          <%= proposta.estalvi_optimista %> %
+        </td>
+        <td>
+          <%= proposta.estalvi_pessimista %> %
+        </td>
+        <td>
+          <%= link_to proposta_path(proposta), remote: true, method: :delete,  data: { confirm: 'Segur que vols eliminar?' } do %>
+            <div class="deficiencia-eliminar button-right">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
