@@ -1,0 +1,144 @@
+
+  <div class="print-logo">
+    <h1 class="print-h1">TEST ENERGÈTIC</h1>
+  </div>
+  <div class="print-top-info">
+    <span>testenergetic.apabcn.cat</span><br/>
+    <span>info@apabcn.cat</span><br/>
+    <span>Tel. 932402060</span>
+  </div>
+
+  <div class="print-titol">
+    <h2 class="print-h2"><%= entitat.nom %></h2>
+  </div>
+
+ 	<div class="print-info-basica">
+    <div class="print-propietari">
+      <h5 class="print">Sol·licitant:</h5>
+      <span><%= entitat.nom_propietari + ' ' + entitat.cognoms_propietari %></span><br/>
+      <span><%= entitat.tipus_identificacio_propietari + ': ' + entitat.identificacio_propietari %></span>
+    </div>
+    <div class="print-adreca">
+    <% if entitat.bloc.blank?
+        adreca = entitat.tipus_via.to_s + ' ' + entitat.nom_via.to_s + ' ' + entitat.numero_via.to_s
+      else
+        adreca = entitat.tipus_via.to_s + ' ' + entitat.nom_via.to_s + ' ' + entitat.numero_via.to_s + ', bloc ' + entitat.bloc.to_s
+      end
+    %>
+      <h5 class="print">Adreça:</h5>
+      <span><%= adreca %></span><br/>
+      <span>Codi postal: <%= entitat.codi_postal %></span><br/>
+      <span>Municipi: <%= entitat.poblacio %></span>
+    </div>
+    <div class="print-caracteristiques">
+      <h5 class="print">Característiques:</h5>
+      <span><%= entitat.tipologia %></span><br/>
+      <span>Superfície: <%= entitat.superficie_util%> m<sup>2</sup></span><br/>
+      <span>Any de construcció: <%= entitat.any_construccio %> </span>
+    </div>
+  </div>
+
+  <div class="print-apartat">
+    <h4 class="print">Qualificació energètica</h4>
+    <div class="print-etiqueta">
+      <h5 class="print">Emissions de CO<sub>2</sub></h5>
+      <p class="valors-etiqueta">33 kgCO<sub>2</sub>/m<sup>2</sup>any</p>
+      <span class="text-tips">Més eficient</span><br/>
+      <%= image_tag('https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_e.jpg', width: "200", height: "139") %><br/>
+      <span class="text-tips">Menys eficient</span>
+    </div>
+
+    <div class="print-etiqueta">
+      <h5 class="print">Demanda d'energia primària</h5>
+      <p class="valors-etiqueta">130 kWh/m<sup>2</sup>any</p>
+      <span class="text-tips">Més eficient</span><br/>
+      <%= image_tag("https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_e.jpg", width: "200", height: "139") %><br/>
+      <span class="text-tips">Menys eficient</span>
+    </div>
+  </div>
+
+  <%
+  @consums_globals = ConsumGlobal.find_by(entitat_id: entitat.id)
+  @despesa_energetica = @consums_globals.despesa_anual_electricitat + @consums_globals.despesa_anual_gas
+  @estalvi = @despesa_energetica * 0.45
+  %>
+
+  <div class="container-estalvi-millores">
+    <div class="print-apartat">
+      <h4 class="print">Potencial d'estalvi aplicant millores</h4>
+      <div class="percentatge-estalvi">
+        <div class="numero-percentatge-estalvi">
+          45% <span class="numero-percentatge-estalvi-petit">del consum <sup>*</sup></span>
+        </div>
+        <div class="text-percentatge-estalvi">
+          <p>Aplicant les propostes de millora podríeu estalviar un 45% de l'energia que consumiu cada any.</p>
+        </div>
+      </div>
+      <div class="diners-estalvi">
+        <div class="numero-diners-estalvi">
+          2900€ <span class="numero-diners-estalvi-petit">cada any <sup>*</sup></span>
+        </div>
+        <div class="text-diners-estalvi">
+          <p>Si porteu a terme les propostes de millora podreu estalviar 2900€ cada any.</p>
+        </div>
+      </div>
+      <div class="print-comparacio-energia">
+        <div class="tip-consum consum-actual" style="position: absolute; top: 0px; right: 136px; text-align: right; border-right-style: solid; border-right-width: 2px; border-right-color: #333333; padding-right: 5px; height: 50px; width: 200px;">
+          <span>Consum actual</span><br/>
+          <span><%= @despesa_energetica %> kWh/any</span>
+        </div>
+        <% #Posem el consum real a 480px de l'esquerra. La posició del consum de millores es busca a partir d'aquesta dada %>
+        <% posicio_consum_millores = @estalvi*480/@despesa_energetica %>
+        <div class="tip-consum consum-millores" style="position: absolute; top: 70px; left: <%= posicio_consum_millores %>px; text-align: left; border-left-style: solid; border-left-width: 2px; border-left-color: #333333; padding-left: 5px; padding-top: 20px; height: 30px; width: 300px;">
+          <span>Consum aplicant propostes de millora</span><br/>
+          <span><%= @estalvi %> kWh/any</span>
+        </div>
+        <div class="print-barra-energia">
+          <%= image_tag('https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/barra_energia.png', :alt => 'barra energia', :class => 'img_barra_energia') %>
+        </div>
+        <p class="print-llegenda"><sup>*</sup>El consum d'energia d'un edifici no es pot predir amb exactitud perquè depèn de molts factors variables com l'ús de l'edifici o el clima. Per aquesta raó les estimacions d'estalvi energètic d'aquest document són orientatives.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-info-tecnic">
+    <div class="print-info-tecnic">
+      <h5 class="print">Nom del tècnic:</h5>
+      <p></p>
+      <h5 class="print">Titulació:</h5>
+      <p></p>
+    </div>
+    <div class="print-info-tecnic2">
+      <h5 class="print">Correu electrònic:</h5>
+      <p></p>
+      <h5 class="print">Telèfon:</h5>
+      <p></p>
+    </div>
+    <div class="print-data-signatura">
+      <h5 class="print">Data i signatura:</h5>
+
+    </div>
+  </div>
+
+  <div class="pagebreak">
+    <h3 class="print">Propostes de millora</h3>
+  </div>
+
+  <% propostes = Proposta.where(entitat_id: entitat.id) %>
+  
+  <% propostes.each do |proposta| %>
+    <div class="print-apartat contenidor-millores">
+      <h4 class="print"><%= proposta.mesura %></h4>
+      <div class="print-dades-proposta">
+        
+        <div class="container-element-lateral">
+          <p>Estalvi optimista: <br/><span class="valors-propostes"><%= proposta.estalvi_optimista %> %</span></p>
+          <p>Estalvi pessimista: <br/><span class="valors-propostes"><%= proposta.estalvi_pessimista %> %</span></p>
+          <p>Cost optimista: <br/><span class="valors-propostes"><%= number_to_currency(proposta.cost_optimista) %></span></p>
+          <p>Cost pessimista: <br/><span class="valors-propostes"><%= number_to_currency(proposta.cost_pessimista) %></span></p>
+        </div>
+        <p class="print-explicacio-proposta"><%= proposta.descripcio %></p>
+      </div>
+    </div>
+  <% end %>
+  

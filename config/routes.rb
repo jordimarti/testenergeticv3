@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'documents/index'
   resources :consum_globals
   get 'propostes/generar_propostes'
   resources :propostes
@@ -11,7 +12,9 @@ Rails.application.routes.draw do
   resources :cobertes
   resources :forats
   resources :murs
-  resources :entitats
+  resources :entitats do
+    resource :download, only: [:show]
+  end
   get 'entitats/:id/ambits', to: 'entitats#ambits', as: 'entitat_ambits'
   get 'entitats/:id/aixecament', to: 'entitats#aixecament', as: 'entitat_aixecament'
   get 'entitats/:id/envolupant', to: 'entitats#envolupant', as: 'entitat_envolupant'
