@@ -1,15 +1,14 @@
 
-<%= simple_form_for(@lampada) do |f| %>
+<%= simple_form_for(@lampada, remote: true) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :entitat_id %>
-    <%= f.input :ambit %>
-    <%= f.input :tipologia %>
-    <%= f.input :descripcio %>
+    <%= f.input :entitat_id, as: :hidden, input_html: { value: params[:entitat_id] } %>
+    <%= f.input :tipologia, as: :hidden, input_html: { value: params[:tipologia] } %>
     <%= f.input :numero %>
     <%= f.input :potencia %>
+    <%= f.input :hores_mensuals %>
   </div>
 
   <div class="form-actions">

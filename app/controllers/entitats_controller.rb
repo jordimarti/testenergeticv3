@@ -97,6 +97,11 @@ class EntitatsController < ApplicationController
   def iluminacio
     @subnavigation = true
     @submenu_actiu = 'aixecament'
+    @fluorescents_compactes = Lampada.where(tipologia: 'fluorescent_compacte', entitat_id: @entitat.id)
+    @leds = Lampada.where(tipologia: 'led', entitat_id: @entitat.id)
+    @fluorescents = Lampada.where(tipologia: 'fluorescent', entitat_id: @entitat.id)
+    @halogenes = Lampada.where(tipologia: 'halogena', entitat_id: @entitat.id)
+    @incandescents = Lampada.where(tipologia: 'incandescent', entitat_id: @entitat.id)
   end
 
   def clima

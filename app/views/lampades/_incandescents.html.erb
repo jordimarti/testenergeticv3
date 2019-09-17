@@ -1,0 +1,23 @@
+<table>
+  <thead>
+    <tr>
+      <th>Potència (W)</th>
+      <th>Quantitat</th>
+      <th>Hores mensuals</th>
+      <th></th>
+    </tr>
+  <tbody>
+    <% @incandescents.each do |lampada| %>
+      <tr>
+        <td><%= lampada.potencia %></td>
+        <td><%= lampada.numero %></td>
+        <td><%= lampada.hores_mensuals %></td>
+        <td class="columna-eliminar">
+          <%= link_to lampada_path(lampada), remote: true, method: :delete, data: { confirm: t('.eliminar') } do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>                 
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 

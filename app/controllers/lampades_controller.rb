@@ -1,6 +1,7 @@
 class LampadesController < ApplicationController
   before_action :set_lampada, only: [:show, :edit, :update, :destroy]
   #before_action :set_entitat, only: [:index]
+  respond_to :html, :js
 
   # GET /lampades
   # GET /lampades.json
@@ -28,40 +29,29 @@ class LampadesController < ApplicationController
   # POST /lampades.json
   def create
     @lampada = Lampada.new(lampada_params)
-
-    respond_to do |format|
-      if @lampada.save
-        format.html { redirect_to @lampada, notice: 'Lampada was successfully created.' }
-        format.json { render :show, status: :created, location: @lampada }
-      else
-        format.html { render :new }
-        format.json { render json: @lampada.errors, status: :unprocessable_entity }
-      end
-    end
+    @lampada.save
+    @fluorescents_compactes = Lampada.where(entitat_id: @lampada.entitat_id, tipologia: 'fluorescent_compacte')
+    @leds = Lampada.where(entitat_id: @lampada.entitat_id, tipologia: 'led')
+    @fluorescents = Lampada.where(entitat_id: @lampada.entitat_id, tipologia: 'fluorescent')
+    @halogenes = Lampada.where(entitat_id: @lampada.entitat_id, tipologia: 'halogena')
+    @incandescents = Lampada.where(entitat_id: @lampada.entitat_id, tipologia: 'incandescent')
   end
 
   # PATCH/PUT /lampades/1
   # PATCH/PUT /lampades/1.json
   def update
-    respond_to do |format|
-      if @lampada.update(lampada_params)
-        format.html { redirect_to @lampada, notice: 'Lampada was successfully updated.' }
-        format.json { render :show, status: :ok, location: @lampada }
-      else
-        format.html { render :edit }
-        format.json { render json: @lampada.errors, status: :unprocessable_entity }
-      end
-    end
+    @lampada.update(lampada_params)
   end
 
   # DELETE /lampades/1
   # DELETE /lampades/1.json
   def destroy
+    @fluorescents_compactes = Lampada.where(entitat_id: @lampada.entitat_id, tipologia: 'fluorescent_compacte')
+    @leds = Lampada.where(entitat_id: @lampada.entitat_id, tipologia: 'led')
+    @fluorescents = Lampada.where(entitat_id: @lampada.entitat_id, tipologia: 'fluorescent')
+    @halogenes = Lampada.where(entitat_id: @lampada.entitat_id, tipologia: 'halogena')
+    @incandescents = Lampada.where(entitat_id: @lampada.entitat_id, tipologia: 'incandescent')
     @lampada.destroy
-    respond_to do |format|
-      format.html { redirect_to lampades_url, notice: 'Lampada was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private
@@ -76,6 +66,6 @@ class LampadesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lampada_params
-      params.require(:lampada).permit(:entitat_id, :ambit, :tipologia, :descripcio, :numero, :potencia)
+      params.require(:lampada).permit(:entitat_id, :ambit, :tipologia, :descripcio, :numero, :potencia, :hores_mensuals)
     end
 end

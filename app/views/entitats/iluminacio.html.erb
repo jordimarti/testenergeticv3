@@ -1,3 +1,13 @@
+<div class="reveal" id="modal-iluminacio" data-reveal>
+  <h3 id="modalTitle"><%= t('.nova_lampada') %></h3>
+  <div id="formulari-iluminacio" class="formulari-iluminacio">
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
 <div class="light-background-container">
   
   <div class="grid-container">
@@ -41,39 +51,11 @@
           </div>
           <div class="items-iluminacio-container">
             <h4 class="titol-tipus-iluminacio">LEDs</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Potència (W)</th>
-                  <th>Quantitat</th>
-                  <th>Hores mensuals</th>
-                  <th></th>
-                </tr>
-              <tbody>
-                
-                <tr>
-                  <td>6</td>
-                  <td>8</td>
-                  <td>60</td>
-                  <td class="columna-eliminar">
-                    <%= link_to lampada_path(), method: :delete, data: { confirm: t('.eliminar') } do %>
-                      <i class="fa fa-trash" aria-hidden="true"></i>                 
-                    <% end %>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>2</td>
-                  <td>24</td>
-                  <td class="columna-eliminar">
-                    <%= link_to lampada_path(), method: :delete, data: { confirm: t('.eliminar') } do %>
-                      <i class="fa fa-trash" aria-hidden="true"></i>                 
-                    <% end %>
-                </tr>
-                
-              </tbody>
-            </table> 
+            <div id="leds">
+              <%= render partial: '/lampades/leds' %>
+            </div>
             <div class="afegir-element">
-              <%= link_to "+ Afegir element", new_lampada_path(), class: 'link-afegir' %>
+              <%= link_to "+ Afegir element", new_lampada_path(entitat_id: params[:id], tipologia: 'led'), remote: true, class: 'link-afegir' %>
             </div>
           </div>
         </div>
@@ -85,8 +67,11 @@
           </div>
           <div class="items-iluminacio-container">
             <h4 class="titol-tipus-iluminacio">Fluorescents compactes</h4>
+            <div id="fluorescents-compactes">
+              <%= render partial: '/lampades/fluorescents_compactes' %>
+            </div>
             <div class="afegir-element">
-              <%= link_to "+ Afegir element", new_lampada_path(), class: 'link-afegir' %>
+              <%= link_to "+ Afegir element", new_lampada_path(entitat_id: params[:id], tipologia: 'fluorescent_compacte'), remote: true, class: 'link-afegir' %>
             </div>
           </div>
         </div>
@@ -100,8 +85,11 @@
           </div>
           <div class="items-iluminacio-container">
             <h4 class="titol-tipus-iluminacio">Fluorescents</h4>
+            <div id="fluorescents">
+              <%= render partial: '/lampades/fluorescents' %>
+            </div>
             <div class="afegir-element">
-              <%= link_to "+ Afegir element", new_lampada_path(), class: 'link-afegir' %>
+              <%= link_to "+ Afegir element", new_lampada_path(entitat_id: params[:id], tipologia: 'fluorescent'), remote: true, class: 'link-afegir' %>
             </div>
           </div>
         </div>
@@ -113,8 +101,11 @@
           </div>
           <div class="items-iluminacio-container">
             <h4 class="titol-tipus-iluminacio">Halògenes</h4>
+            <div id="halogenes">
+              <%= render partial: '/lampades/halogenes' %>
+            </div>
             <div class="afegir-element">
-              <%= link_to "+ Afegir element", new_lampada_path(), class: 'link-afegir' %>
+              <%= link_to "+ Afegir element", new_lampada_path(entitat_id: params[:id], tipologia: 'halogena'), remote: true, class: 'link-afegir' %>
             </div>
           </div>
         </div>
@@ -128,8 +119,11 @@
           </div>
           <div class="items-iluminacio-container">
             <h4 class="titol-tipus-iluminacio">Incandescents</h4>
+            <div id="incandescents">
+              <%= render partial: '/lampades/incandescents' %>
+            </div>
             <div class="afegir-element">
-              <%= link_to "+ Afegir element", new_lampada_path(), class: 'link-afegir' %>
+              <%= link_to "+ Afegir element", new_lampada_path(entitat_id: params[:id], tipologia: 'incandescent'), remote: true, class: 'link-afegir' %>
             </div>
           </div>
         </div>
