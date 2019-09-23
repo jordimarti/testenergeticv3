@@ -5,9 +5,18 @@ one:
   ambit: MyString
   nom: MyString
   descripcio: MyText
-  superficie: 9.99
-  part_opaca: 1
-  part_transparent: 1
+  superficie_total: 9.99
+  superficie_opaca: 9.99
+  superficie_transparent: 9.99
+  superficie_marc: 9.99
+  transmitancia_opaca: 9.99
+  transmitancia_transparent: 9.99
+  transmitancia_marc: 9.99
+  longitud_contacte_marc_vidre: 9.99
+  longitud_contacte_marc_opac: 9.99
+  transmitancia_linial_marc_vidre: 9.99
+  transmitancia_linial_marc_opac: 9.99
+  numero: 1
   percentatge: 9.99
 
 two:
@@ -15,7 +24,16 @@ two:
   ambit: MyString
   nom: MyString
   descripcio: MyText
-  superficie: 9.99
-  part_opaca: 1
-  part_transparent: 1
+  superficie_total: 9.99
+  superficie_opaca: 9.99
+  superficie_transparent: 9.99
+  superficie_marc: 9.99
+  transmitancia_opaca: 9.99
+  transmitancia_transparent: 9.99
+  transmitancia_marc: 9.99
+  longitud_contacte_marc_vidre: 9.99
+  longitud_contacte_marc_opac: 9.99
+  transmitancia_linial_marc_vidre: 9.99
+  transmitancia_linial_marc_opac: 9.99
+  numero: 1
   percentatge: 9.99

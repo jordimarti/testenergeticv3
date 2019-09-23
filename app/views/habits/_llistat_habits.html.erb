@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Hàbit</th>
+      <th>Descripció</th>
+      <th></th>
+    </tr>
+  <tbody>
+    <% @habits.each do |habit| %>
+      <tr>
+        <td><%= habit.nom %></td>
+        <td><%= habit.descripcio %></td>
+        <td class="columna-eliminar">
+          <%= link_to habit_path(habit), remote: true, method: :delete, data: { confirm: t('.eliminar') } do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>                 
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 

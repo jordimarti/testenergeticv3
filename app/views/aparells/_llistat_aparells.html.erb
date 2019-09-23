@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Aparell</th>
+      <th>Estimació de consum mensual</th>
+      <th></th>
+    </tr>
+  <tbody>
+    <% @aparells.each do |aparell| %>
+      <tr>
+        <td><%= aparell.nom %></td>
+        <td><%= aparell.consum_mensual %></td>
+        <td class="columna-eliminar">
+          <%= link_to aparell_path(aparell), remote: true, method: :delete, data: { confirm: t('.eliminar') } do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>                 
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 

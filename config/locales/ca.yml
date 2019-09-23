@@ -200,6 +200,7 @@ ca:
       acs_clima: "ACS i climatització"
       altres: "Altres aparells"
       factures: "Factures i consums"
+      habits: "Hàbits i gestió"
     envolupant:
       titol: "Envolupant tèrmica"
       murs: "Murs"

@@ -28,7 +28,7 @@ class ConsumGlobalsController < ApplicationController
 
     respond_to do |format|
       if @consum_global.save
-        format.html { redirect_to @consum_global, notice: 'Consum global was successfully created.' }
+        format.html { redirect_to entitat_consums_path(@consum_global.entitat_id), notice: 'Consum global was successfully created.' }
         format.json { render :show, status: :created, location: @consum_global }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ConsumGlobalsController < ApplicationController
   def update
     respond_to do |format|
       if @consum_global.update(consum_global_params)
-        format.html { redirect_to @consum_global, notice: 'Consum global was successfully updated.' }
+        format.html { redirect_to entitat_consums_path(@consum_global.entitat_id), notice: 'Consum global was successfully updated.' }
         format.json { render :show, status: :ok, location: @consum_global }
       else
         format.html { render :edit }

@@ -22,7 +22,7 @@
               <tbody>
                 <% @murs.each do |mur| %>
                   <tr>
-                    <td><%= link_to mur.nom, edit_mur_path(mur) %></td>
+                    <td><%= link_to mur.nom, edit_mur_path(mur) %> <span class="info-subtil">( <%= '%.2f' % mur.transmitancia_mur %> W/m<sup>2</sup>K )</span></td>
                     <td class="columna-eliminar">
                       <%= link_to mur_path(mur), method: :delete, data: { confirm: t('.eliminar') } do %>
                         <i class="fa fa-trash" aria-hidden="true"></i>                 
@@ -49,7 +49,7 @@
               <tbody>
     	          <% @forats.each do |forat| %>
                   <tr>
-                    <td><%= link_to forat.nom, edit_forat_path(forat) %></td>
+                    <td><%= link_to forat.nom, edit_forat_path(forat) %> <span class="info-subtil">( <%= '%.2f' % forat.transmitancia_global_forat %> W/m<sup>2</sup>K )</span></td>
                     <td class="columna-eliminar">
                       <%= link_to forat_path(forat), method: :delete, data: { confirm: t('.eliminar') } do %>
                         <i class="fa fa-trash" aria-hidden="true"></i>                 

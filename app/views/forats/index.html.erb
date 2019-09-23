@@ -9,9 +9,18 @@
       <th>Ambit</th>
       <th>Nom</th>
       <th>Descripcio</th>
-      <th>Superficie</th>
-      <th>Part opaca</th>
-      <th>Part transparent</th>
+      <th>Superficie total</th>
+      <th>Superficie opaca</th>
+      <th>Superficie transparent</th>
+      <th>Superficie marc</th>
+      <th>Transmitancia opaca</th>
+      <th>Transmitancia transparent</th>
+      <th>Transmitancia marc</th>
+      <th>Longitud contacte marc vidre</th>
+      <th>Longitud contacte marc opac</th>
+      <th>Transmitancia linial marc vidre</th>
+      <th>Transmitancia linial marc opac</th>
+      <th>Numero</th>
       <th>Percentatge</th>
       <th colspan="3"></th>
     </tr>
@@ -24,9 +33,18 @@
         <td><%= forat.ambit %></td>
         <td><%= forat.nom %></td>
         <td><%= forat.descripcio %></td>
-        <td><%= forat.superficie %></td>
-        <td><%= forat.part_opaca %></td>
-        <td><%= forat.part_transparent %></td>
+        <td><%= forat.superficie_total %></td>
+        <td><%= forat.superficie_opaca %></td>
+        <td><%= forat.superficie_transparent %></td>
+        <td><%= forat.superficie_marc %></td>
+        <td><%= forat.transmitancia_opaca %></td>
+        <td><%= forat.transmitancia_transparent %></td>
+        <td><%= forat.transmitancia_marc %></td>
+        <td><%= forat.longitud_contacte_marc_vidre %></td>
+        <td><%= forat.longitud_contacte_marc_opac %></td>
+        <td><%= forat.transmitancia_linial_marc_vidre %></td>
+        <td><%= forat.transmitancia_linial_marc_opac %></td>
+        <td><%= forat.numero %></td>
         <td><%= forat.percentatge %></td>
         <td><%= link_to 'Show', forat %></td>
         <td><%= link_to 'Edit', edit_forat_path(forat) %></td>

@@ -17,11 +17,20 @@ class ForatsTest < ApplicationSystemTestCase
     fill_in "Ambit", with: @forat.ambit
     fill_in "Descripcio", with: @forat.descripcio
     fill_in "Entitat", with: @forat.entitat_id
+    fill_in "Longitud contacte marc opac", with: @forat.longitud_contacte_marc_opac
+    fill_in "Longitud contacte marc vidre", with: @forat.longitud_contacte_marc_vidre
     fill_in "Nom", with: @forat.nom
-    fill_in "Part opaca", with: @forat.part_opaca
-    fill_in "Part transparent", with: @forat.part_transparent
+    fill_in "Numero", with: @forat.numero
     fill_in "Percentatge", with: @forat.percentatge
-    fill_in "Superficie", with: @forat.superficie
+    fill_in "Superficie marc", with: @forat.superficie_marc
+    fill_in "Superficie opaca", with: @forat.superficie_opaca
+    fill_in "Superficie total", with: @forat.superficie_total
+    fill_in "Superficie transparent", with: @forat.superficie_transparent
+    fill_in "Transmitancia linial marc opac", with: @forat.transmitancia_linial_marc_opac
+    fill_in "Transmitancia linial marc vidre", with: @forat.transmitancia_linial_marc_vidre
+    fill_in "Transmitancia marc", with: @forat.transmitancia_marc
+    fill_in "Transmitancia opaca", with: @forat.transmitancia_opaca
+    fill_in "Transmitancia transparent", with: @forat.transmitancia_transparent
     click_on "Create Forat"
 
     assert_text "Forat was successfully created"
@@ -35,11 +44,20 @@ class ForatsTest < ApplicationSystemTestCase
     fill_in "Ambit", with: @forat.ambit
     fill_in "Descripcio", with: @forat.descripcio
     fill_in "Entitat", with: @forat.entitat_id
+    fill_in "Longitud contacte marc opac", with: @forat.longitud_contacte_marc_opac
+    fill_in "Longitud contacte marc vidre", with: @forat.longitud_contacte_marc_vidre
     fill_in "Nom", with: @forat.nom
-    fill_in "Part opaca", with: @forat.part_opaca
-    fill_in "Part transparent", with: @forat.part_transparent
+    fill_in "Numero", with: @forat.numero
     fill_in "Percentatge", with: @forat.percentatge
-    fill_in "Superficie", with: @forat.superficie
+    fill_in "Superficie marc", with: @forat.superficie_marc
+    fill_in "Superficie opaca", with: @forat.superficie_opaca
+    fill_in "Superficie total", with: @forat.superficie_total
+    fill_in "Superficie transparent", with: @forat.superficie_transparent
+    fill_in "Transmitancia linial marc opac", with: @forat.transmitancia_linial_marc_opac
+    fill_in "Transmitancia linial marc vidre", with: @forat.transmitancia_linial_marc_vidre
+    fill_in "Transmitancia marc", with: @forat.transmitancia_marc
+    fill_in "Transmitancia opaca", with: @forat.transmitancia_opaca
+    fill_in "Transmitancia transparent", with: @forat.transmitancia_transparent
     click_on "Update Forat"
 
     assert_text "Forat was successfully updated"

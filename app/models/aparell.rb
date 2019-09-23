@@ -1,0 +1,2 @@
+class Aparell < ApplicationRecord
+end

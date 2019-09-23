@@ -17,7 +17,7 @@ class ForatsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create forat" do
     assert_difference('Forat.count') do
-      post forats_url, params: { forat: { ambit: @forat.ambit, descripcio: @forat.descripcio, entitat_id: @forat.entitat_id, nom: @forat.nom, part_opaca: @forat.part_opaca, part_transparent: @forat.part_transparent, percentatge: @forat.percentatge, superficie: @forat.superficie } }
+      post forats_url, params: { forat: { ambit: @forat.ambit, descripcio: @forat.descripcio, entitat_id: @forat.entitat_id, longitud_contacte_marc_opac: @forat.longitud_contacte_marc_opac, longitud_contacte_marc_vidre: @forat.longitud_contacte_marc_vidre, nom: @forat.nom, numero: @forat.numero, percentatge: @forat.percentatge, superficie_marc: @forat.superficie_marc, superficie_opaca: @forat.superficie_opaca, superficie_total: @forat.superficie_total, superficie_transparent: @forat.superficie_transparent, transmitancia_linial_marc_opac: @forat.transmitancia_linial_marc_opac, transmitancia_linial_marc_vidre: @forat.transmitancia_linial_marc_vidre, transmitancia_marc: @forat.transmitancia_marc, transmitancia_opaca: @forat.transmitancia_opaca, transmitancia_transparent: @forat.transmitancia_transparent } }
     end
 
     assert_redirected_to forat_url(Forat.last)
@@ -34,7 +34,7 @@ class ForatsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update forat" do
-    patch forat_url(@forat), params: { forat: { ambit: @forat.ambit, descripcio: @forat.descripcio, entitat_id: @forat.entitat_id, nom: @forat.nom, part_opaca: @forat.part_opaca, part_transparent: @forat.part_transparent, percentatge: @forat.percentatge, superficie: @forat.superficie } }
+    patch forat_url(@forat), params: { forat: { ambit: @forat.ambit, descripcio: @forat.descripcio, entitat_id: @forat.entitat_id, longitud_contacte_marc_opac: @forat.longitud_contacte_marc_opac, longitud_contacte_marc_vidre: @forat.longitud_contacte_marc_vidre, nom: @forat.nom, numero: @forat.numero, percentatge: @forat.percentatge, superficie_marc: @forat.superficie_marc, superficie_opaca: @forat.superficie_opaca, superficie_total: @forat.superficie_total, superficie_transparent: @forat.superficie_transparent, transmitancia_linial_marc_opac: @forat.transmitancia_linial_marc_opac, transmitancia_linial_marc_vidre: @forat.transmitancia_linial_marc_vidre, transmitancia_marc: @forat.transmitancia_marc, transmitancia_opaca: @forat.transmitancia_opaca, transmitancia_transparent: @forat.transmitancia_transparent } }
     assert_redirected_to forat_url(@forat)
   end
 

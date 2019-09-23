@@ -37,14 +37,21 @@
           </div>
           <div class="grid-x grid-margin-x">
             <div class="medium-4 cell">
-              <%= link_to entitat_envolupant_path(@entitat) do %>
+              <%= link_to entitat_aparells_path(@entitat) do %>
                 <div class="item-aixecament altres-container">
                   <div class="text-item-aixecament"><%= t('.altres') %></div>
                 </div>
               <% end %>
             </div>
             <div class="medium-4 cell">
-              <%= link_to entitat_envolupant_path(@entitat) do %>
+              <%= link_to entitat_habits_path(@entitat) do %>
+                <div class="item-aixecament habits-container">
+                  <div class="text-item-aixecament"><%= t('.habits') %></div>
+                </div>
+              <% end %>
+            </div>
+            <div class="medium-4 cell">
+              <%= link_to entitat_consums_path(@entitat) do %>
                 <div class="item-aixecament factures-container">
                   <div class="text-item-aixecament"><%= t('.factures') %></div>
                 </div>

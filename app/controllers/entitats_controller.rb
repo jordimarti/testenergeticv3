@@ -1,5 +1,5 @@
 class EntitatsController < ApplicationController
-  before_action :set_entitat, only: [:show, :edit, :update, :destroy, :ambits, :aixecament, :envolupant, :iluminacio, :clima, :propostes, :documents, :generar_propostes]
+  before_action :set_entitat, only: [:show, :edit, :update, :destroy, :ambits, :aixecament, :envolupant, :iluminacio, :clima, :aparells, :habits, :consums, :propostes, :documents, :generar_propostes]
   before_action :authenticate_user!
   respond_to :html, :js
 
@@ -31,6 +31,8 @@ class EntitatsController < ApplicationController
     @entitat = Entitat.new(entitat_params)
 
     if @entitat.save
+      #Creem valors per defecte de consums
+      consums_entitat(@entitat.id)
       #Creem els valors per defecte de climatització si procedeix
       if @entitat.ambit == 'subentitat' || @entitat.tipologia == 'unifamiliar'
         clima_entitat(@entitat.id, @entitat.ambit)
@@ -64,6 +66,18 @@ class EntitatsController < ApplicationController
       format.html { redirect_to entitats_url, notice: 'Entitat was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def consums_entitat(entitat_id)
+    consum = ConsumGlobal.new
+    consum.entitat_id = entitat_id
+    consum.consum_anual_electricitat = 0
+    consum.consum_anual_gas = 0
+    consum.consum_anual_gasoil = 0
+    consum.despesa_anual_electricitat = 0
+    consum.despesa_anual_gas = 0
+    consum.despesa_anual_gasoil = 0
+    consum.save
   end
 
   def clima_entitat(entitat_id, ambit)
@@ -108,6 +122,24 @@ class EntitatsController < ApplicationController
     @subnavigation = true
     @submenu_actiu = 'aixecament'
     @clima = Climatitzacio.where(entitat_id: @entitat.id).last
+  end
+
+  def aparells
+    @subnavigation = true
+    @submenu_actiu = 'aixecament'
+    @aparells = Aparell.where(entitat_id: @entitat.id)
+  end
+
+  def habits
+    @subnavigation = true
+    @submenu_actiu = 'aixecament'
+    @habits = Habit.where(entitat_id: @entitat.id)
+  end
+
+  def consums
+    @subnavigation = true
+    @submenu_actiu = 'aixecament'
+    @consum_global = ConsumGlobal.find_by(entitat_id: @entitat.id)
   end
 
   def propostes

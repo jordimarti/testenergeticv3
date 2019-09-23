@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_180345) do
+ActiveRecord::Schema.define(version: 2019_09_23_175000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,20 @@ ActiveRecord::Schema.define(version: 2019_09_16_180345) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "aparells", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "ambit"
+    t.string "nom"
+    t.text "descripcio"
+    t.integer "potencia"
+    t.integer "hores_mensuals"
+    t.integer "consum_mensual"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "antiguitat"
+    t.string "qualificacio_energetica"
   end
 
   create_table "climatitzacions", force: :cascade do |t|
@@ -162,17 +176,33 @@ ActiveRecord::Schema.define(version: 2019_09_16_180345) do
     t.string "ambit"
     t.string "nom"
     t.text "descripcio"
-    t.decimal "superficie"
-    t.integer "part_opaca"
-    t.integer "part_transparent"
+    t.decimal "superficie_total"
+    t.decimal "superficie_opaca"
+    t.decimal "superficie_transparent"
+    t.decimal "superficie_marc"
+    t.decimal "transmitancia_opaca"
+    t.decimal "transmitancia_transparent"
+    t.decimal "transmitancia_marc"
+    t.decimal "longitud_contacte_marc_vidre"
+    t.decimal "longitud_contacte_marc_opac"
+    t.decimal "transmitancia_linial_marc_vidre"
+    t.decimal "transmitancia_linial_marc_opac"
+    t.integer "numero"
     t.decimal "percentatge"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "transmitancia_part_opaca"
-    t.decimal "transmitancia_part_transparent"
-    t.string "nom_part_opaca"
-    t.string "nom_part_transparent"
-    t.integer "numero"
+    t.string "tipus_marc"
+    t.string "tipus_vidre"
+    t.decimal "transmitancia_global_forat"
+  end
+
+  create_table "habits", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "ambit"
+    t.string "nom"
+    t.text "descripcio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lampades", force: :cascade do |t|
@@ -197,6 +227,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_180345) do
     t.decimal "percentatge"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "transmitancia_mur"
   end
 
   create_table "proposta_predefinides", force: :cascade do |t|

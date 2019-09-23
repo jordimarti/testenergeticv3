@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :forats
+  resources :habits
+  resources :aparells
   get 'documents/index'
   resources :consum_globals
   get 'propostes/generar_propostes'
@@ -10,7 +13,6 @@ Rails.application.routes.draw do
   resources :component_murs
   get 'component_murs/canviar_posicio'
   resources :cobertes
-  resources :forats
   resources :murs
   resources :entitats do
     resource :download, only: [:show]
@@ -20,6 +22,9 @@ Rails.application.routes.draw do
   get 'entitats/:id/envolupant', to: 'entitats#envolupant', as: 'entitat_envolupant'
   get 'entitats/:id/iluminacio', to: 'entitats#iluminacio', as: 'entitat_iluminacio'
   get 'entitats/:id/clima', to: 'entitats#clima', as: 'entitat_clima'
+  get 'entitats/:id/aparells', to: 'entitats#aparells', as: 'entitat_aparells'
+  get 'entitats/:id/habits', to: 'entitats#habits', as: 'entitat_habits'
+  get 'entitats/:id/consums', to: 'entitats#consums', as: 'entitat_consums'
   get 'entitats/:id/propostes', to: 'entitats#propostes', as: 'entitat_propostes'
   get 'entitats/:id/documents', to: 'entitats#documents', as: 'entitat_documents'
   #get 'entitats/:id/generar_propostes', to: 'entitats#generar_propostes', as: 'generar_propostes'

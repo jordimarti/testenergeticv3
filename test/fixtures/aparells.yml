@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entitat_id: 1
+  ambit: MyString
+  nom: MyString
+  descripcio: MyText
+  potencia: 1
+  hores_mensuals: 1
+  consum_mensual: 1
+
+two:
+  entitat_id: 1
+  ambit: MyString
+  nom: MyString
+  descripcio: MyText
+  potencia: 1
+  hores_mensuals: 1
+  consum_mensual: 1

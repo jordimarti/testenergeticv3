@@ -1,0 +1,34 @@
+<div class="reveal" id="modal-aparells" data-reveal>
+  <h3 id="modalTitle"><%= t('.aparell') %></h3>
+  <div id="formulari-aparell" class="formulari-aparell">
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="light-background-container">
+  
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="medium-12 cell">
+        <div class="titol-seccio">
+          <%= t('.titol') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x">
+      <div class="medium-12 cell">
+        <div class="light-container">
+        	<div id="aparells">
+        		<%= render partial: '/aparells/llistat_aparells' %>
+        	</div>
+        	<div class="afegir-element">
+            <%= link_to "+ Afegir element", new_aparell_path(entitat_id: params[:id]), remote: true, class: 'link-afegir' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

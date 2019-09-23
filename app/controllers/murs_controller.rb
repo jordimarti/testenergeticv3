@@ -2,19 +2,7 @@ class MursController < ApplicationController
   include ComponentMursHelper
   before_action :set_mur, only: [:show, :edit, :update, :destroy]
   before_action :set_entitat, only: [:edit, :update, :destroy]
-
-  # GET /murs
-  # GET /murs.json
-  def index
-    @murs = Mur.all
-  end
-
-  # GET /murs/1
-  # GET /murs/1.json
-  def show
-  end
-
-  # GET /murs/new
+  
   def new
     entitat = Entitat.find(params[:entitat_id])
     @mur = Mur.new
@@ -25,7 +13,6 @@ class MursController < ApplicationController
     redirect_to edit_mur_path(@mur)
   end
 
-  # GET /murs/1/edit
   def edit
     @subnavigation = true
     @submenu_actiu = 'aixecament'
@@ -40,38 +27,13 @@ class MursController < ApplicationController
     end
   end
 
-  # POST /murs
-  # POST /murs.json
-  def create
-    @mur = Mur.new(mur_params)
-
-    respond_to do |format|
-      if @mur.save
-        format.html { redirect_to @mur, notice: 'Mur was successfully created.' }
-        format.json { render :show, status: :created, location: @mur }
-      else
-        format.html { render :new }
-        format.json { render json: @mur.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /murs/1
-  # PATCH/PUT /murs/1.json
   def update
-    respond_to do |format|
-      if @mur.update(mur_params)
-        format.html { redirect_to entitat_envolupant_path(@entitat), notice: 'Mur was successfully updated.' }
-        format.json { render :show, status: :ok, location: @mur }
-      else
-        format.html { render :edit }
-        format.json { render json: @mur.errors, status: :unprocessable_entity }
-      end
-    end
+    @mur.update(mur_params)
+    @mur.transmitancia_mur = transmitancia_total(@mur.id, false)
+    @mur.save
+    redirect_to entitat_envolupant_path(@entitat)
   end
 
-  # DELETE /murs/1
-  # DELETE /murs/1.json
   def destroy
     @mur.destroy
     respond_to do |format|
@@ -81,7 +43,6 @@ class MursController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_mur
       @mur = Mur.find(params[:id])
     end
@@ -92,6 +53,6 @@ class MursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mur_params
-      params.require(:mur).permit(:entitat_id, :ambit, :nom, :descripcio, :superficie, :tipus_mur, :percentatge)
+      params.require(:mur).permit(:entitat_id, :ambit, :nom, :descripcio, :superficie, :tipus_mur, :percentatge, :transmitancia_mur)
     end
 end

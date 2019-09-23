@@ -7,6 +7,7 @@
     <div class="grid-x grid-margin-x">
       <div class="medium-4 cell">
         <%= f.input :nom %>
+        <%= f.input :numero %>
       </div>
       <div class="medium-8 cell">
         <%= f.input :descripcio %>
@@ -14,25 +15,28 @@
     </div>
     <div class="grid-x grid-margin-x">
       <div class="medium-4 cell">
-        <%= f.input :superficie %>
-        <%= f.input :numero %>
+        <h4>Marc</h4>
+        <%= f.input :superficie_marc %>
+        <%= f.input :transmitancia_marc %>
+        <%= f.input :tipus_marc, collection: [[t('.fusta'), 'fusta'], [t('.pvc'), 'pvc'], [t('.metalic_rpt'), 'metalic_rpt'], [t('.metalic'), 'metalic']] %>
       </div>
       <div class="medium-4 cell">
-        <h4><%= t('.part_opaca') %></h4>
-        <%= f.input :nom_part_opaca %>
-        <%= f.input :part_opaca %>
-        <%= f.input :transmitancia_part_opaca %>
+        <h4>Vidre</h4>
+        <%= f.input :superficie_transparent %>
+        <%= f.input :transmitancia_transparent %>
+        <%= f.input :longitud_contacte_marc_vidre %>
+        <%= f.input :tipus_vidre, collection: [[t('.senzill'), 'senzill'], [t('.doble'), 'doble'], [t('.doble_baix_emissiu'), 'doble baix emissiu'], [t('.triple'), 'triple'], [t('.triple_baix_emissiu'), 'triple baix emissiu']] %>
       </div>
       <div class="medium-4 cell">
-        <h4><%= t('.part_transparent') %></h4>
-        <%= f.input :nom_part_transparent %>
-        <%= f.input :part_transparent %>
-        <%= f.input :transmitancia_part_transparent %>
+        <h4>Panell opac</h4>
+        <%= f.input :superficie_opaca %>
+        <%= f.input :transmitancia_opaca %>
+        <%= f.input :longitud_contacte_marc_opac %>
       </div>
     </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, t('.guardar'), :class => 'button' %>
+    <%= f.button :submit %>
   </div>
 <% end %>

@@ -1,0 +1,46 @@
+<div class="light-background-container">
+  
+  <div class="grid-container">
+    <div class="grid-x grid-margin-x">
+      <div class="medium-12 cell">
+        <div class="titol-seccio">
+          <%= t('.titol') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x">
+      <div class="medium-12 cell">
+        <div class="light-container">
+        	
+        	<%= simple_form_for(@consum_global) do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+            <div class="form-inputs">
+              <div class="grid-x grid-margin-x">
+                <div class="medium-4 cell">
+                  <%= f.input :consum_anual_electricitat %>
+                  <%= f.input :despesa_anual_electricitat %>
+                </div>
+                <div class="medium-4 cell">
+                  <%= f.input :consum_anual_gas %>
+                  <%= f.input :despesa_anual_gas %>
+                </div>
+                <div class="medium-4 cell">
+                  <%= f.input :consum_anual_gasoil %>
+                  <%= f.input :despesa_anual_gasoil %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
