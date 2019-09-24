@@ -1,4 +1,5 @@
 class ComponentMursController < ApplicationController
+  include ApplicationHelper
   include ComponentMursHelper
   before_action :set_component_mur, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
@@ -25,7 +26,7 @@ class ComponentMursController < ApplicationController
     resultat_calcul = resistencia_termica_component(@component_mur.id)
     @falten_dades = {resultat: resultat_calcul, nom: @component_mur.nom}
     @mur = Mur.find(@component_mur.mur_id)
-    @transmitancia = transmitancia_total(@mur.id, resultat_calcul)
+    @transmitancia = transmitancia_mur(@mur.id, resultat_calcul)
     @component_murs = ComponentMur.where(mur_id: @mur.id).order(posicio: :asc)
     @zona = zona_climatica_cte(@mur.entitat_id)
     @valor_limit = transmitancia_limit_murs_cte(@zona)
@@ -41,7 +42,7 @@ class ComponentMursController < ApplicationController
     resultat_calcul = resistencia_termica_component(@component_mur.id)
     @falten_dades = {resultat: resultat_calcul, nom: @component_mur.nom}
     @mur = Mur.find(@component_mur.mur_id)
-    @transmitancia = transmitancia_total(@mur.id, resultat_calcul)
+    @transmitancia = transmitancia_mur(@mur.id, resultat_calcul)
     @component_murs = ComponentMur.where(mur_id: @mur.id).order(posicio: :asc)
     @zona = zona_climatica_cte(@mur.entitat_id)
     @valor_limit = transmitancia_limit_murs_cte(@zona)
@@ -56,7 +57,7 @@ class ComponentMursController < ApplicationController
     @mur = Mur.find(params[:mur_id])
     @component_murs = ComponentMur.where(mur_id: @mur.id).order(posicio: :asc)
     @component_mur.destroy
-    @transmitancia = transmitancia_total(@mur.id, false)
+    @transmitancia = transmitancia_mur(@mur.id, false)
     @zona = zona_climatica_cte(@mur.entitat_id)
     @valor_limit = transmitancia_limit_murs_cte(@zona)
     if @transmitancia > @valor_limit

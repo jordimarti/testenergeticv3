@@ -253,6 +253,9 @@ ca:
       part_opaca: "Part opaca"
       part_transparent: "Part transparent"
       guardar: "Guardar"
+  cobertes:
+    form:
+      guardar: "Guardar"
   climatitzacions:
     form:
       guardar: "Guardar"

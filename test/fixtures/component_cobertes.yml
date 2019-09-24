@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coberta_id: 1
+  nom: MyString
+  conductivitat: 9.99
+  gruix: 9.99
+  resistencia_termica: 9.99
+  posicio: 1
+
+two:
+  coberta_id: 1
+  nom: MyString
+  conductivitat: 9.99
+  gruix: 9.99
+  resistencia_termica: 9.99
+  posicio: 1

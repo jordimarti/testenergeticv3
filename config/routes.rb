@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :component_cobertes
   resources :forats
   resources :habits
   resources :aparells

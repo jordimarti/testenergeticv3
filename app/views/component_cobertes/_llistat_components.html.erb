@@ -1,0 +1,22 @@
+<% if @falten_dades.present? %>
+	<% if @falten_dades[:resultat] == true %>
+		<div class="alerta-error-calcul"><%= @falten_dades[:nom] %> no està ben definit!</div>
+	<% end %>
+<% end %>
+
+<% @component_cobertes.each do |component| %>
+	<div class="components-item">
+		<%= link_to component_coberta_path(component, coberta_id: @coberta.id), remote: true, method: :delete,  data: { confirm: t('.eliminar') } do %>
+		  <div class="components-eliminar components-right">
+		  	<i class="fa fa-trash" aria-hidden="true"></i>
+		  </div>
+		<% end %>
+		
+		<%= link_to edit_component_coberta_path(component.id, coberta_id: @coberta.id), remote: true do %>
+	    
+	    	<%= component.nom %>
+	    
+	  <% end %>
+	  <span class="info-subtil">( <%= '%.2f' % component.resistencia_termica %> m<sup>2</sup>K/W )</span>
+	</div>
+<% end %>

@@ -1,0 +1,2 @@
+class ComponentCoberta < ApplicationRecord
+end

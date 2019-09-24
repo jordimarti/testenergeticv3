@@ -1,0 +1,18 @@
+
+    <div id="resultat-cas" class="resultat-calcul-transmitancia">
+      <span class="titol-valor-ressaltat"><%= t('.coeficient_transmissio_termica') %>:</span><br/>
+      <% if @transmitancia != nil %>
+        <span class="valor-ressaltat"><%= '%.2f' % @transmitancia %></span> W/m<sup>2</sup>K
+      <% else %>
+        Error de càlcul
+      <% end %>
+    </div>
+    <div id="resultat-cte" class="resultat-calcul-transmitancia">
+      <span class="titol-valor-ressaltat"><%= t('.valor_segons_cte') %>:</span><br/>
+      <span class="subtitol-valor-ressaltat">( <%= t('.zona_climatica') %>: <%= @zona.capitalize %> )</span><br/>
+      <span class="valor-ressaltat"><%= @valor_limit %></span> W/m<sup>2</sup>K
+      <% if @supera_transmitancia_limit == true %>
+        <%= image_tag('https://d116p86eni6yt2.cloudfront.net/imatges/alerta.png', :alt => t('.alerta_supera_limit'), :class => 'icona-alerta') %>
+      <% end %>
+    </div>    
+  

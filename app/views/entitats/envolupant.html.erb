@@ -75,11 +75,19 @@
           		<span class="text-notice-envolupant"><%= t('.no_cobertes') %></span>
           	</div>
           <% else %>
-	          <% @cobertes.each do |coberta| %>
-	          	<div class="item-aixecament-dades">
-	          		<%= link_to coberta.nom, edit_coberta_path(coberta) %>
-	          	</div>
-	          <% end %>
+            <table class="unstriped">
+              <tbody>
+    	          <% @cobertes.each do |coberta| %>
+    	          	<tr>
+                    <td><%= link_to coberta.nom, edit_coberta_path(coberta) %> <span class="info-subtil">( <%= '%.2f' % coberta.transmitancia_coberta %> W/m<sup>2</sup>K )</span></td>
+                    <td class="columna-eliminar">
+                      <%= link_to coberta_path(coberta), method: :delete, data: { confirm: t('.eliminar') } do %>
+                        <i class="fa fa-trash" aria-hidden="true"></i>                 
+                      <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table> 
 	        <% end %>
           <div class="afegir-element">
       			<%= link_to t('.afegir_element'), new_coberta_path(entitat_id: @entitat.id), class: 'link-afegir' %>

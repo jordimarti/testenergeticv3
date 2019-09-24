@@ -1,4 +1,5 @@
 class MursController < ApplicationController
+  include ApplicationHelper
   include ComponentMursHelper
   before_action :set_mur, only: [:show, :edit, :update, :destroy]
   before_action :set_entitat, only: [:edit, :update, :destroy]
@@ -17,7 +18,7 @@ class MursController < ApplicationController
     @subnavigation = true
     @submenu_actiu = 'aixecament'
     @component_murs = ComponentMur.where(mur_id: @mur.id).order(posicio: :asc)
-    @transmitancia = transmitancia_total(@mur.id, false)
+    @transmitancia = transmitancia_mur(@mur.id, false)
     @zona = zona_climatica_cte(@mur.entitat_id)
     @valor_limit = transmitancia_limit_murs_cte(@zona)
     if @transmitancia > @valor_limit
@@ -29,7 +30,9 @@ class MursController < ApplicationController
 
   def update
     @mur.update(mur_params)
-    @mur.transmitancia_mur = transmitancia_total(@mur.id, false)
+    @mur.transmitancia_mur = transmitancia_mur(@mur.id, false)
+    puts "Transmitancia mur -----------"
+    puts @mur.transmitancia_mur
     @mur.save
     redirect_to entitat_envolupant_path(@entitat)
   end

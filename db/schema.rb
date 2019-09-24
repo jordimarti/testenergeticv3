@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_175000) do
+ActiveRecord::Schema.define(version: 2019_09_24_073314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,18 @@ ActiveRecord::Schema.define(version: 2019_09_23_175000) do
     t.text "descripcio"
     t.decimal "superficie"
     t.decimal "percentatge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "transmitancia_coberta"
+  end
+
+  create_table "component_cobertes", force: :cascade do |t|
+    t.integer "coberta_id"
+    t.string "nom"
+    t.decimal "conductivitat"
+    t.decimal "gruix"
+    t.decimal "resistencia_termica"
+    t.integer "posicio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
