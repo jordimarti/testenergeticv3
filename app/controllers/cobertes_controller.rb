@@ -37,10 +37,7 @@ class CobertesController < ApplicationController
 
   def destroy
     @coberta.destroy
-    respond_to do |format|
-      format.html { redirect_to cobertes_url, notice: 'Coberta was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to entitat_envolupant_path(@entitat)
   end
 
   private

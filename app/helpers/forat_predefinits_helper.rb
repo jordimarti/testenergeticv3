@@ -1,0 +1,2 @@
+module ForatPredefinitsHelper
+end

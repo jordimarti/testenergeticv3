@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Terres</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Entitat</th>
+      <th>Ambit</th>
+      <th>Nom</th>
+      <th>Descripcio</th>
+      <th>Superficie</th>
+      <th>Percentatge</th>
+      <th>Transmitancia terra</th>
+      <th>Profunditat</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @terres.each do |terra| %>
+      <tr>
+        <td><%= terra.entitat_id %></td>
+        <td><%= terra.ambit %></td>
+        <td><%= terra.nom %></td>
+        <td><%= terra.descripcio %></td>
+        <td><%= terra.superficie %></td>
+        <td><%= terra.percentatge %></td>
+        <td><%= terra.transmitancia_terra %></td>
+        <td><%= terra.profunditat %></td>
+        <td><%= link_to 'Show', terra %></td>
+        <td><%= link_to 'Edit', edit_terra_path(terra) %></td>
+        <td><%= link_to 'Destroy', terra, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Terra', new_terra_path %>

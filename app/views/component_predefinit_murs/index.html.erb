@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Densitat</th>
+      <th>Conductivitat</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @component_predefinit_murs.each do |component_predefinit_mur| %>
+      <tr>
+        <td><%= link_to component_predefinit_mur.nom, component_predefinit_murs_afegeix_path(component_predefinit_mur_id: component_predefinit_mur.id, mur_id: @mur.id, nom: component_predefinit_mur.nom, ) %></td>
+        <td><%= component_predefinit_mur.densitat %></td>
+        <td><%= component_predefinit_mur.conductivitat %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

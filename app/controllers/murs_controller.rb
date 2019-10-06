@@ -39,10 +39,7 @@ class MursController < ApplicationController
 
   def destroy
     @mur.destroy
-    respond_to do |format|
-      format.html { redirect_to entitat_envolupant_path(@entitat), notice: 'Mur was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to entitat_envolupant_path(@entitat)
   end
 
   private

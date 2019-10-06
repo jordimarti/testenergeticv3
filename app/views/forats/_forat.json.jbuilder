@@ -1,2 +1,0 @@
-json.extract! forat, :id, :entitat_id, :ambit, :nom, :descripcio, :superficie_total, :superficie_opaca, :superficie_transparent, :superficie_marc, :transmitancia_opaca, :transmitancia_transparent, :transmitancia_marc, :longitud_contacte_marc_vidre, :longitud_contacte_marc_opac, :transmitancia_linial_marc_vidre, :transmitancia_linial_marc_opac, :numero, :percentatge, :created_at, :updated_at
-json.url forat_url(forat, format: :json)

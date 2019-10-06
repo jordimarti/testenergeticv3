@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'component_predefinit_murs/select', to: 'component_predefinit_murs#select', as: 'select_component_predefinit_mur'
+  get 'component_predefinit_murs/afegeix', to: 'component_predefinit_murs#afegeix', as: 'afegeix_component_predefinit_mur'
+  resources :component_predefinit_murs
+  get 'forat_predefinits/afegeix'
+  resources :forat_predefinits
+  resources :terres
   resources :component_cobertes
   resources :forats
   resources :habits

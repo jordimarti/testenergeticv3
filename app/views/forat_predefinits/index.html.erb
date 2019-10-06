@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Forat Predefinits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Entitat</th>
+      <th>Nom</th>
+      <th>Descripcio</th>
+      <th>Numero forats</th>
+      <th>Tipus marc</th>
+      <th>Superficie marc</th>
+      <th>Transmitancia marc</th>
+      <th>Tipus vidre</th>
+      <th>Superficie vidre</th>
+      <th>Transmitancia vidre</th>
+      <th>Longitud contacte vidre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @forat_predefinits.each do |forat_predefinit| %>
+      <tr>
+        <td><%= forat_predefinit.entitat_id %></td>
+        <td><%= forat_predefinit.nom %></td>
+        <td><%= forat_predefinit.descripcio %></td>
+        <td><%= forat_predefinit.numero_forats %></td>
+        <td><%= forat_predefinit.tipus_marc %></td>
+        <td><%= forat_predefinit.superficie_marc %></td>
+        <td><%= forat_predefinit.transmitancia_marc %></td>
+        <td><%= forat_predefinit.tipus_vidre %></td>
+        <td><%= forat_predefinit.superficie_vidre %></td>
+        <td><%= forat_predefinit.transmitancia_vidre %></td>
+        <td><%= forat_predefinit.longitud_contacte_vidre %></td>
+        <td><%= link_to 'Show', forat_predefinit %></td>
+        <td><%= link_to 'Edit', edit_forat_predefinit_path(forat_predefinit) %></td>
+        <td><%= link_to 'Destroy', forat_predefinit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Forat Predefinit', new_forat_predefinit_path %>

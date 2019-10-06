@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_073314) do
+ActiveRecord::Schema.define(version: 2019_10_06_084733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,17 @@ ActiveRecord::Schema.define(version: 2019_09_24_073314) do
     t.integer "posicio"
   end
 
+  create_table "component_predefinit_murs", force: :cascade do |t|
+    t.string "familia"
+    t.string "nom"
+    t.decimal "conductivitat"
+    t.decimal "densitat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "gruix"
+    t.decimal "resistencia_termica"
+  end
+
   create_table "consum_globals", force: :cascade do |t|
     t.integer "entitat_id"
     t.string "ambit"
@@ -181,6 +192,22 @@ ActiveRecord::Schema.define(version: 2019_09_24_073314) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "tipologia"
+  end
+
+  create_table "forat_predefinits", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "nom"
+    t.text "descripcio"
+    t.integer "numero_forats"
+    t.string "tipus_marc"
+    t.decimal "superficie_marc"
+    t.decimal "transmitancia_marc"
+    t.string "tipus_vidre"
+    t.decimal "superficie_vidre"
+    t.decimal "transmitancia_vidre"
+    t.decimal "longitud_contacte_vidre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "forats", force: :cascade do |t|
@@ -325,6 +352,32 @@ ActiveRecord::Schema.define(version: 2019_09_24_073314) do
     t.datetime "updated_at", null: false
     t.integer "data_any"
     t.integer "data_mes"
+  end
+
+  create_table "terres", force: :cascade do |t|
+    t.integer "entitat_id"
+    t.string "ambit"
+    t.string "nom"
+    t.text "descripcio"
+    t.decimal "superficie"
+    t.decimal "percentatge"
+    t.decimal "transmitancia_terra"
+    t.string "profunditat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "resistencia_termica_aillant"
+    t.decimal "longitud_perimetre"
+    t.decimal "ample_aillament"
+    t.decimal "valor"
+  end
+
+  create_table "transmitancia_lloses", force: :cascade do |t|
+    t.decimal "resistencia_termica_aillant"
+    t.decimal "longitud_perimetre"
+    t.decimal "ample_aillament"
+    t.decimal "valor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Entitat:</strong>
+  <%= @terra.entitat_id %>
+</p>
+
+<p>
+  <strong>Ambit:</strong>
+  <%= @terra.ambit %>
+</p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @terra.nom %>
+</p>
+
+<p>
+  <strong>Descripcio:</strong>
+  <%= @terra.descripcio %>
+</p>
+
+<p>
+  <strong>Superficie:</strong>
+  <%= @terra.superficie %>
+</p>
+
+<p>
+  <strong>Percentatge:</strong>
+  <%= @terra.percentatge %>
+</p>
+
+<p>
+  <strong>Transmitancia terra:</strong>
+  <%= @terra.transmitancia_terra %>
+</p>
+
+<p>
+  <strong>Profunditat:</strong>
+  <%= @terra.profunditat %>
+</p>
+
+<%= link_to 'Edit', edit_terra_path(@terra) %> |
+<%= link_to 'Back', terres_path %>

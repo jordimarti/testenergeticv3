@@ -1,5 +1,6 @@
 class PropostesController < ApplicationController
   #Incloem el ComponentMursHelper per a calcular zona climàtica per generar propostes
+  include ApplicationHelper
   include ComponentMursHelper
   before_action :set_proposta, only: [:show, :edit, :update, :destroy]
   before_action :set_entitat, only: [:generar_propostes]
@@ -37,6 +38,8 @@ class PropostesController < ApplicationController
     end
     codi = lletra + '_' + zona_climatica
     
+    data_any = Date.today.year + 1
+    data_mes = 1
     # Aïllament de façana
     proposta_aillament = PropostaPredefinida.find_by(codi: 'P1')
     estalvi = proposta_aillament.send("#{lletra}_#{zona_climatica}")
@@ -45,7 +48,7 @@ class PropostesController < ApplicationController
     estalvi_pessimista = estalvi - (estalvi * 0.15)
     cost_optimista = cost - (cost * 0.15)
     cost_pessimista = cost + (cost * 0.15)
-    Proposta.create(entitat_id: @entitat.id, mesura: proposta_aillament.mesura_ca, descripcio: proposta_aillament.descripcio, cost_optimista: cost_optimista, cost_pessimista: cost_pessimista, estalvi_optimista: estalvi_optimista, estalvi_pessimista: estalvi_pessimista)
+    Proposta.create(entitat_id: @entitat.id, mesura: proposta_aillament.mesura_ca, descripcio: proposta_aillament.descripcio, cost_optimista: cost_optimista, cost_pessimista: cost_pessimista, estalvi_optimista: estalvi_optimista, estalvi_pessimista: estalvi_pessimista, data_any: data_any, data_mes: data_mes)
 
     # Canvi finestres
     proposta_finestra = PropostaPredefinida.find_by(codi: 'P58')
@@ -56,7 +59,7 @@ class PropostesController < ApplicationController
     estalvi_pessimista = estalvi - (estalvi * 0.15)
     cost_optimista = cost - (cost * 0.15)
     cost_pessimista = cost + (cost * 0.15)
-    Proposta.create(entitat_id: @entitat.id, mesura: proposta_finestra.mesura_ca, descripcio: proposta_finestra.descripcio, cost_optimista: cost_optimista, cost_pessimista: cost_pessimista, estalvi_optimista: estalvi_optimista, estalvi_pessimista: estalvi_pessimista)
+    Proposta.create(entitat_id: @entitat.id, mesura: proposta_finestra.mesura_ca, descripcio: proposta_finestra.descripcio, cost_optimista: cost_optimista, cost_pessimista: cost_pessimista, estalvi_optimista: estalvi_optimista, estalvi_pessimista: estalvi_pessimista, data_any: data_any, data_mes: data_mes)
 
     # Canvi caldera
     # Només proposem canvi caldera si es tracta d'habitatge unifamiliar o subentitat
@@ -77,7 +80,7 @@ class PropostesController < ApplicationController
     estalvi_pessimista = estalvi - (estalvi * 0.15)
     cost_optimista = cost - (cost * 0.15)
     cost_pessimista = cost + (cost * 0.15)
-    Proposta.create(entitat_id: @entitat.id, mesura: proposta_caldera.mesura_ca, descripcio: proposta_caldera.descripcio, cost_optimista: cost_optimista, cost_pessimista: cost_pessimista, estalvi_optimista: estalvi_optimista, estalvi_pessimista: estalvi_pessimista)
+    Proposta.create(entitat_id: @entitat.id, mesura: proposta_caldera.mesura_ca, descripcio: proposta_caldera.descripcio, cost_optimista: cost_optimista, cost_pessimista: cost_pessimista, estalvi_optimista: estalvi_optimista, estalvi_pessimista: estalvi_pessimista, data_any: data_any, data_mes: data_mes)
     
     redirect_to entitat_propostes_path(id: @entitat.id) 
   end

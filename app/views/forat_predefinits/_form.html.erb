@@ -1,0 +1,23 @@
+
+<%= simple_form_for(@forat_predefinit) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :entitat_id %>
+    <%= f.input :nom %>
+    <%= f.input :descripcio %>
+    <%= f.input :numero_forats %>
+    <%= f.input :tipus_marc %>
+    <%= f.input :superficie_marc %>
+    <%= f.input :transmitancia_marc %>
+    <%= f.input :tipus_vidre %>
+    <%= f.input :superficie_vidre %>
+    <%= f.input :transmitancia_vidre %>
+    <%= f.input :longitud_contacte_vidre %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

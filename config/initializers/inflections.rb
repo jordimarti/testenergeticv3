@@ -21,4 +21,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'coberta', 'cobertes'
   inflect.irregular 'lampada', 'lampades'
   inflect.irregular 'climatitzacio', 'climatitzacions'
+  inflect.irregular 'transmitancia', 'transmitancies'
+  inflect.irregular 'llosa', 'lloses'
+  inflect.irregular 'terra', 'terres'
 end

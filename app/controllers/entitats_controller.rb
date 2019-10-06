@@ -105,7 +105,35 @@ class EntitatsController < ApplicationController
     @submenu_actiu = 'aixecament'
     @murs = Mur.where(entitat_id: @entitat.id)
     @forats = Forat.where(entitat_id: @entitat.id)
+    @forats_predefinits = ForatPredefinit.all
     @cobertes = Coberta.where(entitat_id: @entitat.id)
+    @terres = Terra.where(entitat_id: @entitat.id)
+    #Càlcul de la transmitància global
+    transmitancia_murs = 0
+    superficie_murs = 0
+    @murs.each do |mur|
+      transmitancia_murs = transmitancia_murs + (mur.superficie * mur.transmitancia_mur)
+      superficie_murs = superficie_murs + mur.superficie
+    end
+    transmitancia_forats = 0
+    superficie_forats = 0
+    @forats.each do |forat|
+      transmitancia_forats = transmitancia_forats + (forat.superficie_total * forat.transmitancia_global_forat)
+      superficie_forats = superficie_forats + forat.superficie_total
+    end
+    transmitancia_cobertes = 0
+    superficie_cobertes = 0
+    @cobertes.each do |coberta|
+      transmitancia_cobertes = transmitancia_cobertes + (coberta.superficie * coberta.transmitancia_coberta)
+      superficie_cobertes = superficie_cobertes + coberta.superficie
+    end
+    transmitancia_terres = 0
+    superficie_terres = 0
+    @terres.each do |terra|
+      transmitancia_terres = transmitancia_terres + (terra.superficie * terra.transmitancia_terra)
+      superficie_terres = superficie_terres + terra.superficie
+    end
+    @transmitancia_entitat = (transmitancia_murs + transmitancia_forats + transmitancia_cobertes + transmitancia_terres)/(superficie_murs + superficie_forats + superficie_cobertes + superficie_terres)
   end
 
   def iluminacio

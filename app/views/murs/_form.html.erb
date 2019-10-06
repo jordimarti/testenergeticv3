@@ -8,6 +8,41 @@
   </button>
 </div>
 
+<div class="reveal" id="modal-component-predefinit" data-reveal>
+  <h3 id="modalTitle"><%= t('.component') %></h3>
+  <div id="llistat-components" class="llistat-components">
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="reveal" id="modal-families" data-reveal>
+  <h3 id="modalTitle"><%= t('.selecciona_familia') %></h3>
+  <div id="llistat-families" class="llistat-families">
+    <ul>
+      <li class="item-families">
+        <%= link_to select_component_predefinit_mur_path(mur_id: @mur.id, familia: "petris"), remote: true do %>
+          <%= t('.petris') %>
+        <% end %>
+      </li>
+      <li class="item-families">
+        <%= link_to select_component_predefinit_mur_path(mur_id: @mur.id, familia: "metalls"), remote: true do %>
+          <%= t('.metalls') %>
+        <% end %>
+      </li>
+      <li class="item-families">
+        <%= link_to select_component_predefinit_mur_path(mur_id: @mur.id, familia: "fustes"), remote: true do %>
+          <%= t('.fustes') %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
 <%= simple_form_for(@mur) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -45,7 +80,7 @@
       <div class="medium-8 cell">
         <hr/>
         <h4><%= t('.composicio') %></h4>
-        <%= f.input :tipus_mur, collection: [[t('.una_fulla'), 'una_fulla'], [t('.dues_fulles'), 'dues_fulles']] %>
+        
         <div id="elements-mur">
           Elements d'exterior a interior: <br/>
 
@@ -56,6 +91,9 @@
           <%= link_to (new_component_mur_path(mur_id: @mur.id, entitat_id: @entitat.id)), remote: true do %>
             <span class="suma">+</span> <%= t('.nou_component') %>
           <% end %>
+          <br/>
+          <a id="nou-predefinit"><span class="suma">+</span> <%= t('.nou_component_predefinit') %></a>
+          
         </div>
       </div>
     </div>  
@@ -65,3 +103,12 @@
     <%= f.button :submit, t('.guardar'), :class => 'button' %>
   </div>
 <% end %>
+
+<script>
+  $('#nou-predefinit').click(function() {
+    $('#modal-families').foundation('open');
+  });
+  $('.item-families').click(function() {
+    $('#modal-families').foundation('close');
+  });
+</script>

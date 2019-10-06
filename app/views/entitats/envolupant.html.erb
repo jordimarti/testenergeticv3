@@ -1,3 +1,17 @@
+<div class="reveal" id="modal-forat" data-reveal>
+  <h3 id="modalTitle"><%= t('.elements_predefinits') %></h3>
+  <div>
+    <ul>
+    <% @forats_predefinits.each do |forat| %>
+      <li><%= link_to forat.nom, forat_predefinits_afegeix_path(forat_predefinit_id: forat.id, entitat_id: @entitat.id) %></li>
+    <% end %>
+    </ul>
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
 <div class="light-background-container">
   
   <div class="grid-container">
@@ -27,6 +41,7 @@
                       <%= link_to mur_path(mur), method: :delete, data: { confirm: t('.eliminar') } do %>
                         <i class="fa fa-trash" aria-hidden="true"></i>                 
                       <% end %>
+                    </td>
                   </tr>
                 <% end %>
               </tbody>
@@ -54,6 +69,7 @@
                       <%= link_to forat_path(forat), method: :delete, data: { confirm: t('.eliminar') } do %>
                         <i class="fa fa-trash" aria-hidden="true"></i>                 
                       <% end %>
+                    </td>
                   </tr>
     	          <% end %>
               </tbody>
@@ -62,6 +78,9 @@
           <div class="afegir-element">
       			<%= link_to t('.afegir_element'), new_forat_path(entitat_id: @entitat.id), class: 'link-afegir' %>
       		</div>
+          <div class="afegir-element">
+            <a id="nou-forat-predefinit"><%= t('.nou_forat_predefinit') %></a>
+          </div>
         </div>
       </div>
     </div>
@@ -84,6 +103,7 @@
                       <%= link_to coberta_path(coberta), method: :delete, data: { confirm: t('.eliminar') } do %>
                         <i class="fa fa-trash" aria-hidden="true"></i>                 
                       <% end %>
+                    </td>
                   </tr>
                 <% end %>
               </tbody>
@@ -97,19 +117,29 @@
       <div class="medium-6 cell">
         <div class="light-container envolupant-items-container">
           <h4 class="titol-seccio"><%= t('.terres') %></h4>
-          <% if @cobertes.count == 0 %>
+          
+          <% if @terres.count == 0 %>
             <div class="notice-envolupant">
               <span class="text-notice-envolupant"><%= t('.no_terres') %></span>
             </div>
           <% else %>
-            <% @cobertes.each do |coberta| %>
-              <div class="item-aixecament-dades">
-                <%= link_to coberta.nom, edit_coberta_path(coberta) %>
-              </div>
-            <% end %>
+            <table class="unstriped">
+              <tbody>
+                <% @terres.each do |terra| %>
+                  <tr>
+                    <td><%= link_to terra.nom, edit_terra_path(terra) %> <span class="info-subtil">( <%= '%.2f' % terra.transmitancia_terra %> W/m<sup>2</sup>K )</span></td>
+                    <td class="columna-eliminar">
+                      <%= link_to terra_path(terra), method: :delete, data: { confirm: t('.eliminar') } do %>
+                        <i class="fa fa-trash" aria-hidden="true"></i>                 
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table> 
           <% end %>
           <div class="afegir-element">
-            <%= link_to t('.afegir_element'), new_coberta_path(entitat_id: @entitat.id), class: 'link-afegir' %>
+            <%= link_to t('.afegir_element'), new_terra_path(entitat_id: @entitat.id), class: 'link-afegir' %>
           </div>
         </div>
       </div>
@@ -120,7 +150,11 @@
         <div class="light-container envolupant-items-container">
           <h4 class="titol-seccio"><%= t('.calcul_transmitancia') %></h4>
           <div class="notice-envolupant">
-            <span class="text-notice-envolupant"><%= t('.falta_info') %></span>
+            <% if @murs.count == 0 || @forats.count == 0 || @cobertes.count == 0 || @terres.count == 0 %>
+              <span class="text-notice-envolupant"><%= t('.falta_info') %></span>
+            <% else %>
+              <span class="text-notice-envolupant-destacat"><%= @transmitancia_entitat.round(2) %> W/m<sup>2</sup>K</span>
+            <% end %>
           </div>
         </div>
       </div>
@@ -128,3 +162,9 @@
 
   </div>
 </div>
+
+<script>
+  $('#nou-forat-predefinit').click(function() {
+    $('#modal-forat').foundation('open');
+  });
+</script>

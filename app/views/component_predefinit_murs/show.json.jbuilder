@@ -1,0 +1,1 @@
+json.partial! "component_predefinit_murs/component_predefinit_mur", component_predefinit_mur: @component_predefinit_mur

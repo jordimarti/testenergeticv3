@@ -1,0 +1,39 @@
+
+<%= simple_form_for(@terra) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <div class="grid-x grid-margin-x">
+      <div class="medium-4 cell">
+        <%= f.input :nom %>
+      </div>
+      <div class="medium-8 cell">
+        <%= f.input :descripcio %>
+      </div>
+    </div>
+    <div class="grid-x grid-margin-x">
+      <div class="medium-4 cell">
+        <%= f.input :superficie %>
+      </div>
+      <div class="medium-4 cell">
+        <%= f.input :profunditat, collection: [[t('.menys_50'), 'menys_50'], [t('.mes_50'), 'mes_50']] %>
+      </div>
+      <div class="medium-4 cell">
+        <%= f.input :resistencia_termica_aillant %>
+      </div>
+    </div>
+    <div class="grid-x grid-margin-x">
+      <div class="medium-4 cell">
+        <%= f.input :longitud_perimetre %>
+      </div>
+      <div class="medium-4 cell">
+        <%= f.input :ample_aillament %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

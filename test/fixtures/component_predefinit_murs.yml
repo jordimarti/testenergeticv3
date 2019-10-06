@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  familia: MyString
+  nom: MyString
+  conductivitat: 9.99
+  densitat: 9.99
+
+two:
+  familia: MyString
+  nom: MyString
+  conductivitat: 9.99
+  densitat: 9.99

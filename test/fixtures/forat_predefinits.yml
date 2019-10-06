@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entitat_id: 1
+  nom: MyString
+  descripcio: MyText
+  numero_forats: 1
+  tipus_marc: MyString
+  superficie_marc: 9.99
+  transmitancia_marc: 9.99
+  tipus_vidre: MyString
+  superficie_vidre: 9.99
+  transmitancia_vidre: 9.99
+  longitud_contacte_vidre: 9.99
+
+two:
+  entitat_id: 1
+  nom: MyString
+  descripcio: MyText
+  numero_forats: 1
+  tipus_marc: MyString
+  superficie_marc: 9.99
+  transmitancia_marc: 9.99
+  tipus_vidre: MyString
+  superficie_vidre: 9.99
+  transmitancia_vidre: 9.99
+  longitud_contacte_vidre: 9.99
