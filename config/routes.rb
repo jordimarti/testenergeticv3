@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  get 'component_predefinit_murs/select', to: 'component_predefinit_murs#select', as: 'select_component_predefinit_mur'
-  get 'component_predefinit_murs/afegeix', to: 'component_predefinit_murs#afegeix', as: 'afegeix_component_predefinit_mur'
-  resources :component_predefinit_murs
+  
+  
+  resources :component_predefinits
   get 'forat_predefinits/afegeix'
   resources :forat_predefinits
   resources :terres
+  get 'component_cobertes/select', to: 'component_cobertes#select', as: 'select_component_coberta'
+  get 'component_cobertes/afegeix', to: 'component_cobertes#afegeix', as: 'afegeix_component_coberta'
   resources :component_cobertes
   resources :forats
   resources :habits
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
   resources :proposta_predefinides
   resources :climatitzacions
   resources :lampades
+  get 'component_murs/select', to: 'component_murs#select', as: 'select_component_mur'
+  get 'component_murs/afegeix', to: 'component_murs#afegeix', as: 'afegeix_component_mur'
   resources :component_murs
   get 'component_murs/canviar_posicio'
   resources :cobertes

@@ -10,7 +10,10 @@
   <tbody>
     <% @component_predefinit_murs.each do |component_predefinit_mur| %>
       <tr>
-        <td><%= link_to component_predefinit_mur.nom, component_predefinit_murs_afegeix_path(component_predefinit_mur_id: component_predefinit_mur.id, mur_id: @mur.id, nom: component_predefinit_mur.nom, ) %></td>
+        <td><%= link_to afegeix_component_mur_path(component_predefinit_id: component_predefinit_mur.id, mur_id: params[:mur_id]), remote: true do %>
+        	<%= component_predefinit_mur.nom %>
+        	<% end %>
+        </td>
         <td><%= component_predefinit_mur.densitat %></td>
         <td><%= component_predefinit_mur.conductivitat %></td>
       </tr>

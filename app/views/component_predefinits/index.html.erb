@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Component Predefinits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Familia</th>
+      <th>Nom</th>
+      <th>Conductivitat</th>
+      <th>Densitat</th>
+      <th>Gruix</th>
+      <th>Resistencia termica</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @component_predefinits.each do |component_predefinit| %>
+      <tr>
+        <td><%= component_predefinit.familia %></td>
+        <td><%= component_predefinit.nom %></td>
+        <td><%= component_predefinit.conductivitat %></td>
+        <td><%= component_predefinit.densitat %></td>
+        <td><%= component_predefinit.gruix %></td>
+        <td><%= component_predefinit.resistencia_termica %></td>
+        <td><%= link_to 'Show', component_predefinit %></td>
+        <td><%= link_to 'Edit', edit_component_predefinit_path(component_predefinit) %></td>
+        <td><%= link_to 'Destroy', component_predefinit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Component Predefinit', new_component_predefinit_path %>

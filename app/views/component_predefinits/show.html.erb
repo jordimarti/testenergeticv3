@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Familia:</strong>
+  <%= @component_predefinit.familia %>
+</p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @component_predefinit.nom %>
+</p>
+
+<p>
+  <strong>Conductivitat:</strong>
+  <%= @component_predefinit.conductivitat %>
+</p>
+
+<p>
+  <strong>Densitat:</strong>
+  <%= @component_predefinit.densitat %>
+</p>
+
+<p>
+  <strong>Gruix:</strong>
+  <%= @component_predefinit.gruix %>
+</p>
+
+<p>
+  <strong>Resistencia termica:</strong>
+  <%= @component_predefinit.resistencia_termica %>
+</p>
+
+<%= link_to 'Edit', edit_component_predefinit_path(@component_predefinit) %> |
+<%= link_to 'Back', component_predefinits_path %>

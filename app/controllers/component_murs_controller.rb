@@ -74,6 +74,31 @@ class ComponentMursController < ApplicationController
     @component_murs = ComponentMur.where(mur_id: @mur.id).order(posicio: :asc)
   end
 
+  def select
+    @component_predefinit_murs = ComponentPredefinit.where(familia: params[:familia])
+  end
+
+  def afegeix
+    component_predefinit = ComponentPredefinit.find(params[:component_predefinit_id])
+    component = ComponentMur.new
+    component.mur_id = params[:mur_id]
+    component.nom = component_predefinit.nom
+    component.conductivitat = component_predefinit.conductivitat
+    component.gruix = component_predefinit.gruix
+    component.resistencia_termica = component.gruix/component.conductivitat
+    #Abans de guardar hem de saber la posició que li toca
+    ultim_component = ComponentMur.where(mur_id: params[:mur_id]).order(posicio: :asc).last
+    if ultim_component.present?
+      posicio_ultim_component = ultim_component.posicio
+      component.posicio = posicio_ultim_component + 1
+    else
+      component.posicio = 0
+    end
+    component.save
+    @component_murs = ComponentMur.where(mur_id: params[:mur_id]).order(posicio: :asc)
+    @mur = Mur.find(params[:mur_id])
+  end
+
   private
     def set_component_mur
       @component_mur = ComponentMur.find(params[:id])

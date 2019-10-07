@@ -1,0 +1,2 @@
+module ComponentPredefinitsHelper
+end

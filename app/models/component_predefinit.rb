@@ -1,0 +1,2 @@
+class ComponentPredefinit < ApplicationRecord
+end

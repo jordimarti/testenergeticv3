@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ComponentPredefinitMurTest < ActiveSupport::TestCase
+class ComponentPredefinitTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

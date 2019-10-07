@@ -112,8 +112,10 @@ class EntitatsController < ApplicationController
     transmitancia_murs = 0
     superficie_murs = 0
     @murs.each do |mur|
-      transmitancia_murs = transmitancia_murs + (mur.superficie * mur.transmitancia_mur)
-      superficie_murs = superficie_murs + mur.superficie
+      if mur.superficie != nil
+        transmitancia_murs = transmitancia_murs + (mur.superficie * mur.transmitancia_mur)
+        superficie_murs = superficie_murs + mur.superficie
+      end
     end
     transmitancia_forats = 0
     superficie_forats = 0
@@ -133,7 +135,11 @@ class EntitatsController < ApplicationController
       transmitancia_terres = transmitancia_terres + (terra.superficie * terra.transmitancia_terra)
       superficie_terres = superficie_terres + terra.superficie
     end
-    @transmitancia_entitat = (transmitancia_murs + transmitancia_forats + transmitancia_cobertes + transmitancia_terres)/(superficie_murs + superficie_forats + superficie_cobertes + superficie_terres)
+    if transmitancia_murs == 0 || transmitancia_forats == 0 || transmitancia_cobertes == 0 || transmitancia_terres == 0
+      @transmitancia_entitat = "No es pot calcular"
+    else
+      @transmitancia_entitat = (transmitancia_murs + transmitancia_forats + transmitancia_cobertes + transmitancia_terres)/(superficie_murs + superficie_forats + superficie_cobertes + superficie_terres)
+    end
   end
 
   def iluminacio

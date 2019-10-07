@@ -4,10 +4,14 @@ one:
   familia: MyString
   nom: MyString
   conductivitat: 9.99
-  densitat: 9.99
+  densitat: MyString
+  gruix: 9.99
+  resistencia_termica: 9.99
 
 two:
   familia: MyString
   nom: MyString
   conductivitat: 9.99
-  densitat: 9.99
+  densitat: MyString
+  gruix: 9.99
+  resistencia_termica: 9.99

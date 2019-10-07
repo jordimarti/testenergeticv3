@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Densitat</th>
+      <th>Conductivitat</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @component_predefinit_cobertes.each do |component_predefinit_coberta| %>
+      <tr>
+        <td><%= link_to afegeix_component_coberta_path(component_predefinit_id: component_predefinit_coberta.id, coberta_id: params[:coberta_id]), remote: true do %>
+        	<%= component_predefinit_coberta.nom %>
+        	<% end %>
+        </td>
+        <td><%= component_predefinit_coberta.densitat %></td>
+        <td><%= component_predefinit_coberta.conductivitat %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

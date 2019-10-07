@@ -63,6 +63,31 @@ class ComponentCobertesController < ApplicationController
     end
   end
 
+  def select
+    @component_predefinit_cobertes = ComponentPredefinit.where(familia: params[:familia])
+  end
+
+  def afegeix
+    component_predefinit = ComponentPredefinit.find(params[:component_predefinit_id])
+    component = ComponentCoberta.new
+    component.coberta_id = params[:coberta_id]
+    component.nom = component_predefinit.nom
+    component.conductivitat = component_predefinit.conductivitat
+    component.gruix = component_predefinit.gruix
+    component.resistencia_termica = component.gruix/component.conductivitat
+    #Abans de guardar hem de saber la posició que li toca
+    ultim_component = ComponentCoberta.where(coberta_id: params[:coberta_id]).order(posicio: :asc).last
+    if ultim_component.present?
+      posicio_ultim_component = ultim_component.posicio
+      component.posicio = posicio_ultim_component + 1
+    else
+      component.posicio = 0
+    end
+    component.save
+    @component_cobertes = ComponentCoberta.where(coberta_id: params[:coberta_id]).order(posicio: :asc)
+    @coberta = Coberta.find(params[:coberta_id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_component_coberta

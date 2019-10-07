@@ -22,17 +22,17 @@
   <div id="llistat-families" class="llistat-families">
     <ul>
       <li class="item-families">
-        <%= link_to select_component_predefinit_mur_path(mur_id: @mur.id, familia: "petris"), remote: true do %>
+        <%= link_to select_component_mur_path(mur_id: @mur.id, familia: "petris"), remote: true do %>
           <%= t('.petris') %>
         <% end %>
       </li>
       <li class="item-families">
-        <%= link_to select_component_predefinit_mur_path(mur_id: @mur.id, familia: "metalls"), remote: true do %>
+        <%= link_to select_component_mur_path(mur_id: @mur.id, familia: "metalls"), remote: true do %>
           <%= t('.metalls') %>
         <% end %>
       </li>
       <li class="item-families">
-        <%= link_to select_component_predefinit_mur_path(mur_id: @mur.id, familia: "fustes"), remote: true do %>
+        <%= link_to select_component_mur_path(mur_id: @mur.id, familia: "fustes"), remote: true do %>
           <%= t('.fustes') %>
         <% end %>
       </li>

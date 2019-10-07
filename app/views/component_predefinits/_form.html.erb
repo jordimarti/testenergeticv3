@@ -1,5 +1,5 @@
 
-<%= simple_form_for(@component_predefinit_mur) do |f| %>
+<%= simple_form_for(@component_predefinit) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -8,6 +8,8 @@
     <%= f.input :nom %>
     <%= f.input :conductivitat %>
     <%= f.input :densitat %>
+    <%= f.input :gruix %>
+    <%= f.input :resistencia_termica %>
   </div>
 
   <div class="form-actions">
