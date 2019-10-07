@@ -11,11 +11,7 @@
 		  	<i class="fa fa-trash" aria-hidden="true"></i>
 		  </div>
 		<% end %>
-		<%= link_to component_murs_canviar_posicio_path(component_id: component.id), remote: true do %>
-		  <div class="components-pujar components-right">
-		  	<i class="fa fa-arrow-up" aria-hidden="true"></i> 
-		  </div>
-		<% end %>
+
 		<%= link_to edit_component_mur_path(component.id, mur_id: @mur.id), remote: true do %>
 	    
 	    	<%= component.nom %>

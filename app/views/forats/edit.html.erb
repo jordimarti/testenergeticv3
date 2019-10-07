@@ -3,6 +3,11 @@
   <div class="grid-container">
     <div class="grid-x grid-margin-x">
       <div class="medium-12 cell">
+        <div class="boto-retorn">
+          <%= link_to entitat_envolupant_path(@entitat) do %>
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> <%= t('.envolupant') %>
+          <% end %>
+        </div>
         <div class="titol-seccio">
           <%= t('.titol') %>
         </div>

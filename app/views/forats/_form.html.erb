@@ -13,22 +13,25 @@
         <%= f.input :descripcio %>
       </div>
     </div>
+
+    <hr/>
+
     <div class="grid-x grid-margin-x">
       <div class="medium-4 cell">
-        <h4>Marc</h4>
+        <h4 class="subtitol-formulari"><%= t('.marc') %></h4>
         <%= f.input :superficie_marc %>
         <%= f.input :transmitancia_marc %>
         <%= f.input :tipus_marc, collection: [[t('.fusta'), 'fusta'], [t('.pvc'), 'pvc'], [t('.metalic_rpt'), 'metalic_rpt'], [t('.metalic'), 'metalic']] %>
       </div>
       <div class="medium-4 cell">
-        <h4>Vidre</h4>
+        <h4 class="subtitol-formulari"><%= t('.vidre') %></h4>
         <%= f.input :superficie_transparent %>
         <%= f.input :transmitancia_transparent %>
         <%= f.input :longitud_contacte_marc_vidre %>
         <%= f.input :tipus_vidre, collection: [[t('.senzill'), 'senzill'], [t('.doble'), 'doble'], [t('.doble_baix_emissiu'), 'doble baix emissiu'], [t('.triple'), 'triple'], [t('.triple_baix_emissiu'), 'triple baix emissiu']] %>
       </div>
       <div class="medium-4 cell">
-        <h4>Panell opac</h4>
+        <h4 class="subtitol-formulari"><%= t('.panell_opac') %></h4>
         <%= f.input :superficie_opaca %>
         <%= f.input :transmitancia_opaca %>
         <%= f.input :longitud_contacte_marc_opac %>
@@ -37,6 +40,6 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, t('.guardar'), :class => 'button' %>
   </div>
 <% end %>

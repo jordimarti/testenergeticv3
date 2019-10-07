@@ -80,7 +80,7 @@ ca:
         quota: "Quota"
         destinacio: "Destinació"
       mur:
-        nom: "Nom"
+        nom: "Nom del mur"
         descripcio: "Descripció"
         superficie: "Superfície"
         percentatge: "Percentatge"
@@ -91,17 +91,34 @@ ca:
         gruix: "Gruix"
         resistencia_termica: "Resistència tèrmica"
       forat:
-        nom: "Nom"
+        nom: "Nom del forat"
         descripcio: "Descripció"
         superficie: "Superfície"
         percentatge: "% respecte total forats"
         numero: "Número de forats d'aquest tipus"
-        nom_part_opaca: "Tipus de marc"
-        part_opaca: "% respecte total forat"
-        transmitancia_part_opaca: "Transmitància tèrmica"
-        nom_part_transparent: "Tipus de vidre"
-        part_transparent: "% respecte total forat"
-        transmitancia_part_transparent: "Transmitància tèrmica"
+        superficie_marc: "Superfície"
+        transmitancia_marc: "Transmitància"
+        tipus_marc: "Tipus de marc"
+        superficie_transparent: "Superfície"
+        transmitancia_transparent: "Transmitància"
+        longitud_contacte_marc_vidre: "Longitud de contacte entre el marc i el vidre"
+        tipus_vidre: "Tipus de vidre"
+        superficie_opaca: "Superfície"
+        transmitancia_opaca: "Transmitància"
+        longitud_contacte_marc_opac: "Longitud de cotacte entre el marc i el panell"
+      coberta:
+        nom: "Nom de la coberta"
+        descripcio: "Descripció"
+        superficie: "Superfície"
+        percentatge: "Percentatge"
+      terra:
+        nom: "Nom del terra"
+        descripcio: "Descripció"
+        superficie: "Superfície"
+        profunditat: "Profunditat"
+        resistencia_termica_aillant: "Resistència tèrmica de l'aïllant"
+        longitud_perimetre: "Longitud del perímetre"
+        ample_aillament: "Ample de l'aïllament"
       climatitzacio:
         tipologia_calefaccio_1: "Sistema principal de calefacció"
         antiguitat_calefaccio_1: "Antiguitat del sistema (anys)"
@@ -215,6 +232,7 @@ ca:
       no_terres: "Definex els terres"
       falta_info: "Falta informació per poder calcular la transmitància tèrmica global"
       eliminar: "Segur que vols eliminar?"
+      nou_forat_predefinit: "+ Afegir element predefinit"
     iluminacio:
       titol: "Il·luminació"
       seleccio_ambit: "Selecció d'àmbit"
@@ -237,6 +255,10 @@ ca:
       guardar: "Guardar"
       component: "Component"
       alerta-supera-limit: "Alerta! El mur supera el valor límit del CTE"
+      nou_component_predefinit: "Afegir component predefinit"
+      selecciona_familia: "Selecciona la família de producte"
+      component: "Selecciona el component"
+      text_components: "Components d'exterior a interior: "
     calcul_transmitancia:
       coeficient_transmissio_termica: "Coeficient de transmissió tèrmica"
       valor_segons_cte: "Valor segons el CTE"
@@ -250,10 +272,27 @@ ca:
     edit:
       titol: "Envolupant tèrmica: edició de forat"
     form:
-      part_opaca: "Part opaca"
-      part_transparent: "Part transparent"
+      marc: "Marc"
+      vidre: "Vidre"
+      panell_opac: "Panell opac"
       guardar: "Guardar"
   cobertes:
+    form:
+      guardar: "Guardar"
+      nou_component: "Afegir component"
+      nou_component_predefinit: "Afegir component predefinit"
+      selecciona_familia: "Selecciona la família de producte"
+      component: "Selecciona el component"
+      text_components: "Components d'exterior a interior: "
+    edit:
+      titol: "Envolupant tèrmica: edició de coberta"
+    calcul_transmitancia:
+      coeficient_transmissio_termica: "Coeficient de transmissió tèrmica"
+      valor_segons_cte: "Valor segons el CTE"
+      zona_climatica: "Zona climàtica"
+  terres:
+    edit:
+      titol: "Envolupant tèrmica: edició de terra"
     form:
       guardar: "Guardar"
   climatitzacions:

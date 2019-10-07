@@ -322,6 +322,11 @@ div.radio {
   margin-right: 40px;
 }
 
+.subtitol-formulari {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
 
 /******* DOCUMENTS *******/
 .imatge-document {
@@ -451,4 +456,10 @@ h2.subtitol-document {
   color: #427853;
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+.boto-retorn {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 0.9em;
 }
