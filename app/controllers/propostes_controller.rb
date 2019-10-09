@@ -86,6 +86,10 @@ class PropostesController < ApplicationController
   end
 
   def lletra_tipus_habitatge(entitat)
+    # Comprovem si és subentitat, llavors busquem info de la entitat pare
+    if entitat.ambit == 'subentitat'
+      entitat = Entitat.find(entitat.pare)
+    end
     if entitat.tipologia == "Unifamiliar"
       if entitat.any_construccio < 1951
         return 'a'

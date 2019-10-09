@@ -13,6 +13,11 @@
   <div class="grid-container">
     <div class="grid-x grid-margin-x">
       <div class="medium-12 cell">
+        <div class="boto-retorn">
+          <%= link_to entitat_aixecament_path(@entitat) do %>
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> <%= t('.aixecament_dades') %>
+          <% end %>
+        </div>
         <div class="titol-seccio">
           <%= t('.titol') %>
         </div>
@@ -23,50 +28,58 @@
       <div class="grid-x grid-margin-x">
         <div class="medium-12 cell">
           <div class="light-container">
-            <p>La climatització i aigua calenta sanitària cal definir-les a nivell d'entitats de l'edifici i no a nivell global. O sigui que es defineix a cada pis, local comercial, etc.</p>
+            <p>La climatització i aigua calenta sanitària cal definir-les a nivell d'entitats de l'edifici i no a nivell global. O sigui que es defineix a cada pis, local comercial, etc. En cas que les zones comuns de l'edifici tinguin climatització sí que ho has d'introduir aquí.</p>
             <p>A l'apartat de "Selecció d'àmbit" pots seleccionar l'entitat on definir la climatització i l'aigua calenta sanitària.</p>
             <p><%= link_to t('.seleccio_ambit'), entitat_ambits_path(@entitat.id), class:'button' %></p>
           </div>
         </div>
       </div>
 
-    <% else %>
-        
+      <br/>
+
       <div class="grid-x grid-margin-x">
-        <div class="medium-6 cell">
-          <div class="light-container container-separator" id="calefaccio-1">
-            <%= render partial: '/climatitzacions/calefaccio_1' %>
-          </div>
-        </div>
-        <div class="medium-6 cell">
-          <div class="light-container container-separator" id="calefaccio-2">
-            <%= render partial: '/climatitzacions/calefaccio_2' %>
+        <div class="medium-12 cell">
+          <div class="titol-seccio">
+            <%= t('.clima_zones_comunes') %>
           </div>
         </div>
       </div>
-
-      <div class="grid-x grid-margin-x">
-        <div class="medium-6 cell">
-          <div class="light-container container-separator" id="refrigeracio">
-            <%= render partial: '/climatitzacions/refrigeracio' %>
-          </div>
-        </div>
-        <div class="medium-6 cell">
-          <div class="light-container container-separator" id="acs">
-            <%= render partial: '/climatitzacions/acs' %>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid-x grid-margin-x">
-        <div class="medium-6 cell">
-          <div class="light-container container-separator" id="generacio">
-            <%= render partial: '/climatitzacions/generacio' %>
-          </div>
-        </div>
-      </div>
-
     <% end %>
+        
+    <div class="grid-x grid-margin-x">
+      <div class="medium-6 cell">
+        <div class="light-container container-separator" id="calefaccio-1">
+          <%= render partial: '/climatitzacions/calefaccio_1' %>
+        </div>
+      </div>
+      <div class="medium-6 cell">
+        <div class="light-container container-separator" id="calefaccio-2">
+          <%= render partial: '/climatitzacions/calefaccio_2' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x">
+      <div class="medium-6 cell">
+        <div class="light-container container-separator" id="refrigeracio">
+          <%= render partial: '/climatitzacions/refrigeracio' %>
+        </div>
+      </div>
+      <div class="medium-6 cell">
+        <div class="light-container container-separator" id="acs">
+          <%= render partial: '/climatitzacions/acs' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x">
+      <div class="medium-6 cell">
+        <div class="light-container container-separator" id="generacio">
+          <%= render partial: '/climatitzacions/generacio' %>
+        </div>
+      </div>
+    </div>
+
 
   </div>
 </div>

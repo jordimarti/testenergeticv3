@@ -75,7 +75,7 @@ ca:
         provincia_tecnic: "Província"
         telefon_tecnic: "Telèfon"
         email_tecnic: "Correu electrònic"
-        nom: "Nom"
+        nom: "Nom de l'entitat"
         descripcio: "Descripció"
         quota: "Quota"
         destinacio: "Destinació"
@@ -131,6 +131,25 @@ ca:
         generacio: "Sistema de generació"
         antiguitat_generacio: "Antiguitat del sistema (anys)"
         percentatge_captadors_termics: "Demanda coberta (%)"
+      aparell:
+        nom: "Nom de l'aparell"
+        consum_mensual: "Consum mensual (kWh)"
+      habit:
+        nom: "Nom de l'hàbit"
+        descripcio: "Descripció"
+      consum_global:
+        consum_anual_electricitat: "Consum anual d'electricitat"
+        consum_anual_gas: "Consum anual de gas"
+        consum_anual_gasoil: "Consum anual de gasoil"
+        despesa_anual_electricitat: "Despesa anual d'electricitat"
+        despesa_anual_gas: "Despesa anual de gas"
+        despesa_anual_gasoil: "Despesa anual de gasoil"
+      certificacio:
+        visible: "Mostrar les dades de la certificació energètica"
+        emissions: "Emissions de CO2"
+        demanda: "Demanda d'energia"
+        lletra_emissions: "Qualificació emissions de CO2"
+        lletra_demanda: "Qualificació demanda d'energia"
       proposta:
         mesura: "Nom de la proposta"
         descripcio: "Descripció"
@@ -207,6 +226,10 @@ ca:
       dades_entitat: "DADES DE L'ENTITAT"
       dades_propietat: "DADES DE LA PROPIETAT"
       dades_propietari: "PROPIETAT O PRESIDENT/A DE LA COMUNITAT"
+      dni: "DNI"
+      nie: "NIE"
+      passaport: "Passaport"
+      nif: "NIF"
       guardar: "Guardar"
     delete:
       edifici_eliminat: "El projecte s'ha eliminat correctament"
@@ -218,6 +241,7 @@ ca:
       altres: "Altres aparells"
       factures: "Factures i consums"
       habits: "Hàbits i gestió"
+      certificacio_energetica: "Certificació energètica"
     envolupant:
       titol: "Envolupant tèrmica"
       murs: "Murs"
@@ -234,16 +258,40 @@ ca:
       eliminar: "Segur que vols eliminar?"
       nou_forat_predefinit: "+ Afegir element predefinit"
     iluminacio:
+      aixecament_dades: "Aixecament de dades"
       titol: "Il·luminació"
       seleccio_ambit: "Selecció d'àmbit"
       iluminacio_zones_comunes: "Il·luminació de les zones comunes de l'edifici"
     clima:
+      aixecament_dades: "Aixecament de dades"
       titol: "ACS i climatització"
       sistema_principal_calefaccio: "Sistema principal de calefacció"
       editar_sistema: "Editar sistema"
+      seleccio_ambit: "Selecció d'àmbit"
+      clima_zones_comunes: "ACS i climatització de les zones comunes de l'edifici"
+    aparells:
+      titol: "Altres aparells"
+      aixecament_dades: "Aixecament de dades"
+      aparell: "Aparell"
+    habits:
+      titol: "Hàbits i gestió"
+      aixecament_dades: "Aixecament de dades"
+      habit: "Hàbit"
+    consums:
+      titol: "Factures i consums"
+      aixecament_dades: "Aixecament de dades"
+      guardar: "Guardar"
+    certificacio:
+      titol: "Certificació energètica"
+      aixecament_dades: "Aixecament de dades"
+      guardar: "Guardar"
     propostes:
       afegir_proposta: "Afegir una proposta"
       generar_propostes: "Generar propostes"
+    documents:
+      titol_document: "Documents"
+      genera_test_energetic: "Genera el test energètic"
+      text_generar_xml: "Exporteu les propostes d'intervenció en format XML."
   murs:
     edit:
       titol: "Envolupant tèrmica: edició de mur"
@@ -325,6 +373,15 @@ ca:
     generacio:
       sistema_generacio: "Sistema de generació"
       editar_sistema: "Editar sistema"
+  aparells:
+    form:
+      guardar: "Guardar"
+  habits:
+    form:
+      guardar: "Guardar"
+  consum_globals:
+    form:
+      guardar: "Guardar"
   caldera_mixta_gas: "Caldera mixta de gas"
   caldera_gas: "Caldera de gas"
   caldera_gasoil: "Caldera de gasoil"

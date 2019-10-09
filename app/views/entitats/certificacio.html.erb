@@ -17,24 +17,30 @@
     <div class="grid-x grid-margin-x">
       <div class="medium-12 cell">
         <div class="light-container">
-        	
-        	<%= simple_form_for(@consum_global) do |f| %>
+        	<%= simple_form_for(@certificacio) do |f| %>
             <%= f.error_notification %>
             <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
             <div class="form-inputs">
               <div class="grid-x grid-margin-x">
                 <div class="medium-4 cell">
-                  <%= f.input :consum_anual_electricitat %>
-                  <%= f.input :despesa_anual_electricitat %>
+                  <%= f.input :visible %>
+                </div>
+              </div>
+              <div class="grid-x grid-margin-x">
+                <div class="medium-4 cell">
+                  <%= f.input :emissions %>
                 </div>
                 <div class="medium-4 cell">
-                  <%= f.input :consum_anual_gas %>
-                  <%= f.input :despesa_anual_gas %>
+                  <%= f.input :lletra_emissions, collection: ['A', 'B', 'C', 'D', 'E', 'F', 'G'] %>
+                </div>
+              </div>
+              <div class="grid-x grid-margin-x">
+                <div class="medium-4 cell">
+                  <%= f.input :demanda %>
                 </div>
                 <div class="medium-4 cell">
-                  <%= f.input :consum_anual_gasoil %>
-                  <%= f.input :despesa_anual_gasoil %>
+                  <%= f.input :lletra_demanda, collection: ['A', 'B', 'C', 'D', 'E', 'F', 'G'] %>
                 </div>
               </div>
             </div>

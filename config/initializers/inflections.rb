@@ -24,4 +24,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'transmitancia', 'transmitancies'
   inflect.irregular 'llosa', 'lloses'
   inflect.irregular 'terra', 'terres'
+  inflect.irregular 'certificacio', 'certificacions'
 end

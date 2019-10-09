@@ -1,5 +1,5 @@
 class EntitatsController < ApplicationController
-  before_action :set_entitat, only: [:show, :edit, :update, :destroy, :ambits, :aixecament, :envolupant, :iluminacio, :clima, :aparells, :habits, :consums, :propostes, :documents, :generar_propostes]
+  before_action :set_entitat, only: [:show, :edit, :update, :destroy, :ambits, :aixecament, :envolupant, :iluminacio, :clima, :aparells, :habits, :consums, :certificacio, :propostes, :documents, :generar_propostes]
   before_action :authenticate_user!
   respond_to :html, :js
 
@@ -33,9 +33,13 @@ class EntitatsController < ApplicationController
     if @entitat.save
       #Creem valors per defecte de consums
       consums_entitat(@entitat.id)
-      #Creem els valors per defecte de climatització si procedeix
+      #Creem valors per defecte de certificació energètica
+      certificacio_entitat(@entitat.id)
+      #Creem els valors per defecte de climatització
       if @entitat.ambit == 'subentitat' || @entitat.tipologia == 'unifamiliar'
         clima_entitat(@entitat.id, @entitat.ambit)
+      else
+        clima_zones_comunes(@entitat.id, @entitat.ambit)
       end
 
       if @entitat.ambit == 'subentitat'
@@ -80,6 +84,12 @@ class EntitatsController < ApplicationController
     consum.save
   end
 
+  def certificacio_entitat(entitat_id)
+    certificacio = Certificacio.new
+    certificacio.entitat_id = entitat_id
+    certificacio.save
+  end
+
   def clima_entitat(entitat_id, ambit)
     clima = Climatitzacio.new
     clima.entitat_id = entitat_id
@@ -91,6 +101,21 @@ class EntitatsController < ApplicationController
     clima.tipologia_calefaccio_2 = 'no'
     clima.tipologia_refrigeracio = 'aire_condicionat'
     clima.antiguitat_refrigeracio = 5
+    clima.generacio = 'no'
+    clima.save
+  end
+
+  def clima_zones_comunes(entitat_id, ambit)
+    clima = Climatitzacio.new
+    clima.entitat_id = entitat_id
+    clima.ambit = ambit
+    clima.tipologia_acs = 'no'
+    clima.antiguitat_acs = 0
+    clima.tipologia_calefaccio_1 = 'no'
+    clima.antiguitat_calefaccio_1 = 0
+    clima.tipologia_calefaccio_2 = 'no'
+    clima.tipologia_refrigeracio = 'no'
+    clima.antiguitat_refrigeracio = 0
     clima.generacio = 'no'
     clima.save
   end
@@ -176,6 +201,12 @@ class EntitatsController < ApplicationController
     @consum_global = ConsumGlobal.find_by(entitat_id: @entitat.id)
   end
 
+  def certificacio
+    @subnavigation = true
+    @submenu_actiu = 'aixecament'
+    @certificacio = Certificacio.find_by(entitat_id: @entitat.id)
+  end
+
   def propostes
     @subnavigation = true
     @submenu_actiu = 'propostes'
@@ -210,6 +241,14 @@ class EntitatsController < ApplicationController
   def pdf
     @propostes = Proposta.where(entitat_id: @entitat.id)
     @consums_globals = ConsumGlobal.find_by(entitat_id: @entitat.id)
+    # Calculem estalvi total
+    @consum_total = @consums_globals.consum_anual_electricitat + @consums_globals.consum_anual_gas + @consums_globals.consum_anual_gasoil
+    estalvi_total_optimista = 0
+    @propostes.each do |proposta|
+      estalvi_total_optimista += proposta.estalvi_optimista
+    end
+    @consum_potencial = @consum_total - (@consum_total * (estalvi_total_optimista/100))
+    # Gràfica consums i estalvis
     @despesa_actual = Array.new
     @despesa_estalvi_optimista = Array.new
     @despesa_estalvi_pessimista = Array.new

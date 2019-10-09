@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   
+  resources :certificacions
   resources :component_predefinits
   get 'forat_predefinits/afegeix'
   resources :forat_predefinits
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
   get 'entitats/:id/aparells', to: 'entitats#aparells', as: 'entitat_aparells'
   get 'entitats/:id/habits', to: 'entitats#habits', as: 'entitat_habits'
   get 'entitats/:id/consums', to: 'entitats#consums', as: 'entitat_consums'
+  get 'entitats/:id/certificacio', to: 'entitats#certificacio', as: 'entitat_certificacio'
   get 'entitats/:id/propostes', to: 'entitats#propostes', as: 'entitat_propostes'
   get 'entitats/:id/documents', to: 'entitats#documents', as: 'entitat_documents'
   #get 'entitats/:id/generar_propostes', to: 'entitats#generar_propostes', as: 'generar_propostes'

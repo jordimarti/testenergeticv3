@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Certificacions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Entitat</th>
+      <th>Ambit</th>
+      <th>Visible</th>
+      <th>Emissions</th>
+      <th>Demanda</th>
+      <th>Lletra emissions</th>
+      <th>Lletra demanda</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @certificacions.each do |certificacio| %>
+      <tr>
+        <td><%= certificacio.entitat_id %></td>
+        <td><%= certificacio.ambit %></td>
+        <td><%= certificacio.visible %></td>
+        <td><%= certificacio.emissions %></td>
+        <td><%= certificacio.demanda %></td>
+        <td><%= certificacio.lletra_emissions %></td>
+        <td><%= certificacio.lletra_demanda %></td>
+        <td><%= link_to 'Show', certificacio %></td>
+        <td><%= link_to 'Edit', edit_certificacio_path(certificacio) %></td>
+        <td><%= link_to 'Destroy', certificacio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Certificacio', new_certificacio_path %>

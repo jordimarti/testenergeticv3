@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  entitat_id: 1
+  ambit: MyString
+  visible: false
+  emissions: 9.99
+  demanda: 9.99
+  lletra_emissions: MyString
+  lletra_demanda: MyString
+
+two:
+  entitat_id: 1
+  ambit: MyString
+  visible: false
+  emissions: 9.99
+  demanda: 9.99
+  lletra_emissions: MyString
+  lletra_demanda: MyString

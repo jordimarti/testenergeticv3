@@ -1,6 +1,9 @@
 module ApplicationHelper
 	def zona_climatica_cte(entitat_id)
-		dades_edifici = Entitat.where(id: entitat_id).last
+		dades_edifici = Entitat.find(entitat_id)
+		if dades_edifici.ambit == 'subentitat'
+			dades_edifici = Entitat.find(dades_edifici.pare)
+		end
 		if dades_edifici.provincia == 'Barcelona'
 			if dades_edifici.altitud_municipi < 250
 				zona_climatica = 'c2'

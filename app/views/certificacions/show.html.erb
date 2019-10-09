@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Entitat:</strong>
+  <%= @certificacio.entitat_id %>
+</p>
+
+<p>
+  <strong>Ambit:</strong>
+  <%= @certificacio.ambit %>
+</p>
+
+<p>
+  <strong>Visible:</strong>
+  <%= @certificacio.visible %>
+</p>
+
+<p>
+  <strong>Emissions:</strong>
+  <%= @certificacio.emissions %>
+</p>
+
+<p>
+  <strong>Demanda:</strong>
+  <%= @certificacio.demanda %>
+</p>
+
+<p>
+  <strong>Lletra emissions:</strong>
+  <%= @certificacio.lletra_emissions %>
+</p>
+
+<p>
+  <strong>Lletra demanda:</strong>
+  <%= @certificacio.lletra_demanda %>
+</p>
+
+<%= link_to 'Edit', edit_certificacio_path(@certificacio) %> |
+<%= link_to 'Back', certificacions_path %>

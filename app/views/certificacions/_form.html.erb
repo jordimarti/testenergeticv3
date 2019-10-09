@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@certificacio) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :entitat_id %>
+    <%= f.input :ambit %>
+    <%= f.input :visible %>
+    <%= f.input :emissions %>
+    <%= f.input :demanda %>
+    <%= f.input :lletra_emissions %>
+    <%= f.input :lletra_demanda %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

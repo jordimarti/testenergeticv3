@@ -38,60 +38,108 @@
     </div>
   </div>
 
-  <div class="print-apartat">
-    <h4 class="print">Qualificació energètica</h4>
-    <div class="print-etiqueta">
-      <h5 class="print">Emissions de CO<sub>2</sub></h5>
-      <p class="valors-etiqueta">33 kgCO<sub>2</sub>/m<sup>2</sup>any</p>
-      <span class="text-tips">Més eficient</span><br/>
-      <%= image_tag('https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_e.jpg', width: "200", height: "139") %><br/>
-      <span class="text-tips">Menys eficient</span>
-    </div>
+  <% if entitat.certificacio.visible == true %>
+    <div class="print-apartat">
+      <h4 class="print">Qualificació energètica</h4>
+      <div class="print-etiqueta">
+        <h5 class="print">Emissions de CO<sub>2</sub></h5>
+        <p class="valors-etiqueta"><%= entitat.certificacio.emissions.round %> kgCO<sub>2</sub>/m<sup>2</sup>any</p>
+        <span class="text-tips">Més eficient</span><br/>
+        <% case entitat.certificacio.lletra_emissions
+        when 'A'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_a.jpg'
+        when 'B'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_b.jpg'
+        when 'C'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_c.jpg'
+        when 'D'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_d.jpg'
+        when 'E'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_e.jpg'
+        when 'F'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_f.jpg'
+        when 'G'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_g.jpg'
+        end %>
+        <%= image_tag(imatge, width: "200", height: "139") %><br/>
+        <span class="text-tips">Menys eficient</span>
+      </div>
 
-    <div class="print-etiqueta">
-      <h5 class="print">Demanda d'energia primària</h5>
-      <p class="valors-etiqueta">130 kWh/m<sup>2</sup>any</p>
-      <span class="text-tips">Més eficient</span><br/>
-      <%= image_tag("https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_e.jpg", width: "200", height: "139") %><br/>
-      <span class="text-tips">Menys eficient</span>
+      <div class="print-etiqueta">
+        <h5 class="print">Demanda d'energia primària</h5>
+        <p class="valors-etiqueta"><%= entitat.certificacio.demanda.round %> kWh/m<sup>2</sup>any</p>
+        <span class="text-tips">Més eficient</span><br/>
+        <% case entitat.certificacio.lletra_demanda
+        when 'A'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_a.jpg'
+        when 'B'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_b.jpg'
+        when 'C'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_c.jpg'
+        when 'D'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_d.jpg'
+        when 'E'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_e.jpg'
+        when 'F'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_f.jpg'
+        when 'G'
+          imatge = 'https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/etiqueta_g.jpg'
+        end %>
+        <%= image_tag(imatge, width: "200", height: "139") %><br/>
+        <span class="text-tips">Menys eficient</span>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <%
-  @consums_globals = ConsumGlobal.find_by(entitat_id: entitat.id)
-  @despesa_energetica = @consums_globals.despesa_anual_electricitat + @consums_globals.despesa_anual_gas
-  @estalvi = @despesa_energetica * 0.45
+  propostes = Proposta.where(entitat_id: entitat.id)
+  consums_globals = ConsumGlobal.find_by(entitat_id: entitat.id)
+  # Calculem estalvi total
+  consum_total = consums_globals.consum_anual_electricitat + consums_globals.consum_anual_gas + consums_globals.consum_anual_gasoil
+  estalvi_total_optimista = 0
+  propostes.each do |proposta|
+    estalvi_total_optimista += proposta.estalvi_optimista
+  end
+  consum_potencial = consum_total - (consum_total * (estalvi_total_optimista/100))
+  despesa_actual = consums_globals.despesa_anual_electricitat + consums_globals.despesa_anual_gas + consums_globals.despesa_anual_gasoil
+  diners_estalviats = despesa_actual * (estalvi_total_optimista/100)
+  despesa_estalvi_optimista = despesa_actual - diners_estalviats
   %>
+
 
   <div class="container-estalvi-millores">
     <div class="print-apartat">
       <h4 class="print">Potencial d'estalvi aplicant millores</h4>
       <div class="percentatge-estalvi">
         <div class="numero-percentatge-estalvi">
-          45% <span class="numero-percentatge-estalvi-petit">del consum <sup>*</sup></span>
+          <%= estalvi_total_optimista.round %>% <span class="numero-percentatge-estalvi-petit">del consum <sup>*</sup></span>
         </div>
         <div class="text-percentatge-estalvi">
-          <p>Aplicant les propostes de millora podríeu estalviar un 45% de l'energia que consumiu cada any.</p>
+          <p>Aplicant les propostes de millora podríeu estalviar un <%= estalvi_total_optimista.round %>% de l'energia que consumiu cada any.</p>
         </div>
       </div>
       <div class="diners-estalvi">
         <div class="numero-diners-estalvi">
-          2900€ <span class="numero-diners-estalvi-petit">cada any <sup>*</sup></span>
+          <%= diners_estalviats.round %>€ <span class="numero-diners-estalvi-petit">cada any <sup>*</sup></span>
         </div>
         <div class="text-diners-estalvi">
-          <p>Si porteu a terme les propostes de millora podreu estalviar 2900€ cada any.</p>
+          <p>Si porteu a terme les propostes de millora podreu estalviar <%= diners_estalviats.round %>€ cada any.</p>
         </div>
       </div>
+
+      
+
       <div class="print-comparacio-energia">
         <div class="tip-consum consum-actual" style="position: absolute; top: 0px; right: 136px; text-align: right; border-right-style: solid; border-right-width: 2px; border-right-color: #333333; padding-right: 5px; height: 50px; width: 200px;">
           <span>Consum actual</span><br/>
-          <span><%= @despesa_energetica %> kWh/any</span>
+          <span><%= consum_total %> kWh/any</span>
         </div>
+
         <% #Posem el consum real a 480px de l'esquerra. La posició del consum de millores es busca a partir d'aquesta dada %>
-        <% posicio_consum_millores = @estalvi*480/@despesa_energetica %>
+        <% posicio_consum_millores = consum_potencial*(480/consum_total.to_d) %>
         <div class="tip-consum consum-millores" style="position: absolute; top: 70px; left: <%= posicio_consum_millores %>px; text-align: left; border-left-style: solid; border-left-width: 2px; border-left-color: #333333; padding-left: 5px; padding-top: 20px; height: 30px; width: 300px;">
           <span>Consum aplicant propostes de millora</span><br/>
-          <span><%= @estalvi %> kWh/any</span>
+          <span><%= consum_potencial %> kWh/any</span>
         </div>
         <div class="print-barra-energia">
           <%= image_tag('https://s3-eu-west-1.amazonaws.com/testenergetic/imatges/barra_energia.png', :alt => 'barra energia', :class => 'img_barra_energia') %>
@@ -104,20 +152,32 @@
   <div class="container-info-tecnic">
     <div class="print-info-tecnic">
       <h5 class="print">Nom del tècnic:</h5>
-      <p></p>
+      <p><%= entitat.nom_tecnic %> <%= entitat.cognoms_tecnic %></p>
       <h5 class="print">Titulació:</h5>
-      <p></p>
+      <p><%= entitat.titulacio_tecnic %></p>
     </div>
     <div class="print-info-tecnic2">
       <h5 class="print">Correu electrònic:</h5>
-      <p></p>
+      <p><%= entitat.email_tecnic %></p>
       <h5 class="print">Telèfon:</h5>
-      <p></p>
+      <p><%= entitat.telefon_tecnic %></p>
     </div>
     <div class="print-data-signatura">
       <h5 class="print">Data i signatura:</h5>
 
     </div>
+  </div>
+
+  <div class="pagebreak">
+    <h3 class="print">Descripció de l'edifici</h3>
+  </div>
+
+  <div class="print-apartat">
+    <h4 class="print">Envolupant tèrmica</h4>
+    <% entitat.murs.each do |mur| %>
+      <h5 class="print"><%= mur.nom %></h5>
+      <p><%= mur.descripcio %></p>
+    <% end %>
   </div>
 
   <div class="pagebreak">
