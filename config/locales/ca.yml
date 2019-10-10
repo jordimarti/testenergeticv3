@@ -376,6 +376,9 @@ ca:
   aparells:
     form:
       guardar: "Guardar"
+    llistat_aparells:
+      aparell: "Aparell"
+      estimacio_consum: "Estimació de consum mensual (kWh)"
   habits:
     form:
       guardar: "Guardar"

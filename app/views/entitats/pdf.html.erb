@@ -168,6 +168,8 @@
     </div>
   </div>
 
+  <br/>
+
   <div class="pagebreak">
     <h3 class="print">Descripció de l'edifici</h3>
   </div>
@@ -179,6 +181,124 @@
       <p><%= mur.descripcio %></p>
     <% end %>
   </div>
+
+  <%
+  def nom_llum(nom)
+    case nom
+    when 'led'
+      return 'LED'
+    when 'fluorescent_compacte'
+      return 'Fluorescent compacte'
+    when 'fluorescent'
+      return 'Fluorescent'
+    when 'halogena'
+      return 'Halògena'
+    when 'incandescent'
+      return 'Incandescent'
+    end
+  end
+  %>
+
+  <div class="print-apartat">
+    <h4 class="print">Il·luminació</h4>
+    <table>
+      <theader>
+        <th>Tipologia</th>
+        <th>Potència (W)</th>
+        <th>Quantitat</th>
+        <th>Consum mensual (kWh)</th>
+      </theader>
+      <tbody>
+        <% consum_total = 0 %>
+        <% entitat.lampades.each do |lampada| %>
+          <tr>
+            <td><%= nom_llum(lampada.tipologia) %></td>
+            <td><%= lampada.potencia %></td>
+            <td><%= lampada.numero %></td>
+            <% consum = (lampada.potencia * lampada.hores_mensuals * lampada.numero)/1000 %>
+            <td><%= consum %></td>
+            <% consum_total += consum %>
+        <% end %>
+      </tbody>
+    </table>
+    <br/>
+    <h5 class="print">Consum total en il·luminació</h5>
+    <p><%= consum_total %> kWh al mes.</p>
+  </div>
+
+  <% 
+  def nom_clima(nom)
+    case nom
+    when 'caldera_mixta_gas'
+      return 'Caldera mixta de gas'
+    when 'caldera_gas'
+      return 'Caldera de gas'
+    when 'caldera_gasoil'
+      return 'Caldera de gasoil'
+    when 'caldera_biomassa'
+      return 'Caldera de biomassa'
+    when 'radiadors_electrics'
+      return 'Radiadors elèctrics'
+    when 'estufes_electriques'
+      return 'Estufes elèctriques'
+    when 'bomba_calor'
+      return 'Bomba de calor'
+    when 'llar_de_foc'
+      return 'Llar de foc'
+    when 'aire_condicionat'
+      return 'Aire condicionat tipus split'
+    when 'escalfador_gas'
+      return 'Escalfador instantani de gas'
+    when 'termoacumulador_electric'
+      return 'Termoacumulador elèctric'
+    else
+      return 'No definit'
+    end
+  end
+  %>
+
+  <div class="print-apartat">
+    <h4 class="print">ACS i climatització</h4>
+    <h5 class="print">Sistema principal de calefacció</h5>
+    <p><%= nom_clima(entitat.climatitzacio.tipologia_calefaccio_1) %></p>
+    <% if entitat.climatitzacio.tipologia_calefaccio_2 != 'no' %>
+      <h5 class="print">Sistema secundari de calefacció</h5>
+      <p><%= nom_clima(entitat.climatitzacio.tipologia_calefaccio_2) %></p>
+    <% end %>
+    <% if entitat.climatitzacio.tipologia_refrigeracio != 'no' %>
+      <h5 class="print">Sistema de refrigeració</h5>
+      <p><%= nom_clima(entitat.climatitzacio.tipologia_refrigeracio) %></p>
+    <% end %>
+    <h5 class="print">Sistema d'Aigua Calenta Sanitària (ACS)</h5>
+    <p><%= nom_clima(entitat.climatitzacio.tipologia_acs) %></p>
+    <% if entitat.climatitzacio.generacio != 'no' %>
+      <h5 class="print">Captadors solars tèrmics</h5>
+      <p>L'edifici disposa de captadors solars tèrmics que cobreixen un <%= entitat.climatitzacio.percentatge_captadors_termics %>% de la demanda de calefacció i ACS.</p>
+    <% end %>
+  </div>
+
+  <div class="print-apartat">
+    <h4 class="print">Aparells</h4>
+    <% entitat.aparells.each do |aparell| %>
+      <h5 class="print"><%= aparell.nom %></h5>
+      <p>Estimació de consum mensual: <%= aparell.consum_mensual %> kWh</p>
+    <% end %>
+  </div>
+
+  <div class="print-apartat">
+    <h4 class="print">Consum d'energia</h4>
+    <h5 class="print">Consum anual d'electricitat</h5>
+    <p><%= entitat.consum_global.consum_anual_electricitat %> kWh - <%= entitat.consum_global.despesa_anual_electricitat %> €</p>
+    <% if entitat.consum_global.consum_anual_gas != 0 %>
+    <h5 class="print">Consum anual de gas</h5>
+    <p><%= entitat.consum_global.consum_anual_gas %> kWh - <%= entitat.consum_global.despesa_anual_gas %> €</p>
+    <% end %>
+    <% if entitat.consum_global.consum_anual_gasoil != 0 %>
+    <h5 class="print">Consum anual de gas</h5>
+    <p><%= entitat.consum_global.consum_anual_gasoil %> kWh - <%= entitat.consum_global.despesa_anual_gasoil %> €</p>
+    <% end %>
+  </div>
+
 
   <div class="pagebreak">
     <h3 class="print">Propostes de millora</h3>
@@ -201,4 +321,82 @@
       </div>
     </div>
   <% end %>
+
+  <br/>
+
+  <div class="pagebreak">
+    <h4 class="print">Cost econòmic de l'energia consumida en 15 anys</h4>
+  </div>
+
+  <div class="print-apartat">
+    <%
+    @propostes = Proposta.where(entitat_id: entitat.id)
+    @consums_globals = ConsumGlobal.find_by(entitat_id: entitat.id)
+    @despesa_actual = Array.new
+    @despesa_estalvi_optimista = Array.new
+    @despesa_estalvi_pessimista = Array.new
+    # Els 15 anys de rang que hem definit
+    for i in 0..14 do
+      estalvi_total_optimista = 0
+      estalvi_total_pessimista = 0
+      data = Date.today.year + i 
+      @propostes.each do |proposta|
+        if proposta.data_any < data
+          estalvi_total_optimista += proposta.estalvi_optimista
+          puts 'Estalvi total optimista:'
+          puts estalvi_total_optimista
+          estalvi_total_pessimista += proposta.estalvi_pessimista
+          puts 'Estalvi total pessimista:'
+          puts estalvi_total_pessimista
+        end
+      end
+
+      @despesa_actual[i] = @consums_globals.despesa_anual_electricitat * (i+1) * (1.025**(i+1)) + @consums_globals.despesa_anual_gas * (i+1) * (1.02**(i+1))
+      @despesa_estalvi_optimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_optimista/100))
+      @despesa_estalvi_pessimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_pessimista/100))
+    end
+    %>
+    <div id="curve_chart" style="width: 100%; height: 300px"></div>
+    <div class="print-apartat">    
+      <div class="text-despesa-economica-print">
+        <% estalvi = @despesa_actual[14] - @despesa_estalvi_optimista[14] %>
+        <p>Despesa econòmica en 15 anys: <br/><span class="valors_despesa_energetica"><%= number_to_currency(@despesa_actual[14]) %></span></p>
+        <p>Despesa econòmica aplicant millores: <br/><span class="valors_despesa_energetica"><%= number_to_currency(@despesa_estalvi_optimista[14]) %></span></p> 
+        <p>Estalvi econòmic en 15 anys: <br/><span class="valors_despesa_energetica"><%= number_to_currency(estalvi) %></span></p>
+      </div>
+            
+      <div class="text-impacte-ambiental-print">
+        <% impacte_15 = (@despesa_actual[14] * 0.4)/1000
+        impacte_millores = (@despesa_estalvi_optimista[14] * 0.4)/1000
+        estalvi_co2 = ((@despesa_actual[14] - @despesa_estalvi_optimista[14]) * 0.4)/1000 %>
+        <p>Emissions de CO<sub>2</sub> en 15 anys: <br/><span class="valors_despesa_energetica"><%= impacte_15.round(2) %> t</span></p>
+        <p>Emissions de CO<sub>2</sub> aplicant millores: <br/><span class="valors_despesa_energetica"><%= impacte_millores.round(2) %> t</span></p>
+        <p>Reducció d'emissions de CO<sub>2</sub>: <br/><span class="valors_despesa_energetica"><%= estalvi_co2.round(2) %> t</span></p>
+      </div>
+     
+    </div>
+  </div>
   
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Any', 'Despesa actual', 'Despesa optimista', 'Despesa pessimista'],
+      <% for i in 0..14 do %> 
+        ['<%= Date.today.year + (i+1) %>', <%= @despesa_actual[i] %>, <%= @despesa_estalvi_optimista[i] %>, <%= @despesa_estalvi_pessimista[i] %>],
+      <% end %>
+    ]);
+
+    var options = {
+      title: 'Acumulació de despesa econòmica',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+    chart.draw(data, options);
+  }
+</script>
