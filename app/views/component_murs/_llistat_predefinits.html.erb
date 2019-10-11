@@ -1,9 +1,9 @@
 <table>
   <thead>
     <tr>
-      <th>Nom</th>
-      <th>Densitat</th>
-      <th>Conductivitat</th>
+      <th>Component</th>
+      <th>Densitat kg/m3</th>
+      <th>Conductivitat W/mK</th>
     </tr>
   </thead>
 
@@ -11,7 +11,11 @@
     <% @component_predefinit_murs.each do |component_predefinit_mur| %>
       <tr>
         <td><%= link_to afegeix_component_mur_path(component_predefinit_id: component_predefinit_mur.id, mur_id: params[:mur_id]), remote: true do %>
-        	<%= component_predefinit_mur.nom %>
+          	<% if params[:locale] == 'es' %>
+              <%= component_predefinit_mur.nom_es %>
+            <% else %>
+              <%= component_predefinit_mur.nom_ca %>
+            <% end %>
         	<% end %>
         </td>
         <td><%= component_predefinit_mur.densitat %></td>

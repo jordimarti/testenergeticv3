@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_204731) do
+ActiveRecord::Schema.define(version: 2019_10_10_211439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,9 @@ ActiveRecord::Schema.define(version: 2019_10_08_204731) do
     t.decimal "resistencia_termica"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "subfamilia"
+    t.string "nom_ca"
+    t.string "nom_es"
   end
 
   create_table "consum_globals", force: :cascade do |t|
