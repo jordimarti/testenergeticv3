@@ -10,6 +10,7 @@ class MursController < ApplicationController
     @mur.entitat_id = entitat.id
     @mur.ambit = entitat.ambit
     @mur.nom = "Nou mur"
+    @mur.superficie = 10
     @mur.save
     redirect_to edit_mur_path(@mur)
   end
@@ -29,12 +30,25 @@ class MursController < ApplicationController
   end
 
   def update
-    @mur.update(mur_params)
-    @mur.transmitancia_mur = transmitancia_mur(@mur.id, false)
-    puts "Transmitancia mur -----------"
-    puts @mur.transmitancia_mur
-    @mur.save
-    redirect_to entitat_envolupant_path(@entitat)
+    @subnavigation = true
+    @submenu_actiu = 'aixecament'
+    @component_murs = ComponentMur.where(mur_id: @mur.id).order(posicio: :asc)
+    @transmitancia = transmitancia_mur(@mur.id, false)
+    @zona = zona_climatica_cte(@mur.entitat_id)
+    @valor_limit = transmitancia_limit_murs_cte(@zona)
+    if @transmitancia > @valor_limit
+      @supera_transmitancia_limit = true
+    else
+      @supera_transmitancia_limit = false
+    end
+    
+    if @mur.update(mur_params)
+      @mur.transmitancia_mur = transmitancia_mur(@mur.id, false)
+      @mur.save
+      redirect_to entitat_envolupant_path(@entitat)
+    else
+      render :edit
+    end
   end
 
   def destroy

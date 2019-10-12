@@ -19,11 +19,17 @@ class ForatsController < ApplicationController
   end
 
   def update
-    @forat.update(forat_params)  
-    @forat.transmitancia_global_forat = (@forat.superficie_transparent * @forat.transmitancia_transparent + @forat.superficie_marc * @forat.transmitancia_marc + @forat.longitud_contacte_marc_vidre * transmitancia_linial_acoplament(@forat.tipus_marc, @forat.tipus_vidre))/(@forat.superficie_marc + @forat.superficie_transparent)
-    @forat.superficie_total = @forat.superficie_transparent + @forat.superficie_marc
-    @forat.save
-    redirect_to entitat_envolupant_path(@entitat)
+    @subnavigation = true
+    @submenu_actiu = 'aixecament'
+
+    if @forat.update(forat_params)
+      @forat.transmitancia_global_forat = (@forat.superficie_transparent * @forat.transmitancia_transparent + @forat.superficie_marc * @forat.transmitancia_marc + @forat.longitud_contacte_marc_vidre * transmitancia_linial_acoplament(@forat.tipus_marc, @forat.tipus_vidre))/(@forat.superficie_marc + @forat.superficie_transparent)
+      @forat.superficie_total = @forat.superficie_transparent + @forat.superficie_marc
+      @forat.save
+      redirect_to entitat_envolupant_path(@entitat)
+    else
+      render :edit
+    end
   end
 
   def destroy

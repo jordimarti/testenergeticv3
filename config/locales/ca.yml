@@ -20,6 +20,31 @@ ca:
               blank: "Cal escriure el nom"
             last_name:
               blank: "Cal escriure els cognoms"
+        mur:
+          attributes:
+            nom:
+              blank: "Cal posar un nom al mur"
+            superficie:
+              blank: "Cal escriure la superfície del mur"
+              other_than: "La superfície no pot ser 0"
+        forat:
+          attributes:
+            nom:
+              blank: "Cal posar un nom al forat"
+        coberta:
+          attributes:
+            nom:
+              blank: "Cal posar un nom a la coberta"
+            superficie:
+              blank: "Cal escriure la superfície de la coberta"
+              other_than: "La superfície no pot ser 0"
+        terra:
+          attributes:
+            nom:
+              blank: "Cal posar un nom a terra"
+            superficie:
+              blank: "Cal escriure la superfície del terra"
+              other_than: "La superfície no pot ser 0"
   number:
     currency:
       format:
@@ -29,6 +54,8 @@ ca:
         precision: 2
         format: '%n %u'
   simple_form:
+    error_notification:
+      default_message: "Si us plau revisa els problemes:"
     labels:
       user:
         first_name: 'Nom'
@@ -295,6 +322,7 @@ ca:
   murs:
     edit:
       titol: "Envolupant tèrmica: edició de mur"
+      envolupant: "Envolupant tèrmica"
     form:
       composicio: "Composició"
       una_fulla: "Una fulla"
@@ -319,6 +347,7 @@ ca:
   forats:
     edit:
       titol: "Envolupant tèrmica: edició de forat"
+      envolupant: "Envolupant tèrmica"
     form:
       marc: "Marc"
       vidre: "Vidre"
@@ -334,13 +363,18 @@ ca:
       text_components: "Components d'exterior a interior: "
     edit:
       titol: "Envolupant tèrmica: edició de coberta"
+      envolupant: "Envolupant tèrmica"
     calcul_transmitancia:
       coeficient_transmissio_termica: "Coeficient de transmissió tèrmica"
       valor_segons_cte: "Valor segons el CTE"
       zona_climatica: "Zona climàtica"
+  component_cobertes:
+    form:
+      guardar: "Guardar"
   terres:
     edit:
       titol: "Envolupant tèrmica: edició de terra"
+      envolupant: "Envolupant tèrmica"
     form:
       guardar: "Guardar"
   climatitzacions:

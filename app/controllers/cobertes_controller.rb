@@ -29,10 +29,25 @@ class CobertesController < ApplicationController
   end
 
   def update
-    @coberta.update(coberta_params)
-    @coberta.transmitancia_coberta = transmitancia_coberta(@coberta.id, false)
-    @coberta.save
-    redirect_to entitat_envolupant_path(@entitat)
+    @subnavigation = true
+    @submenu_actiu = 'aixecament'
+    @component_cobertes = ComponentCoberta.where(coberta_id: @coberta.id).order(posicio: :asc)
+    @transmitancia = transmitancia_coberta(@coberta.id, false)
+    @zona = zona_climatica_cte(@coberta.entitat_id)
+    @valor_limit = transmitancia_limit_cobertes_cte(@zona)
+    if @transmitancia > @valor_limit
+      @supera_transmitancia_limit = true
+    else
+      @supera_transmitancia_limit = false
+    end
+
+    if @coberta.update(coberta_params)
+      @coberta.transmitancia_coberta = transmitancia_coberta(@coberta.id, false)
+      @coberta.save
+      redirect_to entitat_envolupant_path(@entitat)
+    else
+      render :edit
+    end
   end
 
   def destroy
