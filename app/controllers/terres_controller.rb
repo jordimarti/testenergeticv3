@@ -14,6 +14,10 @@ class TerresController < ApplicationController
       @terra.nom = "Nou terra"
     end
     @terra.superficie = 10
+    @terra.longitud_perimetre = 14
+    @terra.profunditat = 'menys_50'
+    @terra.resistencia_termica_aillant = 2
+    @terra.ample_aillament = 1
     @terra.save
     redirect_to edit_terra_path(@terra)
   end
