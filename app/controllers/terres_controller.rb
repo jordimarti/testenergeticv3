@@ -8,7 +8,12 @@ class TerresController < ApplicationController
     @terra = Terra.new
     @terra.entitat_id = entitat.id
     @terra.ambit = entitat.ambit
-    @terra.nom = "Nou terra"
+    if params[:locale] == 'es'
+      @terra.nom = "Nuevo suelo"
+    else
+      @terra.nom = "Nou terra"
+    end
+    @terra.superficie = 10
     @terra.save
     redirect_to edit_terra_path(@terra)
   end

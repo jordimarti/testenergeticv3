@@ -9,7 +9,12 @@ class CobertesController < ApplicationController
     @coberta = Coberta.new
     @coberta.entitat_id = entitat.id
     @coberta.ambit = entitat.ambit
-    @coberta.nom = "Nova coberta"
+    if params[:locale] == 'es'
+      @coberta.nom = "Nueva cubierta"
+    else
+      @coberta.nom = "Nova coberta"
+    end
+    @coberta.superficie = 10
     @coberta.save
     redirect_to edit_coberta_path(@coberta)
   end

@@ -9,7 +9,11 @@ class MursController < ApplicationController
     @mur = Mur.new
     @mur.entitat_id = entitat.id
     @mur.ambit = entitat.ambit
-    @mur.nom = "Nou mur"
+    if params[:locale] == 'es'
+      @mur.nom = "Nuevo muro"
+    else
+      @mur.nom = "Nou mur"
+    end
     @mur.superficie = 10
     @mur.save
     redirect_to edit_mur_path(@mur)

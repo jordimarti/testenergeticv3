@@ -19,23 +19,89 @@
 <div class="reveal" id="modal-families" data-reveal>
   <h3 id="modalTitle"><%= t('.selecciona_familia') %></h3>
   <div id="llistat-families" class="llistat-families">
-    <ul>
-      <li class="item-families">
-        <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "petris"), remote: true do %>
-          <%= t('.petris') %>
-        <% end %>
-      </li>
-      <li class="item-families">
-        <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "metalls"), remote: true do %>
-          <%= t('.metalls') %>
-        <% end %>
-      </li>
-      <li class="item-families">
-        <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "fustes"), remote: true do %>
-          <%= t('.fustes') %>
-        <% end %>
-      </li>
-    </ul>
+    <div class="columna-esquerra-llistat-families">
+      <ul>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "petris"), remote: true do %>
+            <%= t('.petris') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "metalls"), remote: true do %>
+            <%= t('.metalls') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "fustes"), remote: true do %>
+            <%= t('.fustes') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "formigons"), remote: true do %>
+            <%= t('.formigons') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "morters"), remote: true do %>
+            <%= t('.morters') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "guixos"), remote: true do %>
+            <%= t('.guixos') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "lliscats"), remote: true do %>
+            <%= t('.lliscats') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "aillants"), remote: true do %>
+            <%= t('.aillants') %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="columna-dreta-llistat-families">
+      <ul> 
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "plastics"), remote: true do %>
+            <%= t('.plastics') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "cautxus"), remote: true do %>
+            <%= t('.cautxus') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "sellants"), remote: true do %>
+            <%= t('.sellants') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "bituminosos"), remote: true do %>
+            <%= t('.bituminosos') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "textils"), remote: true do %>
+            <%= t('.textils') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "ceramics"), remote: true do %>
+            <%= t('.ceramics') %>
+          <% end %>
+        </li>
+        <li class="item-families">
+          <%= link_to select_component_coberta_path(coberta_id: @coberta.id, familia: "vidres"), remote: true do %>
+            <%= t('.vidres') %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </div>
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>

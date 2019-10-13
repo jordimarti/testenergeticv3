@@ -31,6 +31,26 @@ ca:
           attributes:
             nom:
               blank: "Cal posar un nom al forat"
+            superficie_marc:
+              blank: "Cal escriure la superfície de marc"
+            transmitancia_marc:
+              blank: "Cal escriure la transmitància tèrmica del marc"
+            tipus_marc:
+              blank: "Cal seleccionar el tipus de marc"
+            superficie_transparent:
+              blank: "Si no hi ha vidre posar 0"
+            transmitancia_transparent:
+              blank: "Si no hi ha vidre posar 0"
+            longitud_contacte_marc_vidre:
+              blank: "Si no hi ha vidre posar 0"
+            superficie_opaca:
+              blank: "Si no hi ha part opaca posar 0"
+            transmitancia_opaca:
+              blank: "Si no hi ha part opaca posar 0"
+            longitud_contacte_marc_opac:
+              blank: "Si no hi ha part opaca posar 0"
+            tipus_vidre:
+              blank: "Cal seleccionar un tipus de vidre"
         coberta:
           attributes:
             nom:
@@ -45,6 +65,14 @@ ca:
             superficie:
               blank: "Cal escriure la superfície del terra"
               other_than: "La superfície no pot ser 0"
+            profunditat:
+              blank: "Cal seleccionar la profunditat"
+            resistencia_termica_aillant:
+              blank: "Cal escriure la resistència tèrmica"
+            longitud_perimetre:
+              blank: "Cal escriure la longitud del perímetre"
+            ample_aillament:
+              blank: "Cal escriure l'ample de l'aïllament"
   number:
     currency:
       format:
@@ -270,6 +298,7 @@ ca:
       habits: "Hàbits i gestió"
       certificacio_energetica: "Certificació energètica"
     envolupant:
+      aixecament_dades: "Aixecament de dades"
       titol: "Envolupant tèrmica"
       murs: "Murs"
       forats: "Forats"
@@ -335,6 +364,21 @@ ca:
       selecciona_familia: "Selecciona la família de producte"
       component: "Selecciona el component"
       text_components: "Components d'exterior a interior: "
+      petris: "Petris"
+      metalls: "Metalls"
+      fustes: "Fustes"
+      formigons: "Formigons"
+      morters: "Morters"
+      guixos: "Guixos"
+      lliscats: "Lliscats"
+      aillants: "Aïllants"
+      plastics: "Plàstics"
+      cautxus: "Cautxús"
+      sellants: "Sellants"
+      bituminosos: "Bituminosos"
+      textils: "Tèxtils"
+      ceramics: "Ceràmics"
+      vidres: "Vidres"
     calcul_transmitancia:
       coeficient_transmissio_termica: "Coeficient de transmissió tèrmica"
       valor_segons_cte: "Valor segons el CTE"
@@ -353,6 +397,15 @@ ca:
       vidre: "Vidre"
       panell_opac: "Panell opac"
       guardar: "Guardar"
+      fusta: "Fusta"
+      pvc: "PVC"
+      metalic: "Metàl·lic"
+      metalic_rpt: "Metàl·lic RPT"
+      senzill: "Senzill"
+      doble: "Doble"
+      doble_baix_emissiu: "Doble baix emissiu"
+      triple: "Triple"
+      triple_baix_emissiu: "Triple baix emissiu"
   cobertes:
     form:
       guardar: "Guardar"
@@ -361,6 +414,21 @@ ca:
       selecciona_familia: "Selecciona la família de producte"
       component: "Selecciona el component"
       text_components: "Components d'exterior a interior: "
+      petris: "Petris"
+      metalls: "Metalls"
+      fustes: "Fustes"
+      formigons: "Formigons"
+      morters: "Morters"
+      guixos: "Guixos"
+      lliscats: "Lliscats"
+      aillants: "Aïllants"
+      plastics: "Plàstics"
+      cautxus: "Cautxús"
+      sellants: "Sellants"
+      bituminosos: "Bituminosos"
+      textils: "Tèxtils"
+      ceramics: "Ceràmics"
+      vidres: "Vidres"
     edit:
       titol: "Envolupant tèrmica: edició de coberta"
       envolupant: "Envolupant tèrmica"
@@ -377,6 +445,8 @@ ca:
       envolupant: "Envolupant tèrmica"
     form:
       guardar: "Guardar"
+      menys_50: "Menys de 50 cm"
+      mes_50: "Més de 50 cm"
   climatitzacions:
     form:
       guardar: "Guardar"

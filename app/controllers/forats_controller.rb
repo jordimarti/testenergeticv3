@@ -8,7 +8,11 @@ class ForatsController < ApplicationController
     @forat = Forat.new
     @forat.entitat_id = entitat.id
     @forat.ambit = entitat.ambit
-    @forat.nom = "Nou forat"
+    if params[:locale] == 'es'
+      @forat.nom = "Nuevo hueco"
+    else
+      @forat.nom = "Nou forat"
+    end
     @forat.save
     redirect_to edit_forat_path(@forat)
   end

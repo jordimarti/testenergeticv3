@@ -66,8 +66,13 @@ class ForatPredefinitsController < ApplicationController
     forat_predefinit = ForatPredefinit.find(params[:forat_predefinit_id])
     forat = Forat.new
     forat.entitat_id = params[:entitat_id]
-    forat.nom = forat_predefinit.nom
-    forat.descripcio = forat_predefinit.descripcio
+    if params[:locale] == 'es'
+      forat.nom = forat_predefinit.nom_es
+      forat.descripcio = forat_predefinit.descripcio_es
+    else
+      forat.nom = forat_predefinit.nom_ca
+      forat.descripcio = forat_predefinit.descripcio_ca
+    end
     forat.numero = 1
     forat.tipus_marc = forat_predefinit.tipus_marc
     forat.superficie_marc = forat_predefinit.superficie_marc

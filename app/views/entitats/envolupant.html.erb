@@ -3,7 +3,14 @@
   <div>
     <ul>
     <% @forats_predefinits.each do |forat| %>
-      <li><%= link_to forat.nom, forat_predefinits_afegeix_path(forat_predefinit_id: forat.id, entitat_id: @entitat.id) %></li>
+      <% 
+      if params[:locale] == 'es' 
+        nom_forat = forat.nom_es
+      else
+        nom_forat = forat.nom_ca
+      end 
+      %>
+      <li><%= link_to nom_forat, forat_predefinits_afegeix_path(forat_predefinit_id: forat.id, entitat_id: @entitat.id) %></li>
     <% end %>
     </ul>
   </div>
@@ -69,6 +76,7 @@
               <tbody>
     	          <% @forats.each do |forat| %>
                   <tr>
+
                     <td><%= link_to forat.nom, edit_forat_path(forat) %> <span class="info-subtil">( <%= '%.2f' % forat.transmitancia_global_forat %> W/m<sup>2</sup>K )</span></td>
                     <td class="columna-eliminar">
                       <%= link_to forat_path(forat), method: :delete, data: { confirm: t('.eliminar') } do %>

@@ -71,7 +71,11 @@ class ComponentCobertesController < ApplicationController
     component_predefinit = ComponentPredefinit.find(params[:component_predefinit_id])
     component = ComponentCoberta.new
     component.coberta_id = params[:coberta_id]
-    component.nom = component_predefinit.nom
+    if params[:locale] == 'es'
+      component.nom = component_predefinit.nom_es
+    else
+      component.nom = component_predefinit.nom_ca
+    end
     component.conductivitat = component_predefinit.conductivitat
     component.gruix = component_predefinit.gruix
     component.resistencia_termica = component.gruix/component.conductivitat

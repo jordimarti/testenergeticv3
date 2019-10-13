@@ -6,6 +6,8 @@ class CreateComponentMurs < ActiveRecord::Migration[5.2]
       t.decimal :conductivitat
       t.decimal :gruix
       t.decimal :resistencia_termica
+      t.integer :posicio
+      t.boolean :nomes_resistencia_termica
 
       t.timestamps
     end

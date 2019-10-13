@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_211439) do
+ActiveRecord::Schema.define(version: 2019_10_08_204731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_211439) do
     t.decimal "gruix"
     t.decimal "resistencia_termica"
     t.integer "posicio"
+    t.boolean "nomes_resistencia_termica"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -120,9 +121,10 @@ ActiveRecord::Schema.define(version: 2019_10_10_211439) do
     t.decimal "conductivitat"
     t.decimal "gruix"
     t.decimal "resistencia_termica"
+    t.integer "posicio"
+    t.boolean "nomes_resistencia_termica"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "posicio"
   end
 
   create_table "component_predefinit_murs", force: :cascade do |t|
@@ -136,16 +138,15 @@ ActiveRecord::Schema.define(version: 2019_10_10_211439) do
 
   create_table "component_predefinits", force: :cascade do |t|
     t.string "familia"
-    t.string "nom"
+    t.string "subfamilia"
+    t.string "nom_ca"
+    t.string "nom_es"
     t.decimal "conductivitat"
     t.string "densitat"
     t.decimal "gruix"
     t.decimal "resistencia_termica"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "subfamilia"
-    t.string "nom_ca"
-    t.string "nom_es"
   end
 
   create_table "consum_globals", force: :cascade do |t|
@@ -220,8 +221,10 @@ ActiveRecord::Schema.define(version: 2019_10_10_211439) do
 
   create_table "forat_predefinits", force: :cascade do |t|
     t.integer "entitat_id"
-    t.string "nom"
-    t.text "descripcio"
+    t.string "nom_ca"
+    t.string "nom_es"
+    t.text "descripcio_ca"
+    t.text "descripcio_es"
     t.integer "numero_forats"
     t.string "tipus_marc"
     t.decimal "superficie_marc"
