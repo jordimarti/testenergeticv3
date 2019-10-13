@@ -13,6 +13,16 @@ class ForatsController < ApplicationController
     else
       @forat.nom = "Nou forat"
     end
+    @forat.superficie_marc = 0
+    @forat.transmitancia_marc = 0
+    @forat.tipus_marc = 'fusta'
+    @forat.superficie_transparent = 0
+    @forat.transmitancia_transparent = 0
+    @forat.longitud_contacte_marc_vidre = 0
+    @forat.tipus_vidre = 'senzill'
+    @forat.superficie_opaca = 0
+    @forat.transmitancia_opaca = 0
+    @forat.longitud_contacte_marc_opac = 0
     @forat.save
     redirect_to edit_forat_path(@forat)
   end

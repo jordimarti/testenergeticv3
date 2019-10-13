@@ -220,7 +220,6 @@ ActiveRecord::Schema.define(version: 2019_10_08_204731) do
   end
 
   create_table "forat_predefinits", force: :cascade do |t|
-    t.integer "entitat_id"
     t.string "nom_ca"
     t.string "nom_es"
     t.text "descripcio_ca"
@@ -230,9 +229,12 @@ ActiveRecord::Schema.define(version: 2019_10_08_204731) do
     t.decimal "superficie_marc"
     t.decimal "transmitancia_marc"
     t.string "tipus_vidre"
-    t.decimal "superficie_vidre"
-    t.decimal "transmitancia_vidre"
-    t.decimal "longitud_contacte_vidre"
+    t.decimal "superficie_transparent"
+    t.decimal "transmitancia_transparent"
+    t.decimal "longitud_contacte_marc_vidre"
+    t.decimal "superficie_opaca"
+    t.decimal "transmitancia_opaca"
+    t.decimal "longitud_contacte_marc_opac"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

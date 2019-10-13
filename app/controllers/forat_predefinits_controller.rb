@@ -78,9 +78,12 @@ class ForatPredefinitsController < ApplicationController
     forat.superficie_marc = forat_predefinit.superficie_marc
     forat.transmitancia_marc = forat_predefinit.transmitancia_marc
     forat.tipus_vidre = forat_predefinit.tipus_vidre
-    forat.superficie_transparent = forat_predefinit.superficie_vidre
-    forat.transmitancia_transparent = forat_predefinit.transmitancia_vidre
-    forat.longitud_contacte_marc_vidre = forat_predefinit.longitud_contacte_vidre
+    forat.superficie_transparent = forat_predefinit.superficie_transparent
+    forat.transmitancia_transparent = forat_predefinit.transmitancia_transparent
+    forat.longitud_contacte_marc_vidre = forat_predefinit.longitud_contacte_marc_vidre
+    forat.superficie_opaca = forat_predefinit.superficie_opaca
+    forat.transmitancia_opaca = forat_predefinit.transmitancia_opaca
+    forat.longitud_contacte_marc_opac = forat_predefinit.longitud_contacte_marc_opac
     forat.transmitancia_global_forat = (forat.superficie_transparent * forat.transmitancia_transparent + forat.superficie_marc * forat.transmitancia_marc + forat.longitud_contacte_marc_vidre * transmitancia_linial_acoplament(forat.tipus_marc, forat.tipus_vidre))/(forat.superficie_marc + forat.superficie_transparent)
     forat.superficie_total = forat.superficie_transparent + forat.superficie_marc
     forat.save

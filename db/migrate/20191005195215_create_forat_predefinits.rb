@@ -1,7 +1,6 @@
 class CreateForatPredefinits < ActiveRecord::Migration[5.2]
   def change
     create_table :forat_predefinits do |t|
-      t.integer :entitat_id
       t.string :nom_ca
       t.string :nom_es
       t.text :descripcio_ca
@@ -11,9 +10,12 @@ class CreateForatPredefinits < ActiveRecord::Migration[5.2]
       t.decimal :superficie_marc
       t.decimal :transmitancia_marc
       t.string :tipus_vidre
-      t.decimal :superficie_vidre
-      t.decimal :transmitancia_vidre
-      t.decimal :longitud_contacte_vidre
+      t.decimal :superficie_transparent
+      t.decimal :transmitancia_transparent
+      t.decimal :longitud_contacte_marc_vidre
+      t.decimal :superficie_opaca
+      t.decimal :transmitancia_opaca
+      t.decimal :longitud_contacte_marc_opac
 
       t.timestamps
     end
