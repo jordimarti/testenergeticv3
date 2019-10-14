@@ -9,9 +9,9 @@ class DocumentPdf
   end
  
   def to_pdf
-    url_header = 'http://progrehab.herokuapp.com/edificis/pdf_header?locale=ca'
+    #url_header = 'http://progrehab.herokuapp.com/edificis/pdf_header?locale=ca'
     #kit = PDFKit.new(as_html, header_html: url_header, page_size: 'A4')
-    kit = PDFKit.new(as_html, page_size: 'A4')
+    kit = PDFKit.new(as_html, page_size: 'A4', dpi: 400)
     kit.to_file("#{Rails.root}/public/testenergetic.pdf")
   end
  
