@@ -3,6 +3,7 @@ PDFKit.configure do |config|
   config.verbose = true
   config.default_options = {
      print_media_type: true,
-     dpi: 400
+     dpi: 400,
+     margin: 100
   }
 end
