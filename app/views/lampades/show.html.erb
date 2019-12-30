@@ -1,0 +1,8 @@
+Lampades
+
+Potència: <%= @lampada.potencia %>
+
+<%= link_to "Download PDF",
+  lampada_baload_path(@lampada, format: "pdf"),
+  target: "_blank",
+  class: "download" %>

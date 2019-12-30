@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   
   resources :proposta_predefinides
   resources :climatitzacions
-  resources :lampades
+  resources :lampades do
+    resource :baload, only: [:show]
+  end
   get 'component_murs/select', to: 'component_murs#select', as: 'select_component_mur'
   get 'component_murs/afegeix', to: 'component_murs#afegeix', as: 'afegeix_component_mur'
   resources :component_murs

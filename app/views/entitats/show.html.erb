@@ -1,124 +1,404 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @entitat.user_id %>
-</p>
+  <div class="print-logo">
+    <h1 class="print-h1">TEST ENERGÈTIC</h1>
+  </div>
+  <div class="print-top-info">
+    <span>testenergetic.apabcn.cat</span><br/>
+    <span>info@apabcn.cat</span><br/>
+    <span>Tel. 932402060</span>
+  </div>
 
-<p>
-  <strong>Ambit:</strong>
-  <%= @entitat.ambit %>
-</p>
+  <div class="print-titol">
+    <h2 class="print-h2"><%= @entitat.nom %></h2>
+  </div>
 
-<p>
-  <strong>Pare:</strong>
-  <%= @entitat.pare %>
-</p>
+  <div class="print-info-basica">
+    <div class="print-propietari">
+      <h5 class="print">Sol·licitant:</h5>
+      <span><%= @entitat.nom_propietari + ' ' + @entitat.cognoms_propietari %></span><br/>
+      <span><%= @entitat.tipus_identificacio_propietari + ': ' + @entitat.identificacio_propietari %></span>
+    </div>
+    <div class="print-adreca">
+    <% if @entitat.bloc.blank?
+        adreca = @entitat.tipus_via.to_s + ' ' + @entitat.nom_via.to_s + ' ' + @entitat.numero_via.to_s
+      else
+        adreca = @entitat.tipus_via.to_s + ' ' + @entitat.nom_via.to_s + ' ' + @entitat.numero_via.to_s + ', bloc ' + @entitat.bloc.to_s
+      end
+    %>
+      <h5 class="print">Adreça:</h5>
+      <span><%= adreca %></span><br/>
+      <span>Codi postal: <%= @entitat.codi_postal %></span><br/>
+      <span>Municipi: <%= @entitat.poblacio %></span>
+    </div>
+    <div class="print-caracteristiques">
+      <h5 class="print">Característiques:</h5>
+      <span><%= @entitat.tipologia %></span><br/>
+      <span>Superfície: <%= @entitat.superficie_util%> m<sup>2</sup></span><br/>
+      <span>Any de construcció: <%= @entitat.any_construccio %> </span>
+    </div>
+  </div>
 
-<p>
-  <strong>Tipus via:</strong>
-  <%= @entitat.tipus_via %>
-</p>
+  <% if @entitat.certificacio.visible == true %>
+    <div class="print-apartat">
+      <h4 class="print">Qualificació energètica</h4>
+      <div class="print-etiqueta">
+        <h5 class="print">Emissions de CO<sub>2</sub></h5>
+        <p class="valors-etiqueta"><%= @entitat.certificacio.emissions.round %> kgCO<sub>2</sub>/m<sup>2</sup>any</p>
+        <span class="text-tips">Més eficient</span><br/>
+        <% case @entitat.certificacio.lletra_emissions
+        when 'A'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_a.jpg'
+        when 'B'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_b.jpg'
+        when 'C'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_c.jpg'
+        when 'D'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_d.jpg'
+        when 'E'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_e.jpg'
+        when 'F'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_f.jpg'
+        when 'G'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_g.jpg'
+        end %>
+        <%= image_tag(imatge, width: "200", height: "139") %><br/>
+        <span class="text-tips">Menys eficient</span>
+      </div>
 
-<p>
-  <strong>Nom via:</strong>
-  <%= @entitat.nom_via %>
-</p>
+      <div class="print-etiqueta">
+        <h5 class="print">Demanda d'energia primària</h5>
+        <p class="valors-etiqueta"><%= @entitat.certificacio.demanda.round %> kWh/m<sup>2</sup>any</p>
+        <span class="text-tips">Més eficient</span><br/>
+        <% case @entitat.certificacio.lletra_demanda
+        when 'A'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_a.jpg'
+        when 'B'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_b.jpg'
+        when 'C'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_c.jpg'
+        when 'D'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_d.jpg'
+        when 'E'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_e.jpg'
+        when 'F'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_f.jpg'
+        when 'G'
+          imatge = 'http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/etiqueta_g.jpg'
+        end %>
+        <%= image_tag(imatge, width: "200", height: "139") %><br/>
+        <span class="text-tips">Menys eficient</span>
+      </div>
+    </div>
+  <% end %>
 
-<p>
-  <strong>Numero via:</strong>
-  <%= @entitat.numero_via %>
-</p>
+  <%
+  propostes = Proposta.where(entitat_id: @entitat.id)
+  consums_globals = ConsumGlobal.find_by(entitat_id: @entitat.id)
+  # Calculem estalvi total
+  consum_total = consums_globals.consum_anual_electricitat + consums_globals.consum_anual_gas + consums_globals.consum_anual_gasoil
+  estalvi_total_optimista = 0
+  propostes.each do |proposta|
+    estalvi_total_optimista += proposta.estalvi_optimista
+  end
+  consum_potencial = consum_total - (consum_total * (estalvi_total_optimista/100))
+  despesa_actual = consums_globals.despesa_anual_electricitat + consums_globals.despesa_anual_gas + consums_globals.despesa_anual_gasoil
+  diners_estalviats = despesa_actual * (estalvi_total_optimista/100)
+  despesa_estalvi_optimista = despesa_actual - diners_estalviats
+  %>
 
-<p>
-  <strong>Bloc:</strong>
-  <%= @entitat.bloc %>
-</p>
 
-<p>
-  <strong>Codi postal:</strong>
-  <%= @entitat.codi_postal %>
-</p>
+  <div class="container-estalvi-millores">
+    <div class="print-apartat">
+      <h4 class="print">Potencial d'estalvi aplicant millores</h4>
+      <div class="percentatge-estalvi">
+        <div class="numero-percentatge-estalvi">
+          <%= estalvi_total_optimista.round %>% <span class="numero-percentatge-estalvi-petit">del consum <sup>*</sup></span>
+        </div>
+        <div class="text-percentatge-estalvi">
+          <p>Aplicant les propostes de millora podríeu estalviar un <%= estalvi_total_optimista.round %>% de l'energia que consumiu cada any.</p>
+        </div>
+      </div>
+      <div class="diners-estalvi">
+        <div class="numero-diners-estalvi">
+          <%= diners_estalviats.round %>€ <span class="numero-diners-estalvi-petit">cada any <sup>*</sup></span>
+        </div>
+        <div class="text-diners-estalvi">
+          <p>Si porteu a terme les propostes de millora podreu estalviar <%= diners_estalviats.round %>€ cada any.</p>
+        </div>
+      </div>
 
-<p>
-  <strong>Poblacio:</strong>
-  <%= @entitat.poblacio %>
-</p>
+      
 
-<p>
-  <strong>Provincia:</strong>
-  <%= @entitat.provincia %>
-</p>
+      <div class="print-comparacio-energia">
+        <div class="tip-consum consum-actual" style="position: absolute; top: 0px; right: 136px; text-align: right; border-right-style: solid; border-right-width: 2px; border-right-color: #333333; padding-right: 5px; height: 50px; width: 200px;">
+          <span>Consum actual</span><br/>
+          <span><%= consum_total %> kWh/any</span>
+        </div>
 
-<p>
-  <strong>Any construccio:</strong>
-  <%= @entitat.any_construccio %>
-</p>
+        <% #Posem el consum real a 480px de l'esquerra. La posició del consum de millores es busca a partir d'aquesta dada %>
+        <% posicio_consum_millores = consum_potencial*(480/consum_total.to_d) %>
+        <div class="tip-consum consum-millores" style="position: absolute; top: 70px; left: <%= posicio_consum_millores %>px; text-align: left; border-left-style: solid; border-left-width: 2px; border-left-color: #333333; padding-left: 5px; padding-top: 20px; height: 30px; width: 300px;">
+          <span>Consum aplicant propostes de millora</span><br/>
+          <span><%= consum_potencial %> kWh/any</span>
+        </div>
+        <div class="print-barra-energia">
+          <%= image_tag('http://testenergeticv3.s3-eu-west-1.amazonaws.com/imatges/qualificacio_energetica/barra_energia.png', :alt => 'barra energia', :class => 'img_barra_energia') %>
+        </div>
+        <p class="print-llegenda"><sup>*</sup>El consum d'energia d'un edifici no es pot predir amb exactitud perquè depèn de molts factors variables com l'ús de l'edifici o el clima. Per aquesta raó les estimacions d'estalvi energètic d'aquest document són orientatives.</p>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Superficie util:</strong>
-  <%= @entitat.superficie_util %>
-</p>
+  <div class="container-info-tecnic">
+    <div class="print-info-tecnic">
+      <h5 class="print">Nom del tècnic:</h5>
+      <p><%= @entitat.nom_tecnic %> <%= @entitat.cognoms_tecnic %></p>
+      <h5 class="print">Titulació:</h5>
+      <p><%= @entitat.titulacio_tecnic %></p>
+    </div>
+    <div class="print-info-tecnic2">
+      <h5 class="print">Correu electrònic:</h5>
+      <p><%= @entitat.email_tecnic %></p>
+      <h5 class="print">Telèfon:</h5>
+      <p><%= @entitat.telefon_tecnic %></p>
+    </div>
+    <div class="print-data-signatura">
+      <h5 class="print">Data i signatura:</h5>
 
-<p>
-  <strong>Nom propietari:</strong>
-  <%= @entitat.nom_propietari %>
-</p>
+    </div>
+  </div>
 
-<p>
-  <strong>Cognoms propietari:</strong>
-  <%= @entitat.cognoms_propietari %>
-</p>
+  <br/>
 
-<p>
-  <strong>Tipus document identitat propietari:</strong>
-  <%= @entitat.tipus_document_identitat_propietari %>
-</p>
+  <div class="pagebreak">
+    <h3 class="print">Descripció de l'edifici</h3>
+  </div>
 
-<p>
-  <strong>Numero document identitat propietari:</strong>
-  <%= @entitat.numero_document_identitat_propietari %>
-</p>
+  <div class="print-apartat">
+    <h4 class="print">Envolupant tèrmica</h4>
+    <% @entitat.murs.each do |mur| %>
+      <h5 class="print"><%= mur.nom %></h5>
+      <p><%= mur.descripcio %></p>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Email propietari:</strong>
-  <%= @entitat.email_propietari %>
-</p>
+  <%
+  def nom_llum(nom)
+    case nom
+    when 'led'
+      return 'LED'
+    when 'fluorescent_compacte'
+      return 'Fluorescent compacte'
+    when 'fluorescent'
+      return 'Fluorescent'
+    when 'halogena'
+      return 'Halògena'
+    when 'incandescent'
+      return 'Incandescent'
+    end
+  end
+  %>
 
-<p>
-  <strong>Telefon propietari:</strong>
-  <%= @entitat.telefon_propietari %>
-</p>
+  <div class="print-apartat">
+    <h4 class="print">Il·luminació</h4>
+    <table>
+      <theader>
+        <th>Tipologia</th>
+        <th>Potència (W)</th>
+        <th>Quantitat</th>
+        <th>Consum mensual (kWh)</th>
+      </theader>
+      <tbody>
+        <% consum_total = 0 %>
+        <% @entitat.lampades.each do |lampada| %>
+          <tr>
+            <td><%= nom_llum(lampada.tipologia) %></td>
+            <td><%= lampada.potencia %></td>
+            <td><%= lampada.numero %></td>
+            <% consum = (lampada.potencia * lampada.hores_mensuals * lampada.numero)/1000 %>
+            <td><%= consum %></td>
+            <% consum_total += consum %>
+        <% end %>
+      </tbody>
+    </table>
+    <br/>
+    <h5 class="print">Consum total en il·luminació</h5>
+    <p><%= consum_total %> kWh al mes.</p>
+  </div>
 
-<p>
-  <strong>Adreca propietari:</strong>
-  <%= @entitat.adreca_propietari %>
-</p>
+  <% 
+  def nom_clima(nom)
+    case nom
+    when 'caldera_mixta_gas'
+      return 'Caldera mixta de gas'
+    when 'caldera_gas'
+      return 'Caldera de gas'
+    when 'caldera_gasoil'
+      return 'Caldera de gasoil'
+    when 'caldera_biomassa'
+      return 'Caldera de biomassa'
+    when 'radiadors_electrics'
+      return 'Radiadors elèctrics'
+    when 'estufes_electriques'
+      return 'Estufes elèctriques'
+    when 'bomba_calor'
+      return 'Bomba de calor'
+    when 'llar_de_foc'
+      return 'Llar de foc'
+    when 'aire_condicionat'
+      return 'Aire condicionat tipus split'
+    when 'escalfador_gas'
+      return 'Escalfador instantani de gas'
+    when 'termoacumulador_electric'
+      return 'Termoacumulador elèctric'
+    else
+      return 'No definit'
+    end
+  end
+  %>
 
-<p>
-  <strong>Codi postal propietari:</strong>
-  <%= @entitat.codi_postal_propietari %>
-</p>
+  <div class="print-apartat">
+    <h4 class="print">ACS i climatització</h4>
+    <h5 class="print">Sistema principal de calefacció</h5>
+    <p><%= nom_clima(@entitat.climatitzacio.tipologia_calefaccio_1) %></p>
+    <% if @entitat.climatitzacio.tipologia_calefaccio_2 != 'no' %>
+      <h5 class="print">Sistema secundari de calefacció</h5>
+      <p><%= nom_clima(@entitat.climatitzacio.tipologia_calefaccio_2) %></p>
+    <% end %>
+    <% if @entitat.climatitzacio.tipologia_refrigeracio != 'no' %>
+      <h5 class="print">Sistema de refrigeració</h5>
+      <p><%= nom_clima(@entitat.climatitzacio.tipologia_refrigeracio) %></p>
+    <% end %>
+    <h5 class="print">Sistema d'Aigua Calenta Sanitària (ACS)</h5>
+    <p><%= nom_clima(@entitat.climatitzacio.tipologia_acs) %></p>
+    <% if @entitat.climatitzacio.generacio != 'no' %>
+      <h5 class="print">Captadors solars tèrmics</h5>
+      <p>L'edifici disposa de captadors solars tèrmics que cobreixen un <%= @entitat.climatitzacio.percentatge_captadors_termics %>% de la demanda de calefacció i ACS.</p>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Municipi propietari:</strong>
-  <%= @entitat.municipi_propietari %>
-</p>
+  <div class="print-apartat">
+    <h4 class="print">Aparells</h4>
+    <% @entitat.aparells.each do |aparell| %>
+      <h5 class="print"><%= aparell.nom %></h5>
+      <p>Estimació de consum mensual: <%= aparell.consum_mensual %> kWh</p>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Descripcio:</strong>
-  <%= @entitat.descripcio %>
-</p>
+  <div class="print-apartat">
+    <h4 class="print">Consum d'energia</h4>
+    <h5 class="print">Consum anual d'electricitat</h5>
+    <p><%= @entitat.consum_global.consum_anual_electricitat %> kWh - <%= @entitat.consum_global.despesa_anual_electricitat %> €</p>
+    <% if @entitat.consum_global.consum_anual_gas != 0 %>
+    <h5 class="print">Consum anual de gas</h5>
+    <p><%= @entitat.consum_global.consum_anual_gas %> kWh - <%= @entitat.consum_global.despesa_anual_gas %> €</p>
+    <% end %>
+    <% if @entitat.consum_global.consum_anual_gasoil != 0 %>
+    <h5 class="print">Consum anual de gas</h5>
+    <p><%= @entitat.consum_global.consum_anual_gasoil %> kWh - <%= @entitat.consum_global.despesa_anual_gasoil %> €</p>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Destinacio:</strong>
-  <%= @entitat.destinacio %>
-</p>
 
-<p>
-  <strong>Quota:</strong>
-  <%= @entitat.quota %>
-</p>
+  <div class="pagebreak">
+    <h3 class="print">Propostes de millora</h3>
+  </div>
 
-<%= link_to 'Edit', edit_entitat_path(@entitat) %> |
-<%= link_to 'Back', entitats_path %>
+  <% propostes = Proposta.where(entitat_id: @entitat.id) %>
+  
+  <% propostes.each do |proposta| %>
+    <div class="print-apartat contenidor-millores">
+      <h4 class="print"><%= proposta.mesura %></h4>
+      <div class="print-dades-proposta">
+        
+        <div class="container-element-lateral">
+          <p>Estalvi optimista: <br/><span class="valors-propostes"><%= proposta.estalvi_optimista %> %</span></p>
+          <p>Estalvi pessimista: <br/><span class="valors-propostes"><%= proposta.estalvi_pessimista %> %</span></p>
+          <p>Cost optimista: <br/><span class="valors-propostes"><%= number_to_currency(proposta.cost_optimista) %></span></p>
+          <p>Cost pessimista: <br/><span class="valors-propostes"><%= number_to_currency(proposta.cost_pessimista) %></span></p>
+        </div>
+        <p class="print-explicacio-proposta"><%= proposta.descripcio %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <br/>
+
+  <div class="pagebreak">
+    <h4 class="print">Cost econòmic de l'energia consumida en 15 anys</h4>
+  </div>
+
+  <div class="print-apartat">
+    <%
+    @propostes = Proposta.where(entitat_id: @entitat.id)
+    @consums_globals = ConsumGlobal.find_by(entitat_id: @entitat.id)
+    @despesa_actual = Array.new
+    @despesa_estalvi_optimista = Array.new
+    @despesa_estalvi_pessimista = Array.new
+    # Els 15 anys de rang que hem definit
+    for i in 0..14 do
+      estalvi_total_optimista = 0
+      estalvi_total_pessimista = 0
+      data = Date.today.year + i 
+      @propostes.each do |proposta|
+        if proposta.data_any < data
+          estalvi_total_optimista += proposta.estalvi_optimista
+          puts 'Estalvi total optimista:'
+          puts estalvi_total_optimista
+          estalvi_total_pessimista += proposta.estalvi_pessimista
+          puts 'Estalvi total pessimista:'
+          puts estalvi_total_pessimista
+        end
+      end
+
+      @despesa_actual[i] = @consums_globals.despesa_anual_electricitat * (i+1) * (1.025**(i+1)) + @consums_globals.despesa_anual_gas * (i+1) * (1.02**(i+1))
+      @despesa_estalvi_optimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_optimista/100))
+      @despesa_estalvi_pessimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_pessimista/100))
+    end
+    %>
+    <div class="print-chart-container">
+      <div id="curve_chart" style="width: 100%; height: 300px"></div>
+    </div>
+    <div class="print-apartat">    
+      <div class="text-despesa-economica-print">
+        <% estalvi = @despesa_actual[14] - @despesa_estalvi_optimista[14] %>
+        <p>Despesa econòmica en 15 anys: <br/><span class="valors_despesa_energetica"><%= number_to_currency(@despesa_actual[14]) %></span></p>
+        <p>Despesa econòmica aplicant millores: <br/><span class="valors_despesa_energetica"><%= number_to_currency(@despesa_estalvi_optimista[14]) %></span></p> 
+        <p>Estalvi econòmic en 15 anys: <br/><span class="valors_despesa_energetica"><%= number_to_currency(estalvi) %></span></p>
+      </div>
+            
+      <div class="text-impacte-ambiental-print">
+        <% impacte_15 = (@despesa_actual[14] * 0.4)/1000
+        impacte_millores = (@despesa_estalvi_optimista[14] * 0.4)/1000
+        estalvi_co2 = ((@despesa_actual[14] - @despesa_estalvi_optimista[14]) * 0.4)/1000 %>
+        <p>Emissions de CO<sub>2</sub> en 15 anys: <br/><span class="valors_despesa_energetica"><%= impacte_15.round(2) %> t</span></p>
+        <p>Emissions de CO<sub>2</sub> aplicant millores: <br/><span class="valors_despesa_energetica"><%= impacte_millores.round(2) %> t</span></p>
+        <p>Reducció d'emissions de CO<sub>2</sub>: <br/><span class="valors_despesa_energetica"><%= estalvi_co2.round(2) %> t</span></p>
+      </div>
+     
+    </div>
+  </div>
+  
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Any', 'Despesa actual', 'Despesa optimista', 'Despesa pessimista'],
+      <% for i in 0..14 do %> 
+        ['<%= Date.today.year + (i+1) %>', <%= @despesa_actual[i] %>, <%= @despesa_estalvi_optimista[i] %>, <%= @despesa_estalvi_pessimista[i] %>],
+      <% end %>
+    ]);
+
+    var options = {
+      title: 'Acumulació de despesa econòmica',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+    chart.draw(data, options);
+  }
+</script>

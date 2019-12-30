@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -43,7 +43,7 @@ gem 'simple_form', '~> 4.0', '>= 4.0.1'
 gem 'sendgrid-ruby', '~> 5.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'wkhtmltopdf-binary'
-gem 'pdfkit', '~> 0.8.2'
+gem 'pdfkit', '~> 0.8.4.1'
 gem 'render_anywhere', '~> 0.0.12'
 
 group :development, :test do

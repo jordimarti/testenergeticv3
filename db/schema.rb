@@ -80,17 +80,6 @@ ActiveRecord::Schema.define(version: 2019_10_08_204731) do
     t.integer "antiguitat_generacio"
   end
 
-  create_table "coberta", force: :cascade do |t|
-    t.integer "entitat_id"
-    t.string "ambit"
-    t.string "nom"
-    t.text "descripcio"
-    t.decimal "superficie"
-    t.decimal "percentatge"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cobertes", force: :cascade do |t|
     t.integer "entitat_id"
     t.string "ambit"
@@ -123,15 +112,6 @@ ActiveRecord::Schema.define(version: 2019_10_08_204731) do
     t.decimal "resistencia_termica"
     t.integer "posicio"
     t.boolean "nomes_resistencia_termica"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "component_predefinit_murs", force: :cascade do |t|
-    t.string "familia"
-    t.string "nom"
-    t.decimal "conductivitat"
-    t.string "densitat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
