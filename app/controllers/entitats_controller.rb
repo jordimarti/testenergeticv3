@@ -238,43 +238,6 @@ class EntitatsController < ApplicationController
     end
   end
 
-  def pdf
-    @propostes = Proposta.where(entitat_id: @entitat.id)
-    @consums_globals = ConsumGlobal.find_by(entitat_id: @entitat.id)
-    # Calculem estalvi total
-    @consum_total = @consums_globals.consum_anual_electricitat + @consums_globals.consum_anual_gas + @consums_globals.consum_anual_gasoil
-    estalvi_total_optimista = 0
-    @propostes.each do |proposta|
-      estalvi_total_optimista += proposta.estalvi_optimista
-    end
-    @consum_potencial = @consum_total - (@consum_total * (estalvi_total_optimista/100))
-    # Gràfica consums i estalvis
-    @despesa_actual = Array.new
-    @despesa_estalvi_optimista = Array.new
-    @despesa_estalvi_pessimista = Array.new
-    # Els 15 anys de rang que hem definit
-    for i in 0..14 do
-      estalvi_total_optimista = 0
-      estalvi_total_pessimista = 0
-      data = Date.today.year + i 
-      @propostes.each do |proposta|
-        if proposta.data_any < data
-          estalvi_total_optimista += proposta.estalvi_optimista
-          puts 'Estalvi total optimista:'
-          puts estalvi_total_optimista
-          estalvi_total_pessimista += proposta.estalvi_pessimista
-          puts 'Estalvi total pessimista:'
-          puts estalvi_total_pessimista
-        end
-      end
-
-      @despesa_actual[i] = @consums_globals.despesa_anual_electricitat * (i+1) * (1.025**(i+1)) + @consums_globals.despesa_anual_gas * (i+1) * (1.02**(i+1))
-      @despesa_estalvi_optimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_optimista/100))
-      @despesa_estalvi_pessimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_pessimista/100))
-      
-    end
-  end 
-
   def documents
     @subnavigation = true
     @submenu_actiu = 'documents'
