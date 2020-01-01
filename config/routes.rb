@@ -19,17 +19,13 @@ Rails.application.routes.draw do
   
   resources :proposta_predefinides
   resources :climatitzacions
-  resources :lampades do
-    resource :baload, only: [:show]
-  end
+  resources :lampades
   get 'component_murs/select', to: 'component_murs#select', as: 'select_component_mur'
   get 'component_murs/afegeix', to: 'component_murs#afegeix', as: 'afegeix_component_mur'
   resources :component_murs
   resources :cobertes
   resources :murs
-  resources :entitats do
-    resource :download, only: [:show]
-  end
+  resources :entitats
   get 'entitats/:id/ambits', to: 'entitats#ambits', as: 'entitat_ambits'
   get 'entitats/:id/aixecament', to: 'entitats#aixecament', as: 'entitat_aixecament'
   get 'entitats/:id/envolupant', to: 'entitats#envolupant', as: 'entitat_envolupant'
