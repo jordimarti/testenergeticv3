@@ -273,13 +273,21 @@ class EntitatsController < ApplicationController
       @despesa_estalvi_pessimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_pessimista/100))
       
     end
-  end
-
-  
+  end 
 
   def documents
     @subnavigation = true
     @submenu_actiu = 'documents'
+  end
+
+  def descarrega
+    respond_to do |format|
+      format.pdf do
+        render pdf: "Test",
+        template: "entitats/pdf.html.erb",
+        layout: "pdf.html.erb"
+      end
+    end
   end
 
   private
