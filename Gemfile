@@ -39,7 +39,7 @@ gem "aws-sdk-s3", require: false
 gem 'foundation-rails', '~> 6.4', '>= 6.4.3.0'
 gem 'devise', '~> 4.5'
 gem 'devise-i18n', '~> 1.6', '>= 1.6.5'
-gem 'simple_form', '~> 4.0', '>= 4.0.1'
+gem 'simple_form', '~> 5.0', '>= 5.0.1'
 gem 'sendgrid-ruby', '~> 5.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'wkhtmltopdf-binary'
