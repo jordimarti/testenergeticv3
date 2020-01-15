@@ -17,25 +17,55 @@
     <div class="print-propietari">
       <h5 class="print">Sol·licitant:</h5>
       <span><%= entitat.nom_propietari + ' ' + entitat.cognoms_propietari %></span><br/>
-      <span><%= entitat.tipus_identificacio_propietari + ': ' + entitat.identificacio_propietari %></span>
+      <% if entitat.ambit != "subentitat" %>
+        <span><%= entitat.tipus_identificacio_propietari + ': ' + entitat.identificacio_propietari %></span>
+      <% end %>
     </div>
     <div class="print-adreca">
-    <% if entitat.bloc.blank?
-        adreca = entitat.tipus_via.to_s + ' ' + entitat.nom_via.to_s + ' ' + entitat.numero_via.to_s
-      else
-        adreca = entitat.tipus_via.to_s + ' ' + entitat.nom_via.to_s + ' ' + entitat.numero_via.to_s + ', bloc ' + entitat.bloc.to_s
-      end
-    %>
+    <% if entitat.ambit == "subentitat" %>
+      <% entitat_pare = Entitat.find(entitat.pare) %>
+      <% if entitat_pare.bloc.blank?
+          adreca = entitat_pare.tipus_via.to_s + ' ' + entitat_pare.nom_via.to_s + ' ' + entitat_pare.numero_via.to_s
+        else
+          adreca = entitat_pare.tipus_via.to_s + ' ' + entitat_pare.nom_via.to_s + ' ' + entitat_pare.numero_via.to_s + ', bloc ' + entitat_pare.bloc.to_s
+        end
+      %>
+    <% else %>
+      <% if entitat.bloc.blank?
+          adreca = entitat.tipus_via.to_s + ' ' + entitat.nom_via.to_s + ' ' + entitat.numero_via.to_s
+        else
+          adreca = entitat.tipus_via.to_s + ' ' + entitat.nom_via.to_s + ' ' + entitat.numero_via.to_s + ', bloc ' + entitat.bloc.to_s
+        end
+      %>
+    <% end %>
+
       <h5 class="print">Adreça:</h5>
       <span><%= adreca %></span><br/>
-      <span>Codi postal: <%= entitat.codi_postal %></span><br/>
-      <span>Municipi: <%= entitat.poblacio %></span>
+      <% if entitat.ambit == "subentitat" %>
+        <% entitat_pare = Entitat.find(entitat.pare) %>
+        <span>Codi postal: <%= entitat_pare.codi_postal %></span><br/>
+        <span>Municipi: <%= entitat_pare.poblacio %></span>
+      <% else %>
+        <span>Codi postal: <%= entitat.codi_postal %></span><br/>
+        <span>Municipi: <%= entitat.poblacio %></span>
+      <% end %>
+      
     </div>
     <div class="print-caracteristiques">
       <h5 class="print">Característiques:</h5>
-      <span><%= entitat.tipologia %></span><br/>
+      <% if entitat.ambit == "subentitat" %>
+        <% entitat_pare = Entitat.find(entitat.pare) %>
+        <span><%= entitat_pare.tipologia %></span><br/>
+      <% else %>
+        <span><%= entitat.tipologia %></span><br/>
+      <% end %>
       <span>Superfície: <%= entitat.superficie_util%> m<sup>2</sup></span><br/>
-      <span>Any de construcció: <%= entitat.any_construccio %> </span>
+      <% if entitat.ambit == "subentitat" %>
+        <% entitat_pare = Entitat.find(entitat.pare) %>
+        <span>Any de construcció: <%= entitat_pare.any_construccio %> </span>
+      <% else %>
+        <span>Any de construcció: <%= entitat.any_construccio %> </span>
+      <% end %>
     </div>
   </div>
 
@@ -336,14 +366,28 @@
     @despesa_actual = Array.new
     @despesa_estalvi_optimista = Array.new
     @despesa_estalvi_pessimista = Array.new
+    @estalvi_total_optimista = Array.new
+    @any = Array.new
+    despesa_acumulada = 0
+    despesa_acumulada_optimista = 0
+    despesa_acumulada_pessimista = 0
+    increment_preu_electricitat = 2.5
+    increment_preu_gas = 2.0
     # Els 15 anys de rang que hem definit
     for i in 0..14 do
       estalvi_total_optimista = 0
       estalvi_total_pessimista = 0
       data = Date.today.year + i 
+      puts "Data actual"
+      puts data
+      @any[i] = data
       @propostes.each do |proposta|
-        if proposta.data_any < data
+        if proposta.data_any <= data
           estalvi_total_optimista += proposta.estalvi_optimista
+          puts 'Nom proposta'
+          puts proposta.mesura
+          puts 'Data'
+          puts data
           puts 'Estalvi total optimista:'
           puts estalvi_total_optimista
           estalvi_total_pessimista += proposta.estalvi_pessimista
@@ -352,9 +396,17 @@
         end
       end
 
-      @despesa_actual[i] = @consums_globals.despesa_anual_electricitat * (i+1) * (1.025**(i+1)) + @consums_globals.despesa_anual_gas * (i+1) * (1.02**(i+1))
-      @despesa_estalvi_optimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_optimista/100))
-      @despesa_estalvi_pessimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_pessimista/100))
+      despesa = @consums_globals.despesa_anual_electricitat * (1 + increment_preu_electricitat/100)**i + @consums_globals.despesa_anual_gas * (1 + increment_preu_gas/100)**i
+      despesa_acumulada += despesa
+      @despesa_actual[i] = despesa_acumulada
+
+      despesa_optimista = despesa - despesa*(estalvi_total_optimista/100)
+      despesa_acumulada_optimista += despesa_optimista
+      @despesa_estalvi_optimista[i] = despesa_acumulada_optimista
+
+      despesa_pessimista = despesa - despesa*(estalvi_total_pessimista/100)
+      despesa_acumulada_pessimista += despesa_pessimista
+      @despesa_estalvi_pessimista[i] = despesa_acumulada_pessimista
     end
     %>
     <div id="curve_chart"></div>
@@ -394,7 +446,7 @@
       var data = google.visualization.arrayToDataTable([
         ['Any', 'Despesa actual', 'Despesa optimista', 'Despesa pessimista'],
         <% for i in 0..14 do %> 
-          ['<%= Date.today.year + (i+1) %>', <%= @despesa_actual[i] %>, <%= @despesa_estalvi_optimista[i] %>, <%= @despesa_estalvi_pessimista[i] %>],
+          ['<%= Date.today.year + i %>', <%= @despesa_actual[i] %>, <%= @despesa_estalvi_optimista[i] %>, <%= @despesa_estalvi_pessimista[i] %>],
         <% end %>
       ]);
 

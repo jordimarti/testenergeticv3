@@ -215,14 +215,28 @@ class EntitatsController < ApplicationController
     @despesa_actual = Array.new
     @despesa_estalvi_optimista = Array.new
     @despesa_estalvi_pessimista = Array.new
+    @estalvi_total_optimista = Array.new
+    @any = Array.new
+    despesa_acumulada = 0
+    despesa_acumulada_optimista = 0
+    despesa_acumulada_pessimista = 0
+    increment_preu_electricitat = 2.5
+    increment_preu_gas = 2.0
     # Els 15 anys de rang que hem definit
     for i in 0..14 do
       estalvi_total_optimista = 0
       estalvi_total_pessimista = 0
       data = Date.today.year + i 
+      puts "Data actual"
+      puts data
+      @any[i] = data
       @propostes.each do |proposta|
-        if proposta.data_any < data
+        if proposta.data_any <= data
           estalvi_total_optimista += proposta.estalvi_optimista
+          puts 'Nom proposta'
+          puts proposta.mesura
+          puts 'Data'
+          puts data
           puts 'Estalvi total optimista:'
           puts estalvi_total_optimista
           estalvi_total_pessimista += proposta.estalvi_pessimista
@@ -231,10 +245,17 @@ class EntitatsController < ApplicationController
         end
       end
 
-      @despesa_actual[i] = @consums_globals.despesa_anual_electricitat * (i+1) * (1.025**(i+1)) + @consums_globals.despesa_anual_gas * (i+1) * (1.02**(i+1))
-      @despesa_estalvi_optimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_optimista/100))
-      @despesa_estalvi_pessimista[i] = @despesa_actual[i] - (@despesa_actual[i] * (estalvi_total_pessimista/100))
-      
+      despesa = @consums_globals.despesa_anual_electricitat * (1 + increment_preu_electricitat/100)**i + @consums_globals.despesa_anual_gas * (1 + increment_preu_gas/100)**i
+      despesa_acumulada += despesa
+      @despesa_actual[i] = despesa_acumulada
+
+      despesa_optimista = despesa - despesa*(estalvi_total_optimista/100)
+      despesa_acumulada_optimista += despesa_optimista
+      @despesa_estalvi_optimista[i] = despesa_acumulada_optimista
+
+      despesa_pessimista = despesa - despesa*(estalvi_total_pessimista/100)
+      despesa_acumulada_pessimista += despesa_pessimista
+      @despesa_estalvi_pessimista[i] = despesa_acumulada_pessimista
     end
   end
 
@@ -248,7 +269,8 @@ class EntitatsController < ApplicationController
       format.pdf do
         render pdf: "Test",
         template: "entitats/pdf.html.erb",
-        layout: "pdf.html.erb"
+        layout: "pdf.html.erb",
+        margin: {top: 20}
       end
     end
   end

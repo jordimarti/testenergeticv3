@@ -74,6 +74,29 @@
       </div>
     </div>
   </div>
+
+  <div>
+    <table>
+      <thead>
+        <th>Any</th>
+        <th>Despesa actual</th>
+        <th>Estalvi total optimista</th>
+        <th>Despesa amb estalvi optimista</th>
+        <th>Despesa amb estalvi pessimista</th>
+      </thead>
+      <tbody>
+        <% for i in 0..14 do %>
+          <tr>
+            <td><%= @any[i] %></td>
+            <td><%= @despesa_actual[i] %></td>
+            <td><%= @estalvi_total_optimista[i] %></td>
+            <td><%= @despesa_estalvi_optimista[i] %></td>
+            <td><%= @despesa_estalvi_pessimista[i] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 
@@ -86,7 +109,7 @@
     var data = google.visualization.arrayToDataTable([
       ['Any', 'Despesa actual', 'Despesa optimista', 'Despesa pessimista'],
       <% for i in 0..14 do %> 
-        ['<%= Date.today.year + (i+1) %>', <%= @despesa_actual[i] %>, <%= @despesa_estalvi_optimista[i] %>, <%= @despesa_estalvi_pessimista[i] %>],
+        ['<%= Date.today.year + i %>', <%= @despesa_actual[i] %>, <%= @despesa_estalvi_optimista[i] %>, <%= @despesa_estalvi_pessimista[i] %>],
       <% end %>
     ]);
 
