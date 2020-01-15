@@ -181,7 +181,22 @@
   </div>
 
   <div class="container-info-tecnic">
-    <div class="print-info-tecnic">
+  <% if entitat.ambit == "subentitat" %>
+      <% entitat_pare = Entitat.find(entitat.pare) %>
+      <div class="print-info-tecnic">
+      <h5 class="print">Nom del tècnic:</h5>
+      <p><%= entitat_pare.nom_tecnic %> <%= entitat_pare.cognoms_tecnic %></p>
+      <h5 class="print">Titulació:</h5>
+      <p><%= entitat_pare.titulacio_tecnic %></p>
+    </div>
+    <div class="print-info-tecnic2">
+      <h5 class="print">Correu electrònic:</h5>
+      <p><%= entitat_pare.email_tecnic %></p>
+      <h5 class="print">Telèfon:</h5>
+      <p><%= entitat_pare.telefon_tecnic %></p>
+    </div>
+  <% else %>
+      <div class="print-info-tecnic">
       <h5 class="print">Nom del tècnic:</h5>
       <p><%= entitat.nom_tecnic %> <%= entitat.cognoms_tecnic %></p>
       <h5 class="print">Titulació:</h5>
@@ -193,6 +208,8 @@
       <h5 class="print">Telèfon:</h5>
       <p><%= entitat.telefon_tecnic %></p>
     </div>
+  <% end %>
+    
     <div class="print-data-signatura">
       <h5 class="print">Data i signatura:</h5>
 
