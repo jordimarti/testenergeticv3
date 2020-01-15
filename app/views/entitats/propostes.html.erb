@@ -22,8 +22,9 @@
     <div class="grid-x grid-margin-x">
       <div class="medium-12 cell">
         <div class="light-container container-separator">
-          <% #link_to t('.generar_propostes'), propostes_generar_propostes_path(entitat_id: params[:id]), class: 'button' %>
+          <%= link_to t('.generar_propostes'), propostes_generar_propostes_path(entitat_id: params[:id]), class: 'button' %>
           <div id="missatge">
+            <%= @missatge %>
           </div>
           <div id="propostes">
             <%= render partial: '/propostes/llistat_propostes' %>
@@ -74,30 +75,6 @@
       </div>
     </div>
   </div>
-
-  <div>
-    <table>
-      <thead>
-        <th>Any</th>
-        <th>Despesa actual</th>
-        <th>Estalvi total optimista</th>
-        <th>Despesa amb estalvi optimista</th>
-        <th>Despesa amb estalvi pessimista</th>
-      </thead>
-      <tbody>
-        <% for i in 0..14 do %>
-          <tr>
-            <td><%= @any[i] %></td>
-            <td><%= @despesa_actual[i] %></td>
-            <td><%= @estalvi_total_optimista[i] %></td>
-            <td><%= @despesa_estalvi_optimista[i] %></td>
-            <td><%= @despesa_estalvi_pessimista[i] %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
 
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

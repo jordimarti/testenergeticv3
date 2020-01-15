@@ -31,35 +31,36 @@ class PropostesController < ApplicationController
 
   def generar_propostes
     zona_climatica = zona_climatica_cte(@entitat.id)
-    superficie_facana = 300
+    superficie_facana = calcul_superficie_facana(@entitat)
+    superficie_finestres = calcul_superficie_forats(@entitat)
     lletra = lletra_tipus_habitatge(@entitat)
-    if lletra == 'z'
-      @missatge = 'No es poden generar propostes automàticament per habitatges tan nous'
-    end
     codi = lletra + '_' + zona_climatica
     
     data_any = Date.today.year + 1
     data_mes = 1
     # Aïllament de façana
-    proposta_aillament = PropostaPredefinida.find_by(codi: 'P1')
-    estalvi = proposta_aillament.send("#{lletra}_#{zona_climatica}")
-    cost = proposta_aillament.preu * superficie_facana
-    estalvi_optimista = estalvi + (estalvi * 0.15)
-    estalvi_pessimista = estalvi - (estalvi * 0.15)
-    cost_optimista = cost - (cost * 0.15)
-    cost_pessimista = cost + (cost * 0.15)
-    Proposta.create(entitat_id: @entitat.id, mesura: proposta_aillament.mesura_ca, descripcio: proposta_aillament.descripcio, cost_optimista: cost_optimista, cost_pessimista: cost_pessimista, estalvi_optimista: estalvi_optimista, estalvi_pessimista: estalvi_pessimista, data_any: data_any, data_mes: data_mes)
+    if superficie_facana != 'no_dades'
+      proposta_aillament = PropostaPredefinida.find_by(codi: 'P1')
+      estalvi = proposta_aillament.send("#{lletra}_#{zona_climatica}")
+      cost = proposta_aillament.preu * superficie_facana
+      estalvi_optimista = estalvi + (estalvi * 0.15)
+      estalvi_pessimista = estalvi - (estalvi * 0.15)
+      cost_optimista = cost - (cost * 0.15)
+      cost_pessimista = cost + (cost * 0.15)
+      Proposta.create(entitat_id: @entitat.id, mesura: proposta_aillament.mesura_ca, descripcio: proposta_aillament.descripcio, cost_optimista: cost_optimista, cost_pessimista: cost_pessimista, estalvi_optimista: estalvi_optimista, estalvi_pessimista: estalvi_pessimista, data_any: data_any, data_mes: data_mes)
+    end
 
     # Canvi finestres
-    proposta_finestra = PropostaPredefinida.find_by(codi: 'P58')
-    estalvi = proposta_finestra.send("#{lletra}_#{zona_climatica}")
-    superficie_finestres = 40
-    cost = proposta_finestra.preu * superficie_finestres
-    estalvi_optimista = estalvi + (estalvi * 0.15)
-    estalvi_pessimista = estalvi - (estalvi * 0.15)
-    cost_optimista = cost - (cost * 0.15)
-    cost_pessimista = cost + (cost * 0.15)
-    Proposta.create(entitat_id: @entitat.id, mesura: proposta_finestra.mesura_ca, descripcio: proposta_finestra.descripcio, cost_optimista: cost_optimista, cost_pessimista: cost_pessimista, estalvi_optimista: estalvi_optimista, estalvi_pessimista: estalvi_pessimista, data_any: data_any, data_mes: data_mes)
+    if superficie_finestres != 'no_dades'
+      proposta_finestra = PropostaPredefinida.find_by(codi: 'P58')
+      estalvi = proposta_finestra.send("#{lletra}_#{zona_climatica}")
+      cost = proposta_finestra.preu * superficie_finestres
+      estalvi_optimista = estalvi + (estalvi * 0.15)
+      estalvi_pessimista = estalvi - (estalvi * 0.15)
+      cost_optimista = cost - (cost * 0.15)
+      cost_pessimista = cost + (cost * 0.15)
+      Proposta.create(entitat_id: @entitat.id, mesura: proposta_finestra.mesura_ca, descripcio: proposta_finestra.descripcio, cost_optimista: cost_optimista, cost_pessimista: cost_pessimista, estalvi_optimista: estalvi_optimista, estalvi_pessimista: estalvi_pessimista, data_any: data_any, data_mes: data_mes)
+    end
 
     # Canvi caldera
     # Només proposem canvi caldera si es tracta d'habitatge unifamiliar o subentitat
@@ -114,6 +115,30 @@ class PropostesController < ApplicationController
       else
         return 'z'
       end
+    end
+  end
+
+  def calcul_superficie_facana(entitat)
+    superficie = 0.0
+    entitat.murs.each do |mur|
+      superficie += mur.superficie
+    end
+    if superficie == 0.0
+      return 'no_dades'
+    else
+      return superficie
+    end
+  end
+
+  def calcul_superficie_forats(entitat)
+    superficie = 0.0
+    entitat.forats.each do |forat|
+      superficie += forat.superficie_total * forat.numero
+    end
+    if superficie == 0.0
+      return 'no_dades'
+    else
+      return superficie
     end
   end
 
