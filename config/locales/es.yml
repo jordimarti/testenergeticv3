@@ -91,6 +91,12 @@ es:
     index:
       titol_test_energetic: "Test energético"
       subtitol_test_energetic: "Herramienta para la elaboración de propuestas de ahorro energético en viviendas existentes."
+    recursos:
+      titol_recursos: "Recursos"
+      explicacio_recursos: "En las siguientes páginas encontraréis imágenes pensadas para ofrecer apoyo visual a la explicación de algunos conceptos. El objetivo de las imágenes es facilitar la comprensión por parte de los usuarios de los conceptos que quiere explicar el técnico."
+      ponts_termics: "Ponts tèrmics"
+      aillament_termic: "Aïllament tèrmic"
+      habits: "Hàbits"
   entitats:
     index:
       titol: "Tests"

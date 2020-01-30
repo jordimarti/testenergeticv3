@@ -42,5 +42,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'home/index'
   get 'home/contacta'
+  get 'home/tutorials', to: 'home#tutorials', as: 'tutorials'
+  get 'home/recursos', to: 'home#recursos', as: 'recursos'
   root :to => "home#index"
 end

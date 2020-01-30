@@ -232,6 +232,12 @@ ca:
     index:
       titol_test_energetic: "Test energètic"
       subtitol_test_energetic: "Eina de suport per a l'elaboració de propostes d'estalvi energètic en habitatges existents."
+    recursos:
+      titol_recursos: "Recursos"
+      explicacio_recursos: "A les següents pàgines hi podeu trobar imatges pensades per a donar suport visual a l'explicació d'alguns conceptes. L'objectiu de les imatges és facilitar la comprensió per part dels usuaris dels conceptes que vol explicar el tècnic."
+      ponts_termics: "Ponts tèrmics"
+      aillament_termic: "Aïllament tèrmic"
+      habits: "Hàbits"
   entitats:
     index:
       titol: "Tests"
