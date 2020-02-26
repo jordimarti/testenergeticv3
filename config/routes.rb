@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :cobertes
   resources :murs
   resources :entitats
+  get 'entitats/:id/transmitancies', to: 'entitats#transmitancies', as: 'entitat_transmitancies'
   get 'entitats/:id/descarrega', to: 'entitats#descarrega', as: 'entitat_descarrega'
   get 'entitats/:id/ambits', to: 'entitats#ambits', as: 'entitat_ambits'
   get 'entitats/:id/aixecament', to: 'entitats#aixecament', as: 'entitat_aixecament'

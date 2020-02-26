@@ -25,6 +25,13 @@
 							  target: "_blank",
 							  class: "button download" %></p>
 						</div>
+						<div class="medium-4 cell end">
+							<%= image_tag('document_kg.png', :alt => t('.genera_informe_u'), :class => 'imatge-document') %>
+							<%= link_to t('.genera_document_kg'),
+							  entitat_transmitancies_path(@entitat, format: "pdf"),
+							  target: "_blank",
+							  class: "button download" %></p>
+						</div>
 					</div>	
 				</div>
 			</div>

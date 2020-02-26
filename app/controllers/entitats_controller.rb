@@ -275,6 +275,20 @@ class EntitatsController < ApplicationController
     end
   end
 
+  def transmitancies
+    respond_to do |format|
+      format.pdf do
+        render pdf: "Kg",
+        template: "entitats/pdf_transmitancies.html.erb",
+        layout: "pdf.html.erb",
+        margin: {top: 20}
+      end
+      format.html do
+        render :pdf_transmitancies
+      end
+    end
+  end
+
   private
     
     def set_entitat

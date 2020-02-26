@@ -104,12 +104,6 @@ h5.print {
   margin-bottom: 5px;
 }
 
-h4.print-nom-element-kg {
-  font-size: 15px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
 .print-propietari {
   float: left;
   width: 180px;
@@ -383,33 +377,14 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
-.print-linia-component {
-  border-top: 1px solid #ccc;
-  padding: 6px;
-}
 
-span.print-ressaltat {
-  font-weight: bold;
-}
-
-.print-titol-taula-kg {
-  background-color: #ddd;
-  border-bottom: 1px solid #999;
-  font-weight: bold;
-}
-
-.print-camp-transmitancia {
-  background-color: #ddd;
-  font-weight: bold;
-  width: 180px;
-}
 
   </style>
   
-  
+  <meta name="pdfkit-margin_top" content="1.25in"/>
   
 </head>
-<body class="print-body" onload="init()">
+<body class="print-body">
   <div class="container print-container">
     <%= yield %>
   </div>

@@ -1,0 +1,146 @@
+<% entitat = Entitat.find(params[:id]) %>
+
+  <div class="print-logo">
+    <h1 class="print-h1">TEST ENERGÈTIC</h1>
+    <h2 class="print-h2">Càlcul de les transmitàncies tèrmiques</h2>
+  </div>
+
+  <div class="print-apartat">
+  	<h5 class="print">Edifici o entitat:</h5>
+  	<%= entitat.nom %>		
+  </div>
+
+  <div class="print-apartat">
+  	<h3 class="print">Murs</h3>
+  	<% if entitat.murs.count == 0 %>
+  		No s'han definit murs
+  	<% else %>
+	  	<% entitat.murs.each do |mur| %>
+	  		<h4 class="print-nom-element-kg"><%= mur.nom %></h4>
+	  		<p>
+	  			<%= mur.descripcio %><br/>
+	  			<span class="print-ressaltat">Superfície:</span> <%= mur.superficie %> m<sup>2</sup> <br/>
+	  			<span class="print-ressaltat">Percentatge respecte el total de murs:</span> <%= mur.percentatge %> %
+	  		</p>
+	  		<table class="print-table">
+	  			<tr>
+	  				<td class="print-camp-transmitancia">Transmitància tèrmica:</td>
+	  				<td><%= '%.2f' % mur.transmitancia_mur %> W/m<sup>2</sup>·K </td>
+	  			</tr>
+	  		</table>
+	  	
+	  		<br/>
+
+	  		<table class="print-table">
+	  			<theader>
+	  				<th class="print-titol-taula-kg">Component</th>
+	  				<th class="print-titol-taula-kg">Conductivitat tèrmica<br/> (W/m·K)</th>
+	  				<th class="print-titol-taula-kg">Gruix<br/> (m)</th>
+	  				<th class="print-titol-taula-kg">Resistència tèrmica<br/> (m<sup>2</sup>·K/W)</th>
+	  			</theader>
+	  			<tbody>
+			  		<% mur.component_murs.each do |component| %>
+			  			<tr>
+			  				<td><%= component.nom %></td>
+			  				<td><%= component.conductivitat %></td>
+			  				<td><%= component.gruix %></td>
+			  				<td><%= '%.2f' % component.resistencia_termica %></td>
+			  			</tr>
+			  		<% end %>
+			  	</tbody>
+			  </table>
+	  	<% end %>
+	  <% end %>
+  </div>
+
+  <div class="print-apartat">
+  	<h3 class="print">Forats</h3>
+  	<% if entitat.forats.count == 0 %>
+  		No s'han definit forats
+  	<% else %>
+	  	<% entitat.forats.each do |forat| %>
+	  		
+	  		<table class="print-table">
+	  			<theader>
+	  				<th class="print-titol-taula-kg">Descripció</th>
+	  				<th class="print-titol-taula-kg">Transmitància tèrmica marc<br/> (W/m<sup>2</sup>·K)</th>
+	  				<th class="print-titol-taula-kg">Superfície marc<br/> (m<sup>2</sup>)</th>
+	  				<th class="print-titol-taula-kg">Transmitància tèrmica vidre<br/> (W/m<sup>2</sup>·K)</th>
+	  				<th class="print-titol-taula-kg">Superfície vidre<br/> (m<sup>2</sup>)</th>
+	  				<th class="print-titol-taula-kg">Nombre</th>
+	  			</theader>
+	  			<tbody>
+			  		<tr>
+			  			<td><%= forat.nom %></td>
+			  			<td><%= forat.transmitancia_marc %></td>
+			  			<td><%= forat.superficie_marc %></td>
+			  			<td><%= forat.transmitancia_transparent %></td>
+			  			<td><%= forat.superficie_transparent %></td>
+			  			<td><%= forat.numero %></td>
+			  		</tr>
+			  	</tbody>
+			  </table>
+	  	<% end %>
+	  <% end %>
+  </div>
+
+  <div class="print-apartat">
+  	<h3 class="print">Cobertes</h3>
+  	<% if entitat.cobertes.count == 0 %>
+  		No s'han definit cobertes
+  	<% else %>
+	  	<% entitat.cobertes.each do |coberta| %>
+	  		<h4 class="print-nom-element-kg"><%= coberta.nom %></h4>
+	  		<p>
+	  			<%= coberta.descripcio %><br/>
+	  			<span class="print-ressaltat">Superfície:</span> <%= coberta.superficie %> m<sup>2</sup> <br/>
+	  			<span class="print-ressaltat">Percentatge respecte el total de cobertes:</span> <%= coberta.percentatge %> %
+	  		</p>
+	  		<table class="print-table">
+	  			<tr>
+	  				<td class="print-camp-transmitancia">Transmitància tèrmica:</td>
+	  				<td><%= '%.2f' % coberta.transmitancia_coberta %> W/m<sup>2</sup>·K </td>
+	  			</tr>
+	  		</table>
+	  	
+	  		<br/>
+
+	  		<table class="print-table">
+	  			<theader>
+	  				<th class="print-titol-taula-kg">Component</th>
+	  				<th class="print-titol-taula-kg">Conductivitat tèrmica<br/> (W/m·K)</th>
+	  				<th class="print-titol-taula-kg">Gruix<br/> (m)</th>
+	  				<th class="print-titol-taula-kg">Resistència tèrmica<br/> (m<sup>2</sup>·K/W)</th>
+	  			</theader>
+	  			<tbody>
+			  		<% coberta.component_cobertes.each do |component| %>
+			  			<tr>
+			  				<td><%= component.nom %></td>
+			  				<td><%= component.conductivitat %></td>
+			  				<td><%= component.gruix %></td>
+			  				<td><%= '%.2f' % component.resistencia_termica %></td>
+			  			</tr>
+			  		<% end %>
+			  	</tbody>
+			  </table>
+	  	<% end %>
+	  <% end %>
+  </div>
+
+  <div class="print-apartat">
+  	<h3 class="print">Terres</h3>
+  	<% if entitat.terres.count == 0 %>
+  		No s'han definit terres
+  	<% else %>
+	  	<% entitat.terres.each do |terra| %>
+	  		<h4 class="print-nom-element-kg"><%= terra.nom %></h4>
+	  		<p>
+	  			<%= terra.descripcio %><br/>
+	  			<span class="print-ressaltat">Superfície:</span> <%= terra.superficie %> m<sup>2</sup> <br/>
+	  			<span class="print-ressaltat">Profunditat:</span> <%= terra.profunditat %><br/>
+	  			<span class="print-ressaltat">Resistència tèrmica de l'aïllant:</span> <%= terra.resistencia_termica_aillant %>  m<sup>2</sup>·K/W<br/>
+	  			<span class="print-ressaltat">Longitud del perímetre:</span> <%= terra.longitud_perimetre %> m<br/>
+	  		</p>
+	  	<% end %>
+	  <% end %>
+  </div>

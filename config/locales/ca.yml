@@ -353,7 +353,10 @@ ca:
     documents:
       titol_document: "Documents"
       genera_test_energetic: "Genera el test energètic"
+      genera_document_kg: "Genera informe transmitàncies"
       text_generar_xml: "Exporteu les propostes d'intervenció en format XML."
+    pdf_transmitancies:
+      mursis: "Murs i murets"
   murs:
     edit:
       titol: "Envolupant tèrmica: edició de mur"
