@@ -267,10 +267,17 @@ class EntitatsController < ApplicationController
   def descarrega
     respond_to do |format|
       format.pdf do
-        render pdf: "Test",
-        template: "entitats/pdf.html.erb",
-        layout: "pdf.html.erb",
-        margin: {top: 20}
+        if params[:locale] == 'es'
+          render pdf: "Test",
+          template: "entitats/pdf_es.html.erb",
+          layout: "pdf.html.erb",
+          margin: {top: 20}
+        else
+          render pdf: "Test",
+          template: "entitats/pdf.html.erb",
+          layout: "pdf.html.erb",
+          margin: {top: 20}
+        end
       end
     end
   end
@@ -278,10 +285,17 @@ class EntitatsController < ApplicationController
   def transmitancies
     respond_to do |format|
       format.pdf do
-        render pdf: "Kg",
-        template: "entitats/pdf_transmitancies.html.erb",
-        layout: "pdf.html.erb",
-        margin: {top: 20}
+        if params[:locale] == 'es'
+          render pdf: "Transmitancias",
+          template: "entitats/pdf_transmitancies_es.html.erb",
+          layout: "pdf.html.erb",
+          margin: {top: 20}
+        else
+          render pdf: "Transmitancies",
+          template: "entitats/pdf_transmitancies.html.erb",
+          layout: "pdf.html.erb",
+          margin: {top: 20}
+        end
       end
       format.html do
         render :pdf_transmitancies

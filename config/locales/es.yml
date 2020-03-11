@@ -20,7 +20,70 @@ es:
               blank: "Es necesario escribir el nombre"
             last_name:
               blank: "Es necesario escribir los apellidos"
+        mur:
+          attributes:
+            nom:
+              blank: "Es necesario poner un nombre al muro"
+            superficie:
+              blank: "Es necesario escribir la superficie del muro"
+              other_than: "La superficie no puede ser 0"
+        forat:
+          attributes:
+            nom:
+              blank: "Es necesario poner un nolmbre al hueco"
+            superficie_marc:
+              blank: "Es necesario escribir la superficie de marco"
+            transmitancia_marc:
+              blank: "Es necesario escribir la transmitancia térmica del marco"
+            tipus_marc:
+              blank: "Es necesario seleccionar el tipo de marco"
+            superficie_transparent:
+              blank: "Si no hay vidrio poner 0"
+            transmitancia_transparent:
+              blank: "Si no hay vidrio poner 0"
+            longitud_contacte_marc_vidre:
+              blank: "Si no hay vidrio poner 0"
+            superficie_opaca:
+              blank: "Si no hay parte opaca poner 0"
+            transmitancia_opaca:
+              blank: "Si no hay parte opaca poner 0"
+            longitud_contacte_marc_opac:
+              blank: "Si no hay parte opaca poner 0"
+            tipus_vidre:
+              blank: "Es necesario seleccionar un tipo de vidrio"
+        coberta:
+          attributes:
+            nom:
+              blank: "Es necesario poner un nombre a la cubierta"
+            superficie:
+              blank: "Es necesario escribir la superficie de la cubierta"
+              other_than: "La superficie no puede ser 0"
+        terra:
+          attributes:
+            nom:
+              blank: "Es necesario poner un nombre al suelo"
+            superficie:
+              blank: "Es necesario escribir la superficie del suelo"
+              other_than: "La superficie no puede ser 0"
+            profunditat:
+              blank: "Es necesario seleccionar la profundidad"
+            resistencia_termica_aillant:
+              blank: "Es necesario escribir la resistencia térmica"
+            longitud_perimetre:
+              blank: "Es necesario escribir la longitud del perímetro"
+            ample_aillament:
+              blank: "Es necesario escribir el ancho del aislamiento"
+  number:
+    currency:
+      format:
+        unit: '€'
+        delimiter: '.'
+        separator: ','
+        precision: 2
+        format: '%n %u'
   simple_form:
+    error_notification:
+      default_message: "Por favor revisa los problemas:"
     labels:
       user:
         first_name: 'Nombre'
@@ -71,6 +134,86 @@ es:
         descripcio: "Descripción"
         quota: "Cuota"
         destinacio: "Destinación"
+      mur:
+        nom: "Nombre del muro"
+        descripcio: "Descripción"
+        superficie: "Superficie"
+        percentatge: "Porcentaje"
+        tipus_mur: "Número de hojas"
+      component_mur:
+        nom: "Nombre"
+        conductivitat: "Conductividad"
+        gruix: "Grosor"
+        resistencia_termica: "Resistencia térmica"
+      forat:
+        nom: "Nombre del hueco"
+        descripcio: "Descripción"
+        superficie: "Superficie"
+        percentatge: "% respecto total huecos"
+        numero: "Número de huecos de este tipo"
+        superficie_marc: "Superficie"
+        transmitancia_marc: "Transmitancia"
+        tipus_marc: "Tipo de marco"
+        superficie_transparent: "Superficie"
+        transmitancia_transparent: "Transmitancia"
+        longitud_contacte_marc_vidre: "Longitud de contacto entre el marco y el vidrio"
+        tipus_vidre: "Tipo de vidrio"
+        superficie_opaca: "Superficie"
+        transmitancia_opaca: "Transmitancia"
+        longitud_contacte_marc_opac: "Longitud de contacto entre el marco y el panel"
+      coberta:
+        nom: "Nombre de la cubierta"
+        descripcio: "Descripción"
+        superficie: "Superficie"
+        percentatge: "Porcentaje"
+      terra:
+        nom: "Nombre del suelo"
+        descripcio: "Descripción"
+        superficie: "Superficie"
+        profunditat: "Profundidad"
+        resistencia_termica_aillant: "Resistencia térmica del aislante"
+        longitud_perimetre: "Longitud del perímetro"
+        ample_aillament: "Ancho del aislante"
+      climatitzacio:
+        tipologia_calefaccio_1: "Sistema principal de calefacción"
+        antiguitat_calefaccio_1: "Antigüedad del sistema (años)"
+        tipologia_calefaccio_2: "Sistema secundario de calefacción"
+        antiguitat_calefaccio_2: "Antigüedad del sistema (años)"
+        tipologia_refrigeracio: "Sistema de refrigeración"
+        antiguitat_refrigeracio: "Antigüedad del sistema (años)"
+        tipologia_acs: "Sistema de agua caliente sanitaria"
+        antiguitat_acs: "Antigüedad del sistema (años)"
+        generacio: "Sistema de generación"
+        antiguitat_generacio: "Antigüedad del sistema (años)"
+        percentatge_captadors_termics: "Demanda cubierta (%)"
+      aparell:
+        nom: "Nombre del aparato"
+        consum_mensual: "Consumo mensual (kWh)"
+      habit:
+        nom: "Nombre del hábito"
+        descripcio: "Descripción"
+      consum_global:
+        consum_anual_electricitat: "Consumo anual de electricidad"
+        consum_anual_gas: "Consumo anual de gas"
+        consum_anual_gasoil: "Consumo anual de gasoil"
+        despesa_anual_electricitat: "Gasto anual de electricidad"
+        despesa_anual_gas: "Gasto anual de gas"
+        despesa_anual_gasoil: "Gasto anual de gasoil"
+      certificacio:
+        visible: "Mostrar los datos de la certificación energética"
+        emissions: "Emisiones de CO2"
+        demanda: "Demanda de energía"
+        lletra_emissions: "Calificación de emisiones de CO2"
+        lletra_demanda: "Calificación de demanda de energía"
+      proposta:
+        mesura: "Nombre de la propuesta"
+        descripcio: "Descripción"
+        cost_optimista: "Coste optimista (€)"
+        cost_pessimista: "Coste pesimista (€)"
+        estalvi_optimista: "Ahorro optimista (%)"
+        estalvi_pessimista: "Ahorro pesimista (%)"
+        data_mes: "Mes"
+        data_any: "Año"
   layouts:
     application:
       titol_pagina: "Test energético"
@@ -100,7 +243,7 @@ es:
   entitats:
     index:
       titol: "Tests"
-      nou_edifici: "Crear un nuevo edificio"
+      nou_edifici: "Crear un nuevo test"
       no_projectes: "Aún no has creado ningún test."
     new:
       titol: "Crear un nuevo test"
@@ -109,6 +252,16 @@ es:
       titol_entitat: "Crear una nueva entidad"
       tornar_entitats: "Volver a la selección de ámbito"
       dades_propietat: "DATOS DE LA PROPIEDAD"
+      identificar_test: "Identificar el Test"
+      text_identificar_test: "El nombre del Test energético no aparece en el documento final, sirve para su organización de los diferentes Tests."
+      dades_edifici: "Datos del edificio"
+      dades_propietat: "Datos de la propiedad"
+      dades_propietari: "PROPIEDAD O PRESIDENT/A DE LA COMUNIDAD"
+      dades_tecnic: "Datos del técnico redactor"
+      dni: "DNI"
+      nie: "NIE"
+      passaport: "Pasaporte"
+      nif: "NIF"
     form:
       guardar: "Guardar"
     ambits:
@@ -136,9 +289,13 @@ es:
       dades_edifici: "DATOS DE LA ENTIDAD"
       dades_propietat: "DADES DE LA PROPIETAT"
       dades_propietari: "PROPIETAT O PRESIDENT/A DE LA COMUNITAT"
+      dni: "DNI"
+      nie: "NIE"
+      passaport: "Pasaporte"
+      nif: "NIF"
       guardar: "Guardar"
     delete:
-      edifici_eliminat: "El edificio se ha eliminado correctamente"
+      edifici_eliminat: "El test se ha eliminado correctamente"
     aixecament:
       titol: "Levantamiento de datos"
       envolupant: "Envolvente térmica"
@@ -146,5 +303,304 @@ es:
       acs_clima: "ACS y climatización"
       altres: "Otros aparatos"
       factures: "Facturas y consumos"
+      habits: "Hábitos y gestión"
+      certificacio_energetica: "Certificación energética"
     envolupant:
+      aixecament_dades: "Levantamiento de datos"
       titol: "Envolvente térmica"
+      murs: "Muros"
+      forats: "Huecos"
+      cobertes: "Cubiertas"
+      terres: "Suelos"
+      calcul_transmitancia: "Transmitancia térmica global"
+      afegir_element: "+ Añadir elemento"
+      no_murs: "Define los muros de fachada, medianera, etc."
+      no_forats: "Define las aperturas como puertas y ventanas."
+      no_cobertes: "Define las cubiertas"
+      no_terres: "Define los suelos"
+      falta_info: "Falta información para poder calcular la transmitancia térmica global"
+      eliminar: "Seguro que quieres eliminar?"
+      nou_forat_predefinit: "+ Añadir elemento predefinido"
+    iluminacio:
+      aixecament_dades: "Levantamiento de datos"
+      titol: "Iluminación"
+      seleccio_ambit: "Selección de ámbito"
+      iluminacio_zones_comunes: "Iluminación de las zonas comunes del edificio"
+      text_iluminacio_1: "La iluminación hay que definirla a nivel de entidades del edificio y no a nivel global. O sea que se define en cada piso, local comercial, etc. En este apartado sólo se define la iluminación de las zonas comunes del edificio."
+      text_iluminacio_2: "En el apartado de \"Selección de ámbito\" puedes seleccionar la entidad donde definir la iluminación."
+      leds: "LEDs"
+      fluorescents_compactes: "Fluorescentes compactos"
+      fluorescents: "Fluorescentes"
+      halogenes: "Halógenas"
+      incandescents: "Incandescentes"
+      afegir_element: "+ Añadir elemento"
+    clima:
+      aixecament_dades: "Levantamiento de datos"
+      titol: "ACS y climatización"
+      sistema_principal_calefaccio: "Sistema principal de calefacción"
+      editar_sistema: "Editar sistema"
+      seleccio_ambit: "Selección de ámbito"
+      clima_zones_comunes: "ACS y climatización de las zonas comunes del edificio"
+      text_clima_1: "La climatización y agua caliente sanitaria hay que definirlas a nivel de entidades del edificio y no a nivel global. O sea que se define en cada piso, local comercial, etc. En caso de que las zonas comunes del edificio tengan climatización sí lo debería introducir aquí."
+      text_clima_2: "En el apartado de \"Selección de ámbito\" puedes seleccionar la entidad donde definir la climatización y el agua caliente sanitaria."
+    aparells:
+      titol: "Otros aparatos"
+      aixecament_dades: "Levantamiento de datos"
+      aparell: "Aparato"
+      afegir_element: "+ Añadir elemento"
+    habits:
+      titol: "Hábitos y gestión"
+      aixecament_dades: "Levantamiento de datos"
+      habit: "Hábito"
+      afegir_habit: "+ Añadir hábito"
+    consums:
+      titol: "Facturas y consumos"
+      aixecament_dades: "Levantamiento de datos"
+      guardar: "Guardar"
+    certificacio:
+      titol: "Certificación energética"
+      aixecament_dades: "Levantamiento de datos"
+      guardar: "Guardar"
+    propostes:
+      propostes_millora: "Propuestas de mejora"
+      afegir_proposta: "Añadir una propuesta"
+      generar_propostes: "Generar propuestas"
+      cost_energia: "Coste económico de la energía consumida en 15 años"
+      actualitzar_grafic: "Actualizar gráfico"
+      acumulacio_despesa: "Acumulación del gasto económico siguiendo el pasaporte del edificio"
+      despesa_15anys: "Gasto económico en 15 años:"
+      despesa_aplicant_millores: "Gasto económico aplicando mejoras:"
+      estalvi_15anys: "Ahorro económico en 15 años:"
+      emissions_15anys_1: "Emisiones de"
+      emissions_15anys_2: "en 15 años:"
+      emissions_aplicant_millores_1: "Emisiones de"
+      emissions_aplicant_millores_2: "aplicando mejoras:"
+      reduccio_15anys: "Reducción de emisiones de"
+      grafic_any: "Año"
+      grafic_despesa_actual: "Gasto actual"
+      grafic_despesa_pessimista: "Gasto pesimista"
+      grafic_despesa_optimista: "Gasto optimista"
+      proposta: "Propuesta"
+    documents:
+      titol_document: "Documentos"
+      genera_test_energetic: "Genera el test energético"
+      genera_document_kg: "Informe de transmitancias"
+      text_generar_xml: "Exportar las propuestas de intervención en formato XML."
+  murs:
+    edit:
+      titol: "Envolvente térmica: edición de muro"
+      envolupant: "Envolvente térmica"
+    form:
+      composicio: "Composición"
+      una_fulla: "Una hoja"
+      dues_fulles: "Dos hojas"
+      nou_component: "Añadir componente"
+      guardar: "Guardar"
+      component: "Componente"
+      alerta-supera-limit: "Alerta! El muro supera el valor límite del CTE"
+      nou_component_predefinit: "Añadir componente predefinido"
+      selecciona_familia: "Selecciona la familia de producto"
+      component: "Selecciona el componente"
+      text_components: "Componentes de exterior a interior: "
+      petris: "Pétreos"
+      metalls: "Metales"
+      fustes: "Maderas"
+      formigons: "Hormigones"
+      morters: "Morteros"
+      guixos: "Yesos"
+      lliscats: "Enlucidos"
+      aillants: "Aislantes"
+      plastics: "Plásticos"
+      cautxus: "Cautxús"
+      sellants: "Sellantes"
+      bituminosos: "Bituminosos"
+      textils: "Téxtiles"
+      ceramics: "Cerámicos"
+      vidres: "Vidrios"
+    calcul_transmitancia:
+      coeficient_transmissio_termica: "Coeficiente de transmisión térmica"
+      valor_segons_cte: "Valor según el CTE"
+      zona_climatica: "Zona climática"
+  component_murs:
+    llistat_components:
+      eliminar: "Seguro que quieres eliminar?"
+    llistat_predefinits:
+      component: "Componente"
+      densitat: "Densidad"
+      conductivitat: "Conductividad"
+    form:
+      guardar: "Guardar"
+  forats:
+    edit:
+      titol: "Envolvente térmica: edición de hueco"
+      envolupant: "Envolvente térmica"
+    form:
+      marc: "Marco"
+      vidre: "Vidrio"
+      panell_opac: "Panel opaco"
+      guardar: "Guardar"
+      fusta: "Madera"
+      pvc: "PVC"
+      metalic: "Metálico"
+      metalic_rpt: "Metálico RPT"
+      senzill: "Simple"
+      doble: "Doble"
+      doble_baix_emissiu: "Doble bajo emisivo"
+      triple: "Triple"
+      triple_baix_emissiu: "Triple bajo emisivo"
+  cobertes:
+    form:
+      guardar: "Guardar"
+      nou_component: "Añadir componente"
+      nou_component_predefinit: "Añadir componente predefinido"
+      selecciona_familia: "Selecciona la familia de producto"
+      component: "Selecciona el componente"
+      text_components: "Componentes de exterior a interior: "
+      petris: "Pétreos"
+      metalls: "Metales"
+      fustes: "Maderas"
+      formigons: "Hormigones"
+      morters: "Morteros"
+      guixos: "Yesos"
+      lliscats: "Enlucidos"
+      aillants: "Aislantes"
+      plastics: "Plásticos"
+      cautxus: "Cautxús"
+      sellants: "Sellantes"
+      bituminosos: "Bituminosos"
+      textils: "Téxtiles"
+      ceramics: "Cerámicos"
+      vidres: "Vidrios"
+    edit:
+      titol: "Envolvente térmica: edición de cubierta"
+      envolupant: "Envolvente térmica"
+    calcul_transmitancia:
+      coeficient_transmissio_termica: "Coeficiente de transmisión térmica"
+      valor_segons_cte: "Valor según el CTE"
+      zona_climatica: "Zona climática"
+  component_cobertes:
+    llistat_predefinits:
+      component: "Componente"
+      densitat: "Densidad"
+      conductivitat: "Conductividad"
+    form:
+      guardar: "Guardar"
+  terres:
+    edit:
+      titol: "Envolvente térmica: edición de suelo"
+      envolupant: "Envolvente térmica"
+    form:
+      guardar: "Guardar"
+      menys_50: "Menos de 50 cm"
+      mes_50: "Más de 50 cm"
+  lampades:
+    fluorescents:
+      potencia: "Potencia"
+      quantitat: "Cantidad"
+      hores_mensuals: "Horas mensuales"
+    fluorescents_compactes:
+      potencia: "Potencia"
+      quantitat: "Cantidad"
+      hores_mensuals: "Horas mensuales"
+    halogenes:
+      potencia: "Potencia"
+      quantitat: "Cantidad"
+      hores_mensuals: "Horas mensuales"
+    incandescents:
+      potencia: "Potencia"
+      quantitat: "Cantidad"
+      hores_mensuals: "Horas mensuales"
+    leds:
+      potencia: "Potencia"
+      quantitat: "Cantidad"
+      hores_mensuals: "Horas mensuales"
+  climatitzacions:
+    form:
+      guardar: "Guardar"
+      caldera_mixta_gas: "Caldera mixta de gas"
+      caldera_gas: "Caldera de gas"
+      caldera_gasoil: "Caldera de gasoil"
+      caldera_biomassa: "Caldera de biomasa"
+      radiadors_electrics: "Radiadores eléctricos"
+      estufes_electriques: "Estufas eléctricas"
+      bomba_calor: "Bomba calor"
+      llar_de_foc: "Chimenea"
+      escalfador_gas: "Calentador de gas"
+      termoacumulador_electric: "Termoacumulador eléctrico"
+      captadors_solars_termics: "Captadores solares térmicos"
+      cap_sistema: "Ningún sistema"
+    calefaccio_1:
+      sistema_principal_calefaccio: "Sistema principal de calefacción"
+      editar_sistema: "Editar sistema"
+      antiguitat: "Antigüedad"
+      anys: "años"
+    calefaccio_2:
+      sistema_secundari_calefaccio: "Sistema secundario de calefacción"
+      editar_sistema: "Editar sistema"
+      antiguitat: "Antigüedad"
+      anys: "años"
+    refrigeracio:
+      refrigeracio: "Refrigeración"
+      editar_sistema: "Editar sistema"
+      antiguitat: "Antigüedad"
+      anys: "años"
+    acs:
+      sistema_acs: "Aigua caliente sanitaria"
+      editar_sistema: "Editar sistema"
+      antiguitat: "Antigüedad"
+      anys: "años"
+    generacio:
+      sistema_generacio: "Sistema de generación"
+      editar_sistema: "Editar sistema"
+      antiguitat: "Antigüedad"
+      demanda_coberta: "Demanda cubierta"
+      anys: "años"
+  aparells:
+    form:
+      guardar: "Guardar"
+    llistat_aparells:
+      aparell: "Aparato"
+      estimacio_consum: "Estimación de consumo mensual (kWh)"
+  habits:
+    llistat_habits:
+      habit: "Hábito"
+      descripcio: "Descripción"
+    form:
+      guardar: "Guardar"
+  consum_globals:
+    form:
+      guardar: "Guardar"
+  caldera_mixta_gas: "Caldera mixta de gas"
+  caldera_gas: "Caldera de gas"
+  caldera_gasoil: "Caldera de gasoil"
+  caldera_biomassa: "Caldera de biomasa"
+  radiadors_electrics: "Radiadores eléctricos"
+  estufes_electriques: "Estufas eléctricas"
+  bomba_calor: "Bomba calor"
+  llar_de_foc: "Chimenea"
+  aire_condicionat: "Aire acondicionado"
+  escalfador_gas: "Calentador de gas"
+  termoacumulador_electric: "Termoacumulador eléctrico"
+  captadors_solars_termics: "Captadores solares térmicos"
+  cap_sistema: "Ningún sistema"
+  propostes:
+    llistat_propostes:
+      proposta: "Propuesta"
+      cost_optimista: "Coste optimista"
+      cost_pessimista: "Coste pesimista"
+      estalvi_optimista: "Ahorro optimista"
+      estalvi_pessimista: "Ahorro pesimista"
+    form:
+      guardar: "Guardar"
+      gener: "Enero"
+      febrer: "Febrero"
+      marc: "Marzo"
+      abril: "Abril"
+      maig: "Mayo"
+      juny: "Junio"
+      juliol: "Julio"
+      agost: "Agosto"
+      setembre: "Septiembre"
+      octubre: "Octubre"
+      novembre: "Noviembre"
+      desembre: "Diciembre"

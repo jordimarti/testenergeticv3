@@ -30,7 +30,7 @@
         		<%= render partial: '/aparells/llistat_aparells' %>
         	</div>
         	<div class="afegir-element">
-            <%= link_to "+ Afegir element", new_aparell_path(entitat_id: params[:id]), remote: true, class: 'link-afegir' %>
+            <%= link_to t('.afegir_element'), new_aparell_path(entitat_id: params[:id]), remote: true, class: 'link-afegir' %>
           </div>
         </div>
       </div>

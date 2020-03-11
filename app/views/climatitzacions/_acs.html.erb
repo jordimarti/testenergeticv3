@@ -4,7 +4,7 @@
 </div>
 <div class="text-clima">
   <h5><%= t(@clima.tipologia_acs) %></h5>
-  <p>Antiguitat: <span class="anys-clima"><%= @clima.antiguitat_acs %> anys</span></p>
+  <p><%= t('.antiguitat') %>: <span class="anys-clima"><%= @clima.antiguitat_acs %> <%= t('.anys') %></span></p>
   <div class="canvi-sistema-clima">
     <%= link_to edit_climatitzacio_path(@clima.id, sistema: 'acs'), remote: true do %>
       <%= t('.editar_sistema') %>

@@ -14,7 +14,7 @@
     <div class="grid-x grid-margin-x">
       <div class="medium-12 cell">
         <div class="titol-seccio">
-          Propostes de millora
+          <%= t('.propostes_millora') %>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
     <div class="grid-x grid-margin-x">
       <div class="medium-12 cell">
         <div class="titol-seccio">
-          Cost econòmic de l'energia consumida en 15 anys
+          <%= t('.cost_energia') %>
         </div>
       </div>
     </div>
@@ -55,9 +55,9 @@
             <div class="medium-6 cell">
               <div class="text-despesa-economica">
                 <% estalvi = @despesa_actual[14] - @despesa_estalvi_optimista[14] %>
-                <p>Despesa econòmica en 15 anys: <br/><span class="valors_despesa_energetica"><%= number_to_currency(@despesa_actual[14]) %></span></p>
-                <p>Despesa econòmica aplicant millores: <br/><span class="valors_despesa_energetica"><%= number_to_currency(@despesa_estalvi_optimista[14]) %></span></p> 
-                <p>Estalvi econòmic en 15 anys: <br/><span class="valors_despesa_energetica"><%= number_to_currency(estalvi) %></span></p>
+                <p><%= t('.despesa_15anys') %><br/><span class="valors_despesa_energetica"><%= number_to_currency(@despesa_actual[14]) %></span></p>
+                <p><%= t('.despesa_aplicant_millores') %> <br/><span class="valors_despesa_energetica"><%= number_to_currency(@despesa_estalvi_optimista[14]) %></span></p> 
+                <p><%= t('.estalvi_15anys') %> <br/><span class="valors_despesa_energetica"><%= number_to_currency(estalvi) %></span></p>
               </div>
             </div>
             <div class="medium-6 cell">
@@ -65,9 +65,9 @@
                 <% impacte_15 = (@despesa_actual[14] * 0.4)/1000
                 impacte_millores = (@despesa_estalvi_optimista[14] * 0.4)/1000
                 estalvi_co2 = ((@despesa_actual[14] - @despesa_estalvi_optimista[14]) * 0.4)/1000 %>
-                <p>Emissions de CO<sub>2</sub> en 15 anys: <br/><span class="valors_despesa_energetica"><%= impacte_15.round(2) %> t</span></p>
-                <p>Emissions de CO<sub>2</sub> aplicant millores: <br/><span class="valors_despesa_energetica"><%= impacte_millores.round(2) %> t</span></p>
-                <p>Reducció d'emissions de CO<sub>2</sub>: <br/><span class="valors_despesa_energetica"><%= estalvi_co2.round(2) %> t</span></p>
+                <p><%= t('.emissions_15anys_1') %> CO<sub>2</sub> <%= t('.emissions_15anys_2') %><br/><span class="valors_despesa_energetica"><%= impacte_15.round(2) %> t</span></p>
+                <p><%= t('.emissions_aplicant_millores_1') %> CO<sub>2</sub> <%= t('.emissions_aplicant_millores_2') %> <br/><span class="valors_despesa_energetica"><%= impacte_millores.round(2) %> t</span></p>
+                <p><%= t('.reduccio_15anys') %> CO<sub>2</sub>: <br/><span class="valors_despesa_energetica"><%= estalvi_co2.round(2) %> t</span></p>
               </div>
             </div>
           </div>
@@ -84,14 +84,14 @@
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
-      ['Any', 'Despesa actual', 'Despesa optimista', 'Despesa pessimista'],
+      ['<%= t('.grafic_any') %>', '<%= t('.grafic_despesa_actual') %>', '<%= t('.grafic_despesa_optimista') %>', '<%= t('.grafic_despesa_pessimista') %>'],
       <% for i in 0..14 do %> 
         ['<%= Date.today.year + i %>', <%= @despesa_actual[i] %>, <%= @despesa_estalvi_optimista[i] %>, <%= @despesa_estalvi_pessimista[i] %>],
       <% end %>
     ]);
 
     var options = {
-      title: 'Acumulació de despesa econòmica seguint el passaport de l\'edifici',
+      title: '<%= t('.acumulacio_despesa') %>',
       legend: { position: 'bottom' }
     };
 

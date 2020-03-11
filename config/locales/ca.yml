@@ -208,10 +208,12 @@ ca:
       proposta:
         mesura: "Nom de la proposta"
         descripcio: "Descripció"
-        cost_optimista: "Cost optimista"
-        cost_pessimista: "Cost pessimista"
-        estalvi_optimista: "Estalvi optimista"
-        estalvi_pessimista: "Estalvi pessimista"
+        cost_optimista: "Cost optimista (€)"
+        cost_pessimista: "Cost pessimista (€)"
+        estalvi_optimista: "Estalvi optimista (%)"
+        estalvi_pessimista: "Estalvi pessimista (%)"
+        data_mes: "Mes"
+        data_any: "Any"
   layouts:
     application:
       titol_pagina: "Test energètic"
@@ -293,7 +295,7 @@ ca:
       nif: "NIF"
       guardar: "Guardar"
     delete:
-      edifici_eliminat: "El projecte s'ha eliminat correctament"
+      edifici_eliminat: "El test s'ha eliminat correctament"
     aixecament:
       titol: "Aixecament de dades"
       envolupant: "Envolupant tèrmica"
@@ -324,6 +326,14 @@ ca:
       titol: "Il·luminació"
       seleccio_ambit: "Selecció d'àmbit"
       iluminacio_zones_comunes: "Il·luminació de les zones comunes de l'edifici"
+      text_iluminacio_1: "La il·luminació cal definir-la a nivell d'entitats de l'edifici i no a nivell global. O sigui que es defineix a cada pis, local comercial, etc. En aquest apartat només es defineix la il·luminació de les zones comunes de l'edifici."
+      text_iluminacio_2: "A l'apartat de \"Selecció d'àmbit\" pots seleccionar l'entitat on definir la il·luminació."
+      leds: "LEDs"
+      fluorescents_compactes: "Fluorescents compactes"
+      fluorescents: "Fluorescents"
+      halogenes: "Halògenes"
+      incandescents: "Incandescents"
+      afegir_element: "+ Afegir element"
     clima:
       aixecament_dades: "Aixecament de dades"
       titol: "ACS i climatització"
@@ -331,14 +341,18 @@ ca:
       editar_sistema: "Editar sistema"
       seleccio_ambit: "Selecció d'àmbit"
       clima_zones_comunes: "ACS i climatització de les zones comunes de l'edifici"
+      text_clima_1: "La climatització i aigua calenta sanitària cal definir-les a nivell d'entitats de l'edifici i no a nivell global. O sigui que es defineix a cada pis, local comercial, etc. En cas que les zones comuns de l'edifici tinguin climatització sí que ho has d'introduir aquí."
+      text_clima_2: "A l'apartat de \"Selecció d'àmbit\" pots seleccionar l'entitat on definir la climatització i l'aigua calenta sanitària."
     aparells:
       titol: "Altres aparells"
       aixecament_dades: "Aixecament de dades"
       aparell: "Aparell"
+      afegir_element: "+ Afegir element"
     habits:
       titol: "Hàbits i gestió"
       aixecament_dades: "Aixecament de dades"
       habit: "Hàbit"
+      afegir_habit: "+ Afegir hàbit"
     consums:
       titol: "Factures i consums"
       aixecament_dades: "Aixecament de dades"
@@ -348,15 +362,30 @@ ca:
       aixecament_dades: "Aixecament de dades"
       guardar: "Guardar"
     propostes:
+      propostes_millora: "Propostes de millora"
       afegir_proposta: "Afegir una proposta"
       generar_propostes: "Generar propostes"
+      cost_energia: "Cost econòmic de l'energia consumida en 15 anys"
+      actualitzar_grafic: "Actualitzar gràfic"
+      acumulacio_despesa: "Acumulació de despesa econòmica seguint el passaport de l'edifici"
+      despesa_15anys: "Despesa econòmica en 15 anys:"
+      despesa_aplicant_millores: "Despesa econòmica aplicant millores:"
+      estalvi_15anys: "Estalvi econòmic en 15 anys:"
+      emissions_15anys_1: "Emissions de"
+      emissions_15anys_2: "en 15 anys:"
+      emissions_aplicant_millores_1: "Emissions de"
+      emissions_aplicant_millores_2: "aplicant millores:"
+      reduccio_15anys: "Reducció d'emissions de"
+      grafic_any: "Any"
+      grafic_despesa_actual: "Despesa actual"
+      grafic_despesa_pessimista: "Despesa pessimista"
+      grafic_despesa_optimista: "Despesa optimista"
+      proposta: "Proposta"
     documents:
       titol_document: "Documents"
       genera_test_energetic: "Genera el test energètic"
       genera_document_kg: "Genera informe transmitàncies"
       text_generar_xml: "Exporteu les propostes d'intervenció en format XML."
-    pdf_transmitancies:
-      mursis: "Murs i murets"
   murs:
     edit:
       titol: "Envolupant tèrmica: edició de mur"
@@ -395,6 +424,10 @@ ca:
   component_murs:
     llistat_components:
       eliminar: "Segur que vols eliminar?"
+    llistat_predefinits:
+      component: "Component"
+      densitat: "Densitat"
+      conductivitat: "Conductivitat"
     form:
       guardar: "Guardar"
   forats:
@@ -446,6 +479,10 @@ ca:
       valor_segons_cte: "Valor segons el CTE"
       zona_climatica: "Zona climàtica"
   component_cobertes:
+    llistat_predefinits:
+      component: "Component"
+      densitat: "Densitat"
+      conductivitat: "Conductivitat"
     form:
       guardar: "Guardar"
   terres:
@@ -456,6 +493,27 @@ ca:
       guardar: "Guardar"
       menys_50: "Menys de 50 cm"
       mes_50: "Més de 50 cm"
+  lampades:
+    fluorescents:
+      potencia: "Potència"
+      quantitat: "Quantitat"
+      hores_mensuals: "Hores mensuals"
+    fluorescents_compactes:
+      potencia: "Potència"
+      quantitat: "Quantitat"
+      hores_mensuals: "Hores mensuals"
+    halogenes:
+      potencia: "Potència"
+      quantitat: "Quantitat"
+      hores_mensuals: "Hores mensuals"
+    incandescents:
+      potencia: "Potència"
+      quantitat: "Quantitat"
+      hores_mensuals: "Hores mensuals"
+    leds:
+      potencia: "Potència"
+      quantitat: "Quantitat"
+      hores_mensuals: "Hores mensuals"
   climatitzacions:
     form:
       guardar: "Guardar"
@@ -474,18 +532,29 @@ ca:
     calefaccio_1:
       sistema_principal_calefaccio: "Sistema principal de calefacció"
       editar_sistema: "Editar sistema"
+      antiguitat: "Antiguitat"
+      anys: "anys"
     calefaccio_2:
       sistema_secundari_calefaccio: "Sistema secundari de calefacció"
       editar_sistema: "Editar sistema"
+      antiguitat: "Antiguitat"
+      anys: "anys"
     refrigeracio:
       refrigeracio: "Refrigeració"
       editar_sistema: "Editar sistema"
+      antiguitat: "Antiguitat"
+      anys: "anys"
     acs:
       sistema_acs: "Aigua calenta sanitària"
       editar_sistema: "Editar sistema"
+      antiguitat: "Antiguitat"
+      anys: "anys"
     generacio:
       sistema_generacio: "Sistema de generació"
       editar_sistema: "Editar sistema"
+      antiguitat: "Antiguitat"
+      demanda_coberta: "Demanda coberta"
+      anys: "anys"
   aparells:
     form:
       guardar: "Guardar"
@@ -493,6 +562,9 @@ ca:
       aparell: "Aparell"
       estimacio_consum: "Estimació de consum mensual (kWh)"
   habits:
+    llistat_habits:
+      habit: "Hàbit"
+      descripcio: "Descripció"
     form:
       guardar: "Guardar"
   consum_globals:
@@ -512,6 +584,12 @@ ca:
   captadors_solars_termics: "Captadors solars tèrmics"
   cap_sistema: "Cap sistema"
   propostes:
+    llistat_propostes:
+      proposta: "Proposta"
+      cost_optimista: "Cost optimista"
+      cost_pessimista: "Cost pessimista"
+      estalvi_optimista: "Estalvi optimista"
+      estalvi_pessimista: "Estalvi pessimista"
     form:
       guardar: "Guardar"
       gener: "Gener"

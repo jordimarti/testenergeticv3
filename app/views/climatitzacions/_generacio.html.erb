@@ -4,8 +4,8 @@
 </div>
 <div class="text-clima">
   <h5><%= t(@clima.generacio) %></h5>
-  <p>Antiguitat: <span class="anys-clima"><%= @clima.antiguitat_generacio %> anys</span><br/>
-  Demanda coberta: <span class="anys-clima"><%= @clima.percentatge_captadors_termics %> %</span></p>
+  <p><%= t('.antiguitat') %>: <span class="anys-clima"><%= @clima.antiguitat_generacio %> <%= t('.anys') %></span><br/>
+  <%= t('.demanda_coberta') %>: <span class="anys-clima"><%= @clima.percentatge_captadors_termics %> %</span></p>
   <div class="canvi-sistema-clima">
     <%= link_to edit_climatitzacio_path(@clima.id, sistema: 'generacio'), remote: true do %>
       <%= t('.editar_sistema') %>

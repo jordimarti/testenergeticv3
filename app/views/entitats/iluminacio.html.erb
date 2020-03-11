@@ -28,8 +28,8 @@
       <div class="grid-x grid-margin-x">
         <div class="medium-12 cell">
           <div class="light-container">
-            <p>La il·luminació cal definir-la a nivell d'entitats de l'edifici i no a nivell global. O sigui que es defineix a cada pis, local comercial, etc. En aquest apartat només es defineix la il·luminació de les zones comunes de l'edifici.</p>
-            <p>A l'apartat de "Selecció d'àmbit" pots seleccionar l'entitat on definir la il·luminació.</p>
+            <p><%= t('.text_iluminacio_1') %></p>
+            <p><%= t('.text_iluminacio_2') %></p>
             <p><%= link_to t('.seleccio_ambit'), entitat_ambits_path(@entitat.id), class:'button' %></p>
           </div>
         </div>
@@ -55,12 +55,12 @@
             <%= image_tag "https://d116p86eni6yt2.cloudfront.net/imatges/leds.jpg" %>
           </div>
           <div class="items-iluminacio-container">
-            <h4 class="titol-tipus-iluminacio">LEDs</h4>
+            <h4 class="titol-tipus-iluminacio"><%= t('.leds') %></h4>
             <div id="leds">
               <%= render partial: '/lampades/leds' %>
             </div>
             <div class="afegir-element">
-              <%= link_to "+ Afegir element", new_lampada_path(entitat_id: params[:id], tipologia: 'led'), remote: true, class: 'link-afegir' %>
+              <%= link_to t('.afegir_element'), new_lampada_path(entitat_id: params[:id], tipologia: 'led'), remote: true, class: 'link-afegir' %>
             </div>
           </div>
         </div>
@@ -71,12 +71,12 @@
             <%= image_tag "https://d116p86eni6yt2.cloudfront.net/imatges/baix_consum.jpg" %>
           </div>
           <div class="items-iluminacio-container">
-            <h4 class="titol-tipus-iluminacio">Fluorescents compactes</h4>
+            <h4 class="titol-tipus-iluminacio"><%= t('.fluorescents_compactes') %></h4>
             <div id="fluorescents-compactes">
               <%= render partial: '/lampades/fluorescents_compactes' %>
             </div>
             <div class="afegir-element">
-              <%= link_to "+ Afegir element", new_lampada_path(entitat_id: params[:id], tipologia: 'fluorescent_compacte'), remote: true, class: 'link-afegir' %>
+              <%= link_to t('.afegir_element'), new_lampada_path(entitat_id: params[:id], tipologia: 'fluorescent_compacte'), remote: true, class: 'link-afegir' %>
             </div>
           </div>
         </div>
@@ -89,12 +89,12 @@
             <%= image_tag "https://d116p86eni6yt2.cloudfront.net/imatges/fluorescent.jpg" %>
           </div>
           <div class="items-iluminacio-container">
-            <h4 class="titol-tipus-iluminacio">Fluorescents</h4>
+            <h4 class="titol-tipus-iluminacio"><%= t('.fluorescents') %></h4>
             <div id="fluorescents">
               <%= render partial: '/lampades/fluorescents' %>
             </div>
             <div class="afegir-element">
-              <%= link_to "+ Afegir element", new_lampada_path(entitat_id: params[:id], tipologia: 'fluorescent'), remote: true, class: 'link-afegir' %>
+              <%= link_to t('.afegir_element'), new_lampada_path(entitat_id: params[:id], tipologia: 'fluorescent'), remote: true, class: 'link-afegir' %>
             </div>
           </div>
         </div>
@@ -105,12 +105,12 @@
             <%= image_tag "https://d116p86eni6yt2.cloudfront.net/imatges/halogena.jpg" %>
           </div>
           <div class="items-iluminacio-container">
-            <h4 class="titol-tipus-iluminacio">Halògenes</h4>
+            <h4 class="titol-tipus-iluminacio"><%= t('.halogenes') %></h4>
             <div id="halogenes">
               <%= render partial: '/lampades/halogenes' %>
             </div>
             <div class="afegir-element">
-              <%= link_to "+ Afegir element", new_lampada_path(entitat_id: params[:id], tipologia: 'halogena'), remote: true, class: 'link-afegir' %>
+              <%= link_to t('.afegir_element'), new_lampada_path(entitat_id: params[:id], tipologia: 'halogena'), remote: true, class: 'link-afegir' %>
             </div>
           </div>
         </div>
@@ -123,12 +123,12 @@
             <%= image_tag "https://d116p86eni6yt2.cloudfront.net/imatges/incandescents.jpg" %>
           </div>
           <div class="items-iluminacio-container">
-            <h4 class="titol-tipus-iluminacio">Incandescents</h4>
+            <h4 class="titol-tipus-iluminacio"><%= t('.incandescents') %></h4>
             <div id="incandescents">
               <%= render partial: '/lampades/incandescents' %>
             </div>
             <div class="afegir-element">
-              <%= link_to "+ Afegir element", new_lampada_path(entitat_id: params[:id], tipologia: 'incandescent'), remote: true, class: 'link-afegir' %>
+              <%= link_to t('.afegir_element'), new_lampada_path(entitat_id: params[:id], tipologia: 'incandescent'), remote: true, class: 'link-afegir' %>
             </div>
           </div>
         </div>

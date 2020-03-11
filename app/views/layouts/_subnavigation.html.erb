@@ -34,10 +34,10 @@
             <% end %>"><%= link_to(t('.aixecament'), entitat_aixecament_path(@entitat), :class => 'header-submenu-link') %></li>
           <li class="header-submenu-item <% if @submenu_actiu == 'propostes' %>
             header-submenu-actiu
-            <% end %>"><%= link_to("Propostes de millora", entitat_propostes_path(@entitat), :class => 'header-submenu-link') %></li>
+            <% end %>"><%= link_to(t('.propostes'), entitat_propostes_path(@entitat), :class => 'header-submenu-link') %></li>
           <li class="header-submenu-item <% if @submenu_actiu == 'documents' %>
             header-submenu-actiu
-            <% end %>"><%= link_to("Documents", entitat_documents_path(@entitat), :class => 'header-submenu-link') %></li>
+            <% end %>"><%= link_to(t('.documents'), entitat_documents_path(@entitat), :class => 'header-submenu-link') %></li>
 		      
 		    <% end %>
 	  	</ul>

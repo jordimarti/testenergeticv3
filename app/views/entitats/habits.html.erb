@@ -30,7 +30,7 @@
         		<%= render partial: '/habits/llistat_habits' %>
         	</div>
         	<div class="afegir-element">
-            <%= link_to "+ Afegir hàbit", new_habit_path(entitat_id: params[:id]), remote: true, class: 'link-afegir' %>
+            <%= link_to t('.afegir_habit'), new_habit_path(entitat_id: params[:id]), remote: true, class: 'link-afegir' %>
           </div>
         </div>
       </div>
