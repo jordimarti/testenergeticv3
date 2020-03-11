@@ -224,6 +224,7 @@ ca:
       account_configuration: "Configuració del compte"
       sign_out: "Tancar sessió"
       tutorials: "Tutorials"
+      recursos: "Recursos"
       projectes: "Tests"
     subnavigation:
       identificacio: "Identificació"
